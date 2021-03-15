@@ -14,12 +14,20 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Armor",
+                    "name": "JumpPress",
                     "type": "Button",
-                    "id": "633cea7c-dcec-4d97-87be-6aa6b4d6c623",
+                    "id": "67d84bb4-a4df-41b4-bdef-ad4c9c391d27",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "Press"
+                },
+                {
+                    "name": "JumpRelease",
+                    "type": "Button",
+                    "id": "7e73397c-d0e8-43b5-95f2-f98545b64534",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press(behavior=1)"
                 }
             ],
             "bindings": [
@@ -201,23 +209,45 @@
                 },
                 {
                     "name": "",
-                    "id": "eed16b46-9cfa-4fc4-a09b-d977574e089a",
-                    "path": "<Gamepad>/buttonWest",
+                    "id": "973d4c26-6e9e-42dd-a199-4da4fd70ad1a",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Armor",
+                    "groups": "Keyboard",
+                    "action": "JumpPress",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "8424a17d-adc9-4b92-8c4b-a2c5c804edf1",
+                    "id": "6b3ec828-4b47-4350-a3b9-39bf0b5e874c",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "JumpPress",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3684cb10-6c1f-4d8d-b083-f3ef98e23427",
                     "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Armor",
+                    "action": "JumpRelease",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3c7f470a-a1e0-425b-92ba-93726f19c664",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "JumpRelease",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
