@@ -10,7 +10,7 @@ namespace Game.Player
 		[SerializeField] private PlayerJumpSystem jump;
 
 
-		#region MyRegion
+		#region Copied from original script
 		//[SerializeField] private AnimationHandler anim = null;
 		[SerializeField] public float moveSpeed = 200;
 		[SerializeField, Range(0f, 0.9f)] private float moveThreshold = 0.125f;
@@ -92,6 +92,7 @@ namespace Game.Player
 
 		private void Awake()
 		{
+			Time.timeScale = 1;
 			_rb = GetComponent<Rigidbody2D>();
 
 			FixSpiderManSyndrome();
