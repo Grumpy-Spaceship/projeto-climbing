@@ -8,17 +8,12 @@ namespace Game.Player
 	public class Player : MonoBehaviour
 	{
 		[SerializeField] private PlayerJumpSystem jump;
-
-
-		#region Copied from original script
 		//[SerializeField] private AnimationHandler anim = null;
 		[SerializeField] public float moveSpeed = 200;
 		[SerializeField, Range(0f, 0.9f)] private float moveThreshold = 0.125f;
 		[SerializeField] private bool showDebugGizmos = false;
-		//Movement
 		private float _moveInput;
 		private bool _canMove;
-		//General private variables
 		private Rigidbody2D _rb;
 
 		//Freeze the rotation on Z axis and the X axis position (idle, specially on slope)
@@ -29,20 +24,24 @@ namespace Game.Player
 		private bool IsIdle => Mathf.Abs(_moveInput) <= moveThreshold;
 		//Says what direction the player is facing (1 = Right, -1 = Left)
 		public float FacingDirection => transform.localScale.x;
-
-
+		
 		public void EnableInput()
 		{
 			jump.EnableJump();
 			_canMove = true;
 		}
-
 		public void DisableInput()
 		{
 			jump.DisableJump();
 			_canMove = false;
 			_moveInput = 0;
 		}
+		public void OnJump()
+		{
+			if (jump.CanJump && jump.IsGrounded)
+				_rb.AddForce(Vector2.up * jump.jumpForce, ForceMode2D.Impulse);
+		}
+		public void OnMove(InputValue value) => _moveInput = _canMove ? value.Get<float>() : 0f;
 
 		private void FixSpiderManSyndrome()
 		{
@@ -55,14 +54,12 @@ namespace Game.Player
 			//Applied it to rigidbody
 			_rb.sharedMaterial = playerMat;
 		}
-
 		private float Swap()
 		{
 			if (_moveInput > moveThreshold) return 1;
 			else if (_moveInput < -moveThreshold) return -1;
 			else return transform.localScale.x;
 		}
-
 		private void UpdateAnimations()
 		{
 			/*
@@ -99,7 +96,6 @@ namespace Game.Player
 
 			EnableInput();
 		}
-
 		private void Update()
 		{
 			if (Time.timeScale == 0) return;
@@ -108,7 +104,6 @@ namespace Game.Player
 
 			UpdateAnimations();
 		}
-
 		private void FixedUpdate()
 		{
 			//Stop rotating and sliding down slopes if idle; if not, stop rotating
@@ -128,15 +123,6 @@ namespace Game.Player
 
 			jump?.DrawGizmos();
 		}
-		#endregion
-
-		public void OnJump(InputValue _)
-		{
-			if(jump.CanJump && jump.IsGrounded)
-				_rb.AddForce(Vector2.up * jump.jumpForce, ForceMode2D.Impulse);
-		}
-
-		public void OnMove(InputValue value) => _moveInput = _canMove ? value.Get<float>() : 0f;
 
 	}
 
