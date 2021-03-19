@@ -3,17 +3,12 @@ using UnityEngine;
 
 public class BreakableTile : MonoBehaviour
 {
+	private void OnCollisionEnter2D(Collision2D collision)
+	{
+		if(collision.gameObject.CompareTag("Player") && collision.transform.position.y < transform.position.y)
+		{
+			Destroy(gameObject);
+		}
+	}
 
-    // Awake is called before the first frame update
-    private void Awake()
-    {
-        
-    }
-
-    // Update is called once per frame
-    private void Update()
-    {
-        
-    }
-    
 }
