@@ -5,12 +5,11 @@ using UnityEngine.InputSystem;
 
 namespace Game.Player
 {
+
 	public class Player : MonoBehaviour
 	{
-		[SerializeField] private PlayerJumpSystem jump;
-		//[SerializeField] private AnimationHandler anim = null;
-		[SerializeField] public float moveSpeed = 200;
-		[SerializeField, Range(0f, 0.9f)] private float moveThreshold = 0.125f;
+		[SerializeField] private Transform feetPos = null;
+		[SerializeField] private PlayerSettings settings = null;
 		[SerializeField] private bool showDebugGizmos = false;
 		private float _moveInput;
 		private bool _canMove;
@@ -21,25 +20,25 @@ namespace Game.Player
 		//Freeze only the rotation on Z axis (moving)
 		private RigidbodyConstraints2D _FreezeRotationOnly => RigidbodyConstraints2D.FreezeRotation;
 		//Define if is in idle (i.e. not moving)
-		private bool IsIdle => Mathf.Abs(_moveInput) <= moveThreshold;
+		private bool IsIdle => Mathf.Abs(_moveInput) <= settings.MoveThreshold;
 		//Says what direction the player is facing (1 = Right, -1 = Left)
 		public float FacingDirection => transform.localScale.x;
 		
 		public void EnableInput()
 		{
-			jump.EnableJump();
+			settings.Jump.EnableJump();
 			_canMove = true;
 		}
 		public void DisableInput()
 		{
-			jump.DisableJump();
+			settings.Jump.DisableJump();
 			_canMove = false;
 			_moveInput = 0;
 		}
 		public void OnJump()
 		{
-			if (jump.CanJump && jump.IsGrounded)
-				_rb.AddForce(Vector2.up * jump.jumpForce, ForceMode2D.Impulse);
+			if (settings.Jump.CanJump && settings.Jump.IsGrounded)
+				_rb.AddForce(Vector2.up * settings.Jump.jumpForce, ForceMode2D.Impulse);
 		}
 		public void OnMove(InputValue value) => _moveInput = _canMove ? value.Get<float>() : 0f;
 
@@ -56,8 +55,8 @@ namespace Game.Player
 		}
 		private float Swap()
 		{
-			if (_moveInput > moveThreshold) return 1;
-			else if (_moveInput < -moveThreshold) return -1;
+			if (_moveInput > settings.MoveThreshold) return 1;
+			else if (_moveInput < -settings.MoveThreshold) return -1;
 			else return transform.localScale.x;
 		}
 		private void UpdateAnimations()
@@ -86,7 +85,6 @@ namespace Game.Player
 			*/
 		}
 
-
 		private void Awake()
 		{
 			Time.timeScale = 1;
@@ -100,7 +98,7 @@ namespace Game.Player
 		{
 			if (Time.timeScale == 0) return;
 
-			jump?.JumpLogic();
+			settings.Jump?.JumpLogic(feetPos);
 
 			UpdateAnimations();
 		}
@@ -112,7 +110,7 @@ namespace Game.Player
 			//Return if game is paused
 			if (Time.timeScale == 0) return;
 			//Move the player
-			_rb.velocity = new Vector2(_moveInput * moveSpeed * Time.deltaTime, _rb.velocity.y);
+			_rb.velocity = new Vector2(_moveInput * settings.MoveSpeed * Time.deltaTime, _rb.velocity.y);
 
 			//Set correct direction
 			transform.localScale = new Vector3(Swap(), transform.localScale.y, 1);
@@ -121,7 +119,7 @@ namespace Game.Player
 		{
 			if (!showDebugGizmos) return;
 
-			jump?.DrawGizmos();
+			settings.Jump?.DrawGizmos(feetPos);
 		}
 
 	}
@@ -133,7 +131,6 @@ namespace Game.Player
 		[SerializeField] private LayerMask whatIsGround = default;
 		[SerializeField] public float groundCheckRadius = .25f;
 		[SerializeField] public float jumpForce = 4;
-		[SerializeField] public Transform feetPos = null;//Empty GameObject used to detect ground
 		private bool _grounded;
 
 		// Get if can jump
@@ -146,7 +143,7 @@ namespace Game.Player
 
 		public void DisableJump() => CanJump = false;
 		public void EnableJump() => CanJump = true;
-		public void JumpLogic()
+		public void JumpLogic(Transform feetPos)
 		{
 			//if can't jump, do nothing
 			if (!CanJump) return;
@@ -155,7 +152,7 @@ namespace Game.Player
 			_grounded = Physics2D.OverlapCircle(feetPos.position, groundCheckRadius, whatIsGround);
 		}
 
-		public void DrawGizmos()
+		public void DrawGizmos(Transform feetPos)
 		{
 			Gizmos.color = Color.red;
 			if (feetPos == null) return;

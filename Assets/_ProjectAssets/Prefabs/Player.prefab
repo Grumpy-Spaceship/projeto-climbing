@@ -48,15 +48,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97ec86c4beeabff48927248fd6f90973, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jump:
-    whatIsGround:
-      serializedVersion: 2
-      m_Bits: 1
-    groundCheckRadius: 0.4
-    jumpForce: 40
-    feetPos: {fileID: 1502925175596916581}
-  moveSpeed: 300
-  moveThreshold: 0.125
+  feetPos: {fileID: 1502925175596916581}
+  settings: {fileID: 11400000, guid: aff62cc3f89932d4c84b3f92cd04a5e4, type: 2}
   showDebugGizmos: 1
 --- !u!50 &1502925173940081902
 Rigidbody2D:
