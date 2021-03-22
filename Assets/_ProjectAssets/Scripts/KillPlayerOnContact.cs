@@ -63,7 +63,7 @@ namespace Game.Player
 
 		protected virtual void WhatToDo(Collider2D other)
 		{
-			if (other.TryGetComponent<Player>(out var p))
+			if (other.TryGetComponent<PlayerScript>(out var p))
 			{
 				Destroy(p.gameObject);
 				FindObjectOfType<SceneTransitions>()?.ReloadScene(1.5f);

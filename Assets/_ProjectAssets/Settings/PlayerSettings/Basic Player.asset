@@ -20,3 +20,7 @@ MonoBehaviour:
     jumpForce: 40
   moveSpeed: 300
   moveThreshold: 0.125
+  breakableTileMask:
+    serializedVersion: 2
+    m_Bits: 1
+  punchRadiusDetection: 0.5

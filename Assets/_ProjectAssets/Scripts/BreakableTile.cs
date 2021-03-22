@@ -1,14 +1,19 @@
 // Maded by Pedro M Marangon
+using Game.Player;
 using UnityEngine;
 
-public class BreakableTile : MonoBehaviour
+namespace Game
 {
-	private void OnCollisionEnter2D(Collision2D collision)
+	[RequireComponent(typeof(BoxCollider2D))]
+	public class BreakableTile : MonoBehaviour
 	{
-		if(collision.gameObject.CompareTag("Player") && collision.transform.position.y < transform.position.y)
+		private void OnTriggerEnter2D(Collider2D other)
 		{
-			Destroy(gameObject);
+			if (other.CompareTag("Player") && other.TryGetComponent<PlayerScript>(out var p))
+			{
+				p.StopYMovement();
+				Destroy(gameObject);
+			}
 		}
 	}
-
 }

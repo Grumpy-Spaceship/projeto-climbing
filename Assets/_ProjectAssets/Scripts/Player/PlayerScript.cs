@@ -6,9 +6,10 @@ using UnityEngine.InputSystem;
 namespace Game.Player
 {
 
-	public class Player : MonoBehaviour
+	public class PlayerScript : MonoBehaviour
 	{
 		[SerializeField] private Transform feetPos = null;
+		[SerializeField] private Transform punchPos = null;
 		[SerializeField] private PlayerSettings settings = null;
 		[SerializeField] private bool showDebugGizmos = false;
 		private float _moveInput;
@@ -41,6 +42,23 @@ namespace Game.Player
 				_rb.AddForce(Vector2.up * settings.Jump.jumpForce, ForceMode2D.Impulse);
 		}
 		public void OnMove(InputValue value) => _moveInput = _canMove ? value.Get<float>() : 0f;
+		public void OnPunch() => Punch();
+
+		public void Punch()
+		{
+			if (!punchPos || !settings) return;
+			Collider2D[] cols = Physics2D.OverlapCircleAll(punchPos.position, settings.PunchRadiusDetection, settings.BreakableTileMask);
+			foreach (var col in cols)
+			{
+				if (col.TryGetComponent<BreakableTile>(out var tile))
+					Destroy(tile.gameObject);
+			}
+
+		}
+		public void StopYMovement()
+		{
+			_rb.velocity = new Vector2(_rb.velocity.x,0);
+		}
 
 		private void FixSpiderManSyndrome()
 		{
@@ -120,6 +138,11 @@ namespace Game.Player
 			if (!showDebugGizmos) return;
 
 			settings.Jump?.DrawGizmos(feetPos);
+			if (punchPos && settings)
+			{
+				Gizmos.color = Color.blue;
+				Gizmos.DrawWireSphere(punchPos.position, settings.PunchRadiusDetection);
+			}
 		}
 
 	}
