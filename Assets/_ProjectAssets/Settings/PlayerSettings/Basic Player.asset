@@ -24,8 +24,8 @@ MonoBehaviour:
   breakableTileMask:
     serializedVersion: 2
     m_Bits: 1
-  punchRadiusDetection: 0.5
-  upScreenY: 1
+  punchRadiusDetection: 1
+  upScreenY: 0.8
   downScreenY: 0.5
   camSmoothness: 0.2
   normalScreenY: 0.7

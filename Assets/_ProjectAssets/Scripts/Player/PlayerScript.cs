@@ -1,6 +1,7 @@
 // Maded by Pedro M Marangon
 using Cinemachine;
 using DG.Tweening;
+using NaughtyAttributes;
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -15,9 +16,12 @@ namespace Game.Player
 		[SerializeField] private PlayerSettings settings = null;
 		[SerializeField] private CinemachineVirtualCamera cmCam;
 		[SerializeField] private bool showDebugGizmos = false;
+		[SerializeField] private float punchInAirStop = .2f;
 		[SerializeField] private Vector3 upPos = default, normalPos = default;
+		[ShowNonSerializedField] private int score;
 		private float _moveInput;
 		private bool _canMove;
+		private bool isPunching = false;
 
 		private bool isUpwards = false;
 		private bool isDownwards = false;
@@ -74,7 +78,29 @@ namespace Game.Player
 		}
 
 
-		public void OnPunch() => Punch();
+		public void OnPunch()
+		{
+			if (!settings.Jump.IsGrounded && !isPunching)
+			{
+				var vel = _rb.velocity;
+				var gr = _rb.gravityScale;
+				Sequence s = DOTween.Sequence();
+				s.AppendCallback(() => isPunching = true);
+				s.AppendCallback(() => { _rb.gravityScale = 0.25f; _rb.velocity = Vector2.zero; });
+				s.AppendCallback(Punch);
+				s.AppendInterval(punchInAirStop);
+				s.AppendCallback(() => { _rb.gravityScale = gr; _rb.velocity = vel; });
+				s.AppendCallback(() => isPunching = false);
+			}
+			else
+			{
+				Sequence s = DOTween.Sequence();
+				s.AppendCallback(() => isPunching = true);
+				s.AppendCallback(Punch);
+				s.AppendInterval(punchInAirStop);
+				s.AppendCallback(() => isPunching = false);
+			}
+		}
 
 		public void Punch()
 		{
@@ -149,6 +175,13 @@ namespace Game.Player
 			if (Time.timeScale == 0) return;
 
 			settings.Jump?.JumpLogic(ref _rb, feetPos);
+
+
+			if(transform.position.y >= score)
+			{
+				score = Mathf.RoundToInt(transform.position.y);
+			}
+
 
 			UpdateAnimations();
 		}
