@@ -16,12 +16,11 @@ namespace Game.Player
 		[SerializeField] private PlayerSettings settings = null;
 		[SerializeField] private CinemachineVirtualCamera cmCam;
 		[SerializeField] private bool showDebugGizmos = false;
-		[SerializeField] private float punchInAirStop = .2f;
-		[SerializeField] private Vector3 upPos = default, normalPos = default;
 		[ShowNonSerializedField] private int score;
 		private float _moveInput;
+		private float _grScale;
 		private bool _canMove;
-		private bool isPunching = false;
+		private bool isPunching = false, canPunch = true;
 
 		private bool isUpwards = false;
 		private bool isDownwards = false;
@@ -62,7 +61,7 @@ namespace Game.Player
 			DOVirtual.Float(transposer.m_ScreenY, value, settings.CamSmoothness, (float v) => transposer.m_ScreenY = v);
 
 
-			punchPos.localPosition = isUpwards ? upPos : normalPos;
+			punchPos.localPosition = isUpwards ? settings.PunchUpPos : settings.PunchNormalPos;
 
 		}
 
@@ -80,25 +79,46 @@ namespace Game.Player
 
 		public void OnPunch()
 		{
+			if (!canPunch) return;
+
 			if (!settings.Jump.IsGrounded && !isPunching)
 			{
 				var vel = _rb.velocity;
-				var gr = _rb.gravityScale;
 				Sequence s = DOTween.Sequence();
-				s.AppendCallback(() => isPunching = true);
-				s.AppendCallback(() => { _rb.gravityScale = 0.25f; _rb.velocity = Vector2.zero; });
+				s.AppendCallback(() => {
+					isPunching = true;
+					canPunch = false;
+					_rb.gravityScale = 0.25f;
+					_rb.velocity = Vector2.zero;
+					punchPos.GetChild(0).gameObject.SetActive(true);
+				});
 				s.AppendCallback(Punch);
-				s.AppendInterval(punchInAirStop);
-				s.AppendCallback(() => { _rb.gravityScale = gr; _rb.velocity = vel; });
-				s.AppendCallback(() => isPunching = false);
+				s.AppendInterval(settings.StopTimeWhenPunchingAir);
+				s.AppendCallback(() => {
+					_rb.gravityScale = _grScale;
+					_rb.velocity = vel;
+					punchPos.GetChild(0).gameObject.SetActive(false);
+					isPunching = false;
+				});
+				s.AppendInterval(settings.PunchCooldown);
+				s.AppendCallback(() => canPunch = true);
 			}
 			else
 			{
 				Sequence s = DOTween.Sequence();
-				s.AppendCallback(() => isPunching = true);
+				s.AppendCallback(() => {
+					isPunching = true;
+					canPunch = false;
+					punchPos.GetChild(0).gameObject.SetActive(true);
+				});
 				s.AppendCallback(Punch);
-				s.AppendInterval(punchInAirStop);
-				s.AppendCallback(() => isPunching = false);
+				s.AppendInterval(settings.StopTimeWhenPunchingAir);
+				s.AppendCallback(() => {
+					punchPos.GetChild(0).gameObject.SetActive(false);
+					isPunching = false;
+				});
+				s.AppendInterval(settings.PunchCooldown);
+				s.AppendCallback(() => canPunch = true);
 			}
 		}
 
@@ -162,6 +182,7 @@ namespace Game.Player
 		{
 			Time.timeScale = 1;
 			_rb = GetComponent<Rigidbody2D>();
+			_grScale = _rb.gravityScale;
 
 			settings.Jump?.SetupJumps();
 
@@ -173,14 +194,6 @@ namespace Game.Player
 		private void Update()
 		{
 			if (Time.timeScale == 0) return;
-
-			settings.Jump?.JumpLogic(ref _rb, feetPos);
-
-
-			if(transform.position.y >= score)
-			{
-				score = Mathf.RoundToInt(transform.position.y);
-			}
 
 
 			UpdateAnimations();
@@ -197,6 +210,21 @@ namespace Game.Player
 
 			//Set correct direction
 			transform.localScale = new Vector3(Swap(), transform.localScale.y, 1);
+
+			settings.Jump?.JumpLogic(ref _rb, feetPos);
+
+
+			if (settings.Jump.IsGrounded)
+			{
+				_rb.gravityScale = _grScale;
+			}
+
+			if (transform.position.y >= score)
+			{
+				score = Mathf.RoundToInt(transform.position.y);
+			}
+
+
 		}
 		private void OnDrawGizmos()
 		{
@@ -255,7 +283,7 @@ namespace Game.Player
 				_jumpTimeCounter -= Time.deltaTime;
 				if (_jumpTimeCounter > 0)
 				{
-					rb.velocity = new Vector2(0, jumpForce);
+					rb.velocity = new Vector2(rb.velocity.x, jumpForce);
 				}
 			}
 			else _jumpTimeCounter = jumpTime;
