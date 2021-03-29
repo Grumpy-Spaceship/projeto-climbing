@@ -85,9 +85,6 @@ MonoBehaviour:
   settings: {fileID: 11400000, guid: aff62cc3f89932d4c84b3f92cd04a5e4, type: 2}
   cmCam: {fileID: 0}
   showDebugGizmos: 1
-  punchInAirStop: 0.2
-  upPos: {x: 0, y: 1.25, z: 0}
-  normalPos: {x: 1, y: 0, z: 0}
 --- !u!50 &1502925173940081902
 Rigidbody2D:
   serializedVersion: 4
@@ -451,7 +448,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: -2413806693520163455, guid: 4adeaf2d2b1c7417e89f026626d8264f, type: 3}
   m_Color: {r: 0, g: 0.86522865, b: 1, a: 0.49411765}
   m_FlipX: 0

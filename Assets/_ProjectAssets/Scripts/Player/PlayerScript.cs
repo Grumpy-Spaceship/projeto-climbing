@@ -61,10 +61,7 @@ namespace Game.Player
 			DOVirtual.Float(transposer.m_ScreenY, value, settings.CamSmoothness, (float v) => transposer.m_ScreenY = v);
 
 
-			punchPos.localPosition = isUpwards ? settings.PunchUpPos : settings.PunchNormalPos;
-
 		}
-
 		public void OnDownwards()
 		{
 			isDownwards = !isDownwards;
@@ -81,11 +78,24 @@ namespace Game.Player
 		{
 			if (!canPunch) return;
 
-			if (!settings.Jump.IsGrounded && !isPunching)
+			punchPos.localPosition = settings.PunchNormalPos;
+			ProcessPunch();
+		}
+		public void OnPunchUp()
+		{
+			if (!canPunch) return;
+
+			punchPos.localPosition = settings.PunchUpPos;
+			ProcessPunch();
+		}
+		private void ProcessPunch()
+		{
+			if (!settings.Jump.IsGrounded && _rb.velocity.y < 0 && !isPunching)
 			{
 				var vel = _rb.velocity;
 				Sequence s = DOTween.Sequence();
-				s.AppendCallback(() => {
+				s.AppendCallback(() =>
+				{
 					isPunching = true;
 					canPunch = false;
 					_rb.gravityScale = 0.25f;
@@ -94,7 +104,8 @@ namespace Game.Player
 				});
 				s.AppendCallback(Punch);
 				s.AppendInterval(settings.StopTimeWhenPunchingAir);
-				s.AppendCallback(() => {
+				s.AppendCallback(() =>
+				{
 					_rb.gravityScale = _grScale;
 					_rb.velocity = vel;
 					punchPos.GetChild(0).gameObject.SetActive(false);
@@ -106,14 +117,16 @@ namespace Game.Player
 			else
 			{
 				Sequence s = DOTween.Sequence();
-				s.AppendCallback(() => {
+				s.AppendCallback(() =>
+				{
 					isPunching = true;
 					canPunch = false;
 					punchPos.GetChild(0).gameObject.SetActive(true);
 				});
 				s.AppendCallback(Punch);
 				s.AppendInterval(settings.StopTimeWhenPunchingAir);
-				s.AppendCallback(() => {
+				s.AppendCallback(() =>
+				{
 					punchPos.GetChild(0).gameObject.SetActive(false);
 					isPunching = false;
 				});
@@ -129,7 +142,7 @@ namespace Game.Player
 			foreach (var col in cols)
 			{
 				if (col.TryGetComponent<BreakableTile>(out var tile))
-					Destroy(tile.gameObject);
+					tile.Damage();
 			}
 
 		}

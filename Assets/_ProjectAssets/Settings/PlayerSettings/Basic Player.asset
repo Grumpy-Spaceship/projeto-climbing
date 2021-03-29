@@ -25,6 +25,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   punchRadiusDetection: 1
+  punchInAirStop: 0.5
+  punchCooldown: 0.5
+  upPos: {x: 0, y: 1.5}
+  normalPos: {x: 1, y: 0}
   upScreenY: 0.8
   downScreenY: 0.5
   camSmoothness: 0.2
