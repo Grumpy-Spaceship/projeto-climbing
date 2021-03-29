@@ -16,14 +16,16 @@ MonoBehaviour:
     whatIsGround:
       serializedVersion: 2
       m_Bits: 1
-    groundCheckRadius: 0.4
+    groundCheckRadius: 0.33
     jumpForce: 20
     jumpTime: 0.25
     totalJumps: 1
-    maxJumpsAllowed: 10
-  moveSpeed: 500
-  moveThreshold: 0.125
+  moveSpeed: 400
   breakableTileMask:
     serializedVersion: 2
     m_Bits: 1
   punchRadiusDetection: 0.5
+  upScreenY: 0.5
+  downScreenY: 1
+  camSmoothness: 0.2
+  normalScreenY: 0.7

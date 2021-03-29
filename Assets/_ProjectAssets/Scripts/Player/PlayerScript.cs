@@ -1,5 +1,6 @@
 // Maded by Pedro M Marangon
-using NaughtyAttributes;
+using Cinemachine;
+using DG.Tweening;
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -12,9 +13,14 @@ namespace Game.Player
 		[SerializeField] private Transform feetPos = null;
 		[SerializeField] private Transform punchPos = null;
 		[SerializeField] private PlayerSettings settings = null;
+		[SerializeField] private CinemachineVirtualCamera cmCam;
 		[SerializeField] private bool showDebugGizmos = false;
 		private float _moveInput;
 		private bool _canMove;
+
+		private bool isUpwards = false;
+		private bool isDownwards = false;
+
 		private Rigidbody2D _rb;
 
 		//Freeze the rotation on Z axis and the X axis position (idle, specially on slope)
@@ -22,7 +28,7 @@ namespace Game.Player
 		//Freeze only the rotation on Z axis (moving)
 		private RigidbodyConstraints2D _FreezeRotationOnly => RigidbodyConstraints2D.FreezeRotation;
 		//Define if is in idle (i.e. not moving)
-		private bool IsIdle => Mathf.Abs(_moveInput) <= settings.MoveThreshold;
+		private bool IsIdle => Mathf.Abs(_moveInput) <= 0;
 		//Says what direction the player is facing (1 = Right, -1 = Left)
 		public float FacingDirection => transform.localScale.x;
 		
@@ -37,19 +43,33 @@ namespace Game.Player
 			_canMove = false;
 			_moveInput = 0;
 		}
-		public void OnJump()
-		{
-			/*if (settings.Jump.CanJump && settings.Jump.IsGrounded)
-				_rb.AddForce(Vector2.up * settings.Jump.jumpForce, ForceMode2D.Impulse);*/
-			settings.Jump?.JumpPress();
-		}
-		public void OnJumpRelease()
-		{
-			/*if (settings.Jump.CanJump && settings.Jump.IsGrounded)
-				_rb.AddForce(Vector2.up * settings.Jump.jumpForce, ForceMode2D.Impulse);*/
-			settings.Jump?.JumpRelease();
-		}
+		public void OnJump() => settings.Jump?.JumpPress();
+		public void OnJumpRelease() => settings.Jump?.JumpRelease();
 		public void OnMove(InputValue value) => _moveInput = _canMove ? value.Get<float>() : 0f;
+
+
+		public void OnUpwards()
+		{
+			isUpwards = !isUpwards;
+
+			var transposer = cmCam.GetCinemachineComponent<CinemachineFramingTransposer>();
+			float value = isUpwards ? settings.UpScreenY : settings.NormalScreenY;
+
+			DOVirtual.Float(transposer.m_ScreenY, value, settings.CamSmoothness, (float v) => transposer.m_ScreenY = v);
+		}
+
+		public void OnDownwards()
+		{
+			isDownwards = !isDownwards;
+
+			var transposer = cmCam.GetCinemachineComponent<CinemachineFramingTransposer>();
+			float value = isDownwards ? settings.DownScreenY : settings.NormalScreenY;
+
+			DOVirtual.Float(transposer.m_ScreenY, value, settings.CamSmoothness, (float v) => transposer.m_ScreenY = v);
+
+		}
+
+
 		public void OnPunch() => Punch();
 
 		public void Punch()
@@ -63,10 +83,7 @@ namespace Game.Player
 			}
 
 		}
-		public void StopYMovement()
-		{
-			_rb.velocity = new Vector2(_rb.velocity.x,0);
-		}
+		public void StopYMovement() => _rb.velocity = new Vector2(_rb.velocity.x, 0);
 
 		private void FixSpiderManSyndrome()
 		{
@@ -81,34 +98,34 @@ namespace Game.Player
 		}
 		private float Swap()
 		{
-			if (_moveInput > settings.MoveThreshold) return 1;
-			else if (_moveInput < -settings.MoveThreshold) return -1;
+			if (_moveInput > 0) return 1;
+			else if (_moveInput < 0) return -1;
 			else return transform.localScale.x;
 		}
 		private void UpdateAnimations()
 		{
-			/*
-			//if there's no AnimationHandler or is playing a non-looping animation (like an attack), do nothing
-			if (!anim || anim.IsPlayingNonLoopingAnimation) return;
+			
+		//	//if there's no AnimationHandler or is playing a non-looping animation (like an attack), do nothing
+		//	if (!anim || anim.IsPlayingNonLoopingAnimation) return;
 
-			// JUMP/FALLING ANIMATION
-			if (jump.IsJumping || _rb.velocity.y < 0)
-			{
-				string jumpAnim;
-				if (_rb.velocity.y > 0) jumpAnim = "Jumping";
-				else jumpAnim = "Falling";
+		//	//JUMP/FALLING ANIMATION
+		//	if (jump.IsJumping || _rb.velocity.y < 0)
+		//	{
+		//		string jumpAnim;
+		//		if (_rb.velocity.y > 0) jumpAnim = "Jumping";
+		//		else jumpAnim = "Falling";
 
-				anim.PlayAnimation(jumpAnim, true);
-			}
-			//IDLE
-			else if (IsIdle) anim.PlayAnimation("Idle", true);
-			//EVERYTHING ELSE
-			else
-			{
-				//Walk
-				if (!IsIdle) anim.PlayAnimation("Walk", true);
-			}
-			*/
+		//		anim.PlayAnimation(jumpAnim, true);
+		//	}
+		//	//IDLE
+		//	else if (IsIdle) anim.PlayAnimation("Idle", true);
+		//	//EVERYTHING ELSE
+		//	else
+		//	{
+		//		//Walk
+		//		if (!IsIdle) anim.PlayAnimation("Walk", true);
+		//	}
+			
 		}
 
 		private void Awake()
@@ -162,75 +179,26 @@ namespace Game.Player
 	[Serializable]
 	public class PlayerJumpSystem
 	{
-		#region OldCode
-
-		///[SerializeField] private LayerMask whatIsGround = default;
-		///[SerializeField] public float groundCheckRadius = .25f;
-		///[SerializeField] public float jumpForce = 4;
-		///private bool _grounded;
-
-		/// Get if can jump
-		///public bool CanJump { get; private set; }
-		/// Get if can jump
-		///public bool IsGrounded => _grounded;
-		/// Get the layermask of what is ground
-		///public LayerMask WhatIsGround => whatIsGround;
-
-		///public void DisableJump() => CanJump = false;
-		///public void EnableJump() => CanJump = true;
-		///public void JumpLogic(Transform feetPos)
-		///{
-		///	//if can't jump, do nothing
-		///	if (!CanJump) return;
-
-		///	//Define if is on ground
-		///	_grounded = Physics2D.OverlapCircle(feetPos.position, groundCheckRadius, whatIsGround);
-		///}
-
-		///public void DrawGizmos(Transform feetPos)
-		///{
-		///	Gizmos.color = Color.red;
-		///	if (feetPos == null) return;
-		///	Gizmos.DrawWireSphere(feetPos.position, groundCheckRadius);
-		///}
-
-		#endregion
-
-
-
+		
 		[SerializeField] private LayerMask whatIsGround = default;
 		[SerializeField] public float groundCheckRadius = .25f;
 		[SerializeField] public float jumpForce = 4;
 		[SerializeField] public float jumpTime = 0.35f;
 		[SerializeField] public int totalJumps = 1;
-		[SerializeField] private int maxJumpsAllowed = 10;
-		[ShowNonSerializedField] private int _crntJumpCount = 0;
 		private float _jumpTimeCounter;
 		private int _extraJumps;
 		private bool _grounded;
 		private bool _pressingJump;
 
 
-		// Get if can jump
 		public bool CanJump { get; private set; }
-		// Get Jump Count
 		public int JumpCount => _extraJumps;
-		// Get maximum jumps permitted
-		public int MaxJumpCount => maxJumpsAllowed;
-		// Get the layermask of what is ground
 		public LayerMask WhatIsGround => whatIsGround;
-		// Get if it's jumping
 		public bool IsJumping => _pressingJump;
-
 		public bool IsGrounded => _grounded;
 
-
-		public void AddJump(int amnt) => _crntJumpCount += amnt;
-
 		public void DisableJump() => CanJump = false;
-
 		public void EnableJump() => CanJump = true;
-
 		public void JumpLogic(ref Rigidbody2D rb, Transform feetPos)
 		{
 			//if can't jump, do nothing
@@ -238,9 +206,6 @@ namespace Game.Player
 
 			//Define if is on ground
 			_grounded = Physics2D.OverlapCircle(feetPos.position, groundCheckRadius, whatIsGround);
-
-			//Set the total jumps
-			totalJumps = (_crntJumpCount > 0 ? _crntJumpCount : 1);
 
 			// Set the amount of extra jumps
 			if (_grounded && !_pressingJump)
@@ -258,24 +223,9 @@ namespace Game.Player
 			}
 			else _jumpTimeCounter = jumpTime;
 		}
-
-		public void SetupJumps()
-		{
-			_crntJumpCount = 0;
-			_extraJumps = totalJumps;
-		}
-
-		public void StopJumpOnCeiling()
-		{
-			_pressingJump = false;
-			_jumpTimeCounter = -20;
-		}
-
 		public void JumpPress()
 		{
 			if (!CanJump) return;
-			//Remove a freya feather if it has one
-			_crntJumpCount -= (_crntJumpCount > 0 ? 1 : 0);
 			//Start pressing jump button
 			_pressingJump = true;
 			//Remove an extra jump
@@ -283,13 +233,20 @@ namespace Game.Player
 			//Set timer
 			_jumpTimeCounter = jumpTime;
 		}
-
 		public void JumpRelease()
 		{
 			if (!CanJump) return;
 			_pressingJump = false;
 		}
-
+		public void SetupJumps()
+		{
+			_extraJumps = totalJumps;
+		}
+		public void StopJumpOnCeiling()
+		{
+			_pressingJump = false;
+			_jumpTimeCounter = -20;
+		}
 
 		public void DrawGizmos(Transform feetPos)
 		{
