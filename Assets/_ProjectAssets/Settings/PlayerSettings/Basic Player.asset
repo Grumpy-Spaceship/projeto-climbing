@@ -17,10 +17,13 @@ MonoBehaviour:
       serializedVersion: 2
       m_Bits: 1
     groundCheckRadius: 0.4
-    jumpForce: 40
-  moveSpeed: 300
+    jumpForce: 20
+    jumpTime: 0.25
+    totalJumps: 1
+    maxJumpsAllowed: 10
+  moveSpeed: 500
   moveThreshold: 0.125
   breakableTileMask:
     serializedVersion: 2
     m_Bits: 1
-  punchRadiusDetection: 0.5
+  punchRadiusDetection: 2

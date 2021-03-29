@@ -1,4 +1,5 @@
 // Maded by Pedro M Marangon
+using NaughtyAttributes;
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -38,8 +39,15 @@ namespace Game.Player
 		}
 		public void OnJump()
 		{
-			if (settings.Jump.CanJump && settings.Jump.IsGrounded)
-				_rb.AddForce(Vector2.up * settings.Jump.jumpForce, ForceMode2D.Impulse);
+			/*if (settings.Jump.CanJump && settings.Jump.IsGrounded)
+				_rb.AddForce(Vector2.up * settings.Jump.jumpForce, ForceMode2D.Impulse);*/
+			settings.Jump?.JumpPress();
+		}
+		public void OnJumpRelease()
+		{
+			/*if (settings.Jump.CanJump && settings.Jump.IsGrounded)
+				_rb.AddForce(Vector2.up * settings.Jump.jumpForce, ForceMode2D.Impulse);*/
+			settings.Jump?.JumpRelease();
 		}
 		public void OnMove(InputValue value) => _moveInput = _canMove ? value.Get<float>() : 0f;
 		public void OnPunch() => Punch();
@@ -108,15 +116,18 @@ namespace Game.Player
 			Time.timeScale = 1;
 			_rb = GetComponent<Rigidbody2D>();
 
+			settings.Jump?.SetupJumps();
+
 			FixSpiderManSyndrome();
 
 			EnableInput();
+
 		}
 		private void Update()
 		{
 			if (Time.timeScale == 0) return;
 
-			settings.Jump?.JumpLogic(feetPos);
+			settings.Jump?.JumpLogic(ref _rb, feetPos);
 
 			UpdateAnimations();
 		}
@@ -151,29 +162,134 @@ namespace Game.Player
 	[Serializable]
 	public class PlayerJumpSystem
 	{
+		#region OldCode
+
+		///[SerializeField] private LayerMask whatIsGround = default;
+		///[SerializeField] public float groundCheckRadius = .25f;
+		///[SerializeField] public float jumpForce = 4;
+		///private bool _grounded;
+
+		/// Get if can jump
+		///public bool CanJump { get; private set; }
+		/// Get if can jump
+		///public bool IsGrounded => _grounded;
+		/// Get the layermask of what is ground
+		///public LayerMask WhatIsGround => whatIsGround;
+
+		///public void DisableJump() => CanJump = false;
+		///public void EnableJump() => CanJump = true;
+		///public void JumpLogic(Transform feetPos)
+		///{
+		///	//if can't jump, do nothing
+		///	if (!CanJump) return;
+
+		///	//Define if is on ground
+		///	_grounded = Physics2D.OverlapCircle(feetPos.position, groundCheckRadius, whatIsGround);
+		///}
+
+		///public void DrawGizmos(Transform feetPos)
+		///{
+		///	Gizmos.color = Color.red;
+		///	if (feetPos == null) return;
+		///	Gizmos.DrawWireSphere(feetPos.position, groundCheckRadius);
+		///}
+
+		#endregion
+
+
+
 		[SerializeField] private LayerMask whatIsGround = default;
 		[SerializeField] public float groundCheckRadius = .25f;
 		[SerializeField] public float jumpForce = 4;
+		[SerializeField] public float jumpTime = 0.35f;
+		[SerializeField] public int totalJumps = 1;
+		[SerializeField] private int maxJumpsAllowed = 10;
+		[ShowNonSerializedField] private int _crntJumpCount = 0;
+		private float _jumpTimeCounter;
+		private int _extraJumps;
 		private bool _grounded;
+		private bool _pressingJump;
+
 
 		// Get if can jump
 		public bool CanJump { get; private set; }
-		// Get if can jump
-		public bool IsGrounded => _grounded;
+		// Get Jump Count
+		public int JumpCount => _extraJumps;
+		// Get maximum jumps permitted
+		public int MaxJumpCount => maxJumpsAllowed;
 		// Get the layermask of what is ground
 		public LayerMask WhatIsGround => whatIsGround;
+		// Get if it's jumping
+		public bool IsJumping => _pressingJump;
 
+		public bool IsGrounded => _grounded;
+
+
+		public void AddJump(int amnt) => _crntJumpCount += amnt;
 
 		public void DisableJump() => CanJump = false;
+
 		public void EnableJump() => CanJump = true;
-		public void JumpLogic(Transform feetPos)
+
+		public void JumpLogic(ref Rigidbody2D rb, Transform feetPos)
 		{
 			//if can't jump, do nothing
 			if (!CanJump) return;
 
 			//Define if is on ground
 			_grounded = Physics2D.OverlapCircle(feetPos.position, groundCheckRadius, whatIsGround);
+
+			//Set the total jumps
+			totalJumps = (_crntJumpCount > 0 ? _crntJumpCount : 1);
+
+			// Set the amount of extra jumps
+			if (_grounded && !_pressingJump)
+				_extraJumps = totalJumps;
+
+			//If is jumping
+			if (_pressingJump && _extraJumps >= 0)
+			{
+				//Decrease timer; if timer is valid, then add force upwards
+				_jumpTimeCounter -= Time.deltaTime;
+				if (_jumpTimeCounter > 0)
+				{
+					rb.velocity = new Vector2(0, jumpForce);
+				}
+			}
+			else _jumpTimeCounter = jumpTime;
 		}
+
+		public void SetupJumps()
+		{
+			_crntJumpCount = 0;
+			_extraJumps = totalJumps;
+		}
+
+		public void StopJumpOnCeiling()
+		{
+			_pressingJump = false;
+			_jumpTimeCounter = -20;
+		}
+
+		public void JumpPress()
+		{
+			if (!CanJump) return;
+			//Remove a freya feather if it has one
+			_crntJumpCount -= (_crntJumpCount > 0 ? 1 : 0);
+			//Start pressing jump button
+			_pressingJump = true;
+			//Remove an extra jump
+			_extraJumps--;
+			//Set timer
+			_jumpTimeCounter = jumpTime;
+		}
+
+		public void JumpRelease()
+		{
+			if (!CanJump) return;
+			_pressingJump = false;
+		}
+
 
 		public void DrawGizmos(Transform feetPos)
 		{
