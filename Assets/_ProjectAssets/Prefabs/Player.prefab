@@ -82,7 +82,10 @@ MonoBehaviour:
   feetPos: {fileID: 1502925175596916581}
   punchPos: {fileID: 4262145609057531353}
   settings: {fileID: 11400000, guid: aff62cc3f89932d4c84b3f92cd04a5e4, type: 2}
+  cmCam: {fileID: 0}
   showDebugGizmos: 1
+  upPos: {x: 0, y: 1.25, z: 0}
+  normalPos: {x: 1, y: 0, z: 0}
 --- !u!50 &1502925173940081902
 Rigidbody2D:
   serializedVersion: 4

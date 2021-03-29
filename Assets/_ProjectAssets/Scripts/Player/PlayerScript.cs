@@ -15,6 +15,7 @@ namespace Game.Player
 		[SerializeField] private PlayerSettings settings = null;
 		[SerializeField] private CinemachineVirtualCamera cmCam;
 		[SerializeField] private bool showDebugGizmos = false;
+		[SerializeField] private Vector3 upPos = default, normalPos = default;
 		private float _moveInput;
 		private bool _canMove;
 
@@ -54,8 +55,11 @@ namespace Game.Player
 
 			var transposer = cmCam.GetCinemachineComponent<CinemachineFramingTransposer>();
 			float value = isUpwards ? settings.UpScreenY : settings.NormalScreenY;
-
 			DOVirtual.Float(transposer.m_ScreenY, value, settings.CamSmoothness, (float v) => transposer.m_ScreenY = v);
+
+
+			punchPos.localPosition = isUpwards ? upPos : normalPos;
+
 		}
 
 		public void OnDownwards()
