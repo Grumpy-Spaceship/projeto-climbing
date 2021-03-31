@@ -1,6 +1,4 @@
 // Maded by Pedro M Marangon
-using Cinemachine;
-using DG.Tweening;
 using NaughtyAttributes;
 using System;
 using UnityEngine;
@@ -11,19 +9,12 @@ namespace Game.Player
 
 	public class PlayerScript : MonoBehaviour
 	{
-		[SerializeField] private Transform feetPos = null;
-		[SerializeField] private Transform punchPos = null;
+		[SerializeField] private Transform feetPos = null;		
 		[SerializeField] private PlayerSettings settings = null;
-		[SerializeField] private CinemachineVirtualCamera cmCam;
 		[SerializeField] private bool showDebugGizmos = false;
 		[ShowNonSerializedField] private int score;
 		private float _moveInput;
-		private float _grScale;
 		private bool _canMove;
-		private bool isPunching = false, canPunch = true;
-
-		private bool isUpwards = false;
-		private bool isDownwards = false;
 
 		private Rigidbody2D _rb;
 
@@ -51,101 +42,6 @@ namespace Game.Player
 		public void OnJumpRelease() => settings.Jump?.JumpRelease();
 		public void OnMove(InputValue value) => _moveInput = _canMove ? value.Get<float>() : 0f;
 
-
-		public void OnUpwards()
-		{
-			isUpwards = !isUpwards;
-
-			var transposer = cmCam.GetCinemachineComponent<CinemachineFramingTransposer>();
-			float value = isUpwards ? settings.UpScreenY : settings.NormalScreenY;
-			DOVirtual.Float(transposer.m_ScreenY, value, settings.CamSmoothness, (float v) => transposer.m_ScreenY = v);
-
-
-		}
-		public void OnDownwards()
-		{
-			isDownwards = !isDownwards;
-
-			var transposer = cmCam.GetCinemachineComponent<CinemachineFramingTransposer>();
-			float value = isDownwards ? settings.DownScreenY : settings.NormalScreenY;
-
-			DOVirtual.Float(transposer.m_ScreenY, value, settings.CamSmoothness, (float v) => transposer.m_ScreenY = v);
-
-		}
-
-
-		public void OnPunch()
-		{
-			if (!canPunch) return;
-
-			punchPos.localPosition = settings.PunchNormalPos;
-			ProcessPunch();
-		}
-		public void OnPunchUp()
-		{
-			if (!canPunch) return;
-
-			punchPos.localPosition = settings.PunchUpPos;
-			ProcessPunch();
-		}
-		private void ProcessPunch()
-		{
-			if (!settings.Jump.IsGrounded && _rb.velocity.y < 0 && !isPunching)
-			{
-				var vel = _rb.velocity;
-				Sequence s = DOTween.Sequence();
-				s.AppendCallback(() =>
-				{
-					isPunching = true;
-					canPunch = false;
-					_rb.gravityScale = 0.25f;
-					_rb.velocity = Vector2.zero;
-					punchPos.GetChild(0).gameObject.SetActive(true);
-				});
-				s.AppendCallback(Punch);
-				s.AppendInterval(settings.StopTimeWhenPunchingAir);
-				s.AppendCallback(() =>
-				{
-					_rb.gravityScale = _grScale;
-					_rb.velocity = vel;
-					punchPos.GetChild(0).gameObject.SetActive(false);
-					isPunching = false;
-				});
-				s.AppendInterval(settings.PunchCooldown);
-				s.AppendCallback(() => canPunch = true);
-			}
-			else
-			{
-				Sequence s = DOTween.Sequence();
-				s.AppendCallback(() =>
-				{
-					isPunching = true;
-					canPunch = false;
-					punchPos.GetChild(0).gameObject.SetActive(true);
-				});
-				s.AppendCallback(Punch);
-				s.AppendInterval(settings.StopTimeWhenPunchingAir);
-				s.AppendCallback(() =>
-				{
-					punchPos.GetChild(0).gameObject.SetActive(false);
-					isPunching = false;
-				});
-				s.AppendInterval(settings.PunchCooldown);
-				s.AppendCallback(() => canPunch = true);
-			}
-		}
-
-		public void Punch()
-		{
-			if (!punchPos || !settings) return;
-			Collider2D[] cols = Physics2D.OverlapCircleAll(punchPos.position, settings.PunchRadiusDetection, settings.BreakableTileMask);
-			foreach (var col in cols)
-			{
-				if (col.TryGetComponent<BreakableTile>(out var tile))
-					tile.Damage();
-			}
-
-		}
 		public void StopYMovement() => _rb.velocity = new Vector2(_rb.velocity.x, 0);
 
 		private void FixSpiderManSyndrome()
@@ -195,7 +91,6 @@ namespace Game.Player
 		{
 			Time.timeScale = 1;
 			_rb = GetComponent<Rigidbody2D>();
-			_grScale = _rb.gravityScale;
 
 			settings.Jump?.SetupJumps();
 
@@ -227,15 +122,9 @@ namespace Game.Player
 			settings.Jump?.JumpLogic(ref _rb, feetPos);
 
 
-			if (settings.Jump.IsGrounded)
-			{
-				_rb.gravityScale = _grScale;
-			}
 
 			if (transform.position.y >= score)
-			{
 				score = Mathf.RoundToInt(transform.position.y);
-			}
 
 
 		}
@@ -244,11 +133,6 @@ namespace Game.Player
 			if (!showDebugGizmos) return;
 
 			settings.Jump?.DrawGizmos(feetPos);
-			if (punchPos && settings)
-			{
-				Gizmos.color = Color.blue;
-				Gizmos.DrawWireSphere(punchPos.position, settings.PunchRadiusDetection);
-			}
 		}
 
 	}

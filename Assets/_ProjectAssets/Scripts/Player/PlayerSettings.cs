@@ -6,11 +6,16 @@ namespace Game.Player
 	[CreateAssetMenu(fileName = "New Player Settings", menuName = "Game/Player Settings")]
 	public class PlayerSettings : ScriptableObject
 	{
+		[Header("Jump Configurations")]
 		[SerializeField] private PlayerJumpSystem jump = new PlayerJumpSystem();
 		//[SerializeField] private AnimationHandler anim = null;
-		[Space,SerializeField] public float moveSpeed = 200;
+		[Space(20), SerializeField] private float knockbackDur = .2f;
+		[SerializeField] private float knockForce = 3f;
+		[Space,SerializeField] private float moveSpeed = 200;
 		[SerializeField] private LayerMask breakableTileMask =  1 << 1;
+		[Header("Punch Configurations")]
 		[SerializeField] private float punchRadiusDetection = 0.5f;
+		[SerializeField] private float punchGraphicShowTime = 0.1f;
 		[SerializeField] private float punchInAirStop = .2f, punchCooldown = 1f;
 		[SerializeField] private Vector2 upPos = default, normalPos = default;
 		[Header("Cinemachine Configurations")]
@@ -29,12 +34,14 @@ namespace Game.Player
 
 		public float StopTimeWhenPunchingAir => punchInAirStop;
 		public float PunchCooldown => punchCooldown;
+		public float PunchGFXShowTime => punchGraphicShowTime;
 		public Vector2 PunchUpPos => upPos;
 		public Vector2 PunchNormalPos => normalPos;
 		public float PunchRadiusDetection => punchRadiusDetection;
 		public LayerMask BreakableTileMask => breakableTileMask;
 
-
+		public float KnockbackDur => knockbackDur;
+		public float KnockbackForce=> knockForce;
 	}
 
 }

@@ -15,18 +15,21 @@ MonoBehaviour:
   jump:
     whatIsGround:
       serializedVersion: 2
-      m_Bits: 1
+      m_Bits: 65
     groundCheckRadius: 0.33
     jumpForce: 20
     jumpTime: 0.25
     totalJumps: 1
+  knockbackDur: 0.2
+  knockForce: 0.5
   moveSpeed: 400
   breakableTileMask:
     serializedVersion: 2
-    m_Bits: 1
-  punchRadiusDetection: 1
-  punchInAirStop: 0.5
-  punchCooldown: 0.5
+    m_Bits: 65
+  punchRadiusDetection: 0.62
+  punchGraphicShowTime: 0.1
+  punchInAirStop: 0.25
+  punchCooldown: 0.3
   upPos: {x: 0, y: 1.5}
   normalPos: {x: 1, y: 0}
   upScreenY: 0.8

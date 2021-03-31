@@ -33,5 +33,6 @@ namespace Game
 
 			if (hp <= 0) Die();
 		}
+
 	}
 }

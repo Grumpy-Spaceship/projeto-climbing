@@ -35,7 +35,7 @@
                     "id": "57f7da62-3ddf-48b9-bb5d-afebe6c7b69e",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press(behavior=1)"
+                    "interactions": "Press"
                 },
                 {
                     "name": "PunchUp",
@@ -43,7 +43,7 @@
                     "id": "3e660b6e-d115-4092-a237-fd01f9d23618",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press(behavior=1)"
+                    "interactions": "Press"
                 },
                 {
                     "name": "Upwards",
