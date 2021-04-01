@@ -1,4 +1,5 @@
 // Maded by Pedro M Marangon
+using Game.Score;
 using NaughtyAttributes;
 using System;
 using UnityEngine;
@@ -12,7 +13,6 @@ namespace Game.Player
 		[SerializeField] private Transform feetPos = null;		
 		[SerializeField] private PlayerSettings settings = null;
 		[SerializeField] private bool showDebugGizmos = false;
-		[ShowNonSerializedField] private int score;
 		private float _moveInput;
 		private bool _canMove;
 
@@ -123,10 +123,12 @@ namespace Game.Player
 
 
 
-			if (transform.position.y >= score)
-				score = Mathf.RoundToInt(transform.position.y);
-
-
+			if (transform.position.y >= PlayerScore.instance.MaxPlayerY)
+			{
+				int val = Mathf.Abs(Mathf.RoundToInt(transform.position.y) - PlayerScore.instance.MaxPlayerY);
+				PlayerScore.SetMaxPlayerY(transform.position.y);
+				PlayerScore.AddScore(val);
+			}
 		}
 		private void OnDrawGizmos()
 		{
@@ -134,7 +136,6 @@ namespace Game.Player
 
 			settings.Jump?.DrawGizmos(feetPos);
 		}
-
 	}
 
 

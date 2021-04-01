@@ -1,5 +1,6 @@
 // Maded by Pedro M Marangon
 using Game.Health;
+using Game.Score;
 using NaughtyAttributes;
 using UnityEngine;
 
@@ -10,6 +11,7 @@ namespace Game
 	{
 
 		[MinValue(1),MaxValue(10),SerializeField] private int maxHP;
+		[MinValue(0), SerializeField] private int scoreAmnt = 1;
 		[SerializeField] private SpriteRenderer breakRend;
 		private int hp;
 
@@ -21,7 +23,11 @@ namespace Game
 
 		public void Damage(int amnt = 1) => SetHP(hp - amnt);
 
-		public void Die() => Destroy(gameObject);
+		public void Die()
+		{
+			PlayerScore.AddScore(scoreAmnt);
+			Destroy(gameObject);
+		}
 
 		public void Heal(int amnt = 1) => SetHP(hp + amnt);
 

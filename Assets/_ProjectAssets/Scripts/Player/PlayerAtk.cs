@@ -12,34 +12,31 @@ namespace Game.Player
 		[SerializeField] private PlayerSettings settings = null;
 		[Required, SerializeField] private PlayerScript player;
 		[SerializeField] private Transform punchPos = null;
-		[SerializeField] private CinemachineVirtualCamera cmCam;
+		[Required, SerializeField] private CinemachineVirtualCamera cmCam;
 		private bool isPunching = false, canPunch = true;
 		private bool isUpwards = false;
 		private bool isDownwards = false;
 		private Rigidbody2D _rb;
 		private float _grScale;
+		private CinemachineFramingTransposer transposer;
 
 		private void Awake()
 		{
 			_rb = GetComponent<Rigidbody2D>();
 			_grScale = _rb.gravityScale;
+			transposer = cmCam.GetCinemachineComponent<CinemachineFramingTransposer>();
 		}
 
 		public void OnUpwards()
 		{
 			isUpwards = !isUpwards;
-
-			var transposer = cmCam.GetCinemachineComponent<CinemachineFramingTransposer>();
 			float value = isUpwards ? settings.UpScreenY : settings.NormalScreenY;
 			DOVirtual.Float(transposer.m_ScreenY, value, settings.CamSmoothness, (float v) => transposer.m_ScreenY = v);
 		}
 		public void OnDownwards()
 		{
 			isDownwards = !isDownwards;
-
-			var transposer = cmCam.GetCinemachineComponent<CinemachineFramingTransposer>();
 			float value = isDownwards ? settings.DownScreenY : settings.NormalScreenY;
-
 			DOVirtual.Float(transposer.m_ScreenY, value, settings.CamSmoothness, (float v) => transposer.m_ScreenY = v);
 		}
 
@@ -68,6 +65,7 @@ namespace Game.Player
 				{
 					isPunching = true;
 					canPunch = false;
+					settings.Jump.DisableJump();
 					_rb.gravityScale = 0.25f;
 					_rb.velocity = Vector2.zero;
 				});
@@ -82,6 +80,7 @@ namespace Game.Player
 					_rb.gravityScale = _grScale;
 					_rb.velocity = vel;
 					isPunching = false;
+					settings.Jump.EnableJump();
 				});
 				//Cooldown
 				s.AppendInterval(settings.PunchCooldown);

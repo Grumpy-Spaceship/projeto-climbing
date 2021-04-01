@@ -197,6 +197,17 @@
                 },
                 {
                     "name": "",
+                    "id": "0169c735-967a-48dc-8dd2-af0c9d822706",
+                    "path": "<Keyboard>/ctrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Punch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "97708a7d-3bd0-425d-937b-ca13d4f0c977",
                     "path": "<Gamepad>/buttonWest",
                     "interactions": "",
@@ -276,6 +287,17 @@
                     "name": "",
                     "id": "572b7fb5-ad51-42f4-9d22-dedee2dd52e6",
                     "path": "<Keyboard>/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "PunchUp",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "93ccb4f9-a4de-41b6-a028-c693c188e7aa",
+                    "path": "<Keyboard>/rightShift",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
