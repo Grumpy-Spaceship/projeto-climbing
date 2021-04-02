@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class CreateLevelPiece : MonoBehaviour
 {
-	
-	private LevelGenerator levelGenerator;
+
+    private LevelGenerator levelGenerator;
 
 	private void Awake() => levelGenerator = FindObjectOfType<LevelGenerator>();
 

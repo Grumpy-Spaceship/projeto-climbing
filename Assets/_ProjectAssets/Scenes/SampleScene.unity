@@ -1046,7 +1046,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.00000035762787, y: 0.5, z: -10}
+  m_LocalPosition: {x: -0.00000035762787, y: 0.19999981, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -5349,6 +5349,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distance: 20
+  confiner: {fileID: 1496464706}
   levelPieces:
   - {fileID: 8177629319635370466, guid: c5ce157780c38d7459c48bcc09251971, type: 3}
 --- !u!4 &1470358222 stripped
@@ -5371,7 +5372,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1496464706}
   - component: {fileID: 1496464705}
-  - component: {fileID: 1496464707}
   m_Layer: 2
   m_Name: CM Confiner
   m_TagString: Untagged
@@ -5404,10 +5404,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 11, y: 6}
-      - {x: -11, y: 6}
-      - {x: -11, y: -5}
-      - {x: 11, y: -5}
+    - - {x: 11, y: 30}
+      - {x: -11, y: 30}
+      - {x: -11, y: -30}
+      - {x: 11, y: -30}
 --- !u!4 &1496464706
 Transform:
   m_ObjectHideFlags: 0
@@ -5422,22 +5422,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1496464707
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1496464704}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06c3b9c3da9eb0342bd31c6505525ccf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objToFollow: {fileID: 519420032}
-  smoothingTime: 0.1
-  followX: 0
-  followY: 0
 --- !u!4 &1512193577 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8291420431210037005, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
@@ -6119,7 +6103,7 @@ MonoBehaviour:
   m_StreamingVersion: 20170927
   m_Priority: 10
   m_StandbyUpdate: 2
-  m_LookAt: {fileID: 0}
+  m_LookAt: {fileID: 1284409492}
   m_Follow: {fileID: 1284409492}
   m_Lens:
     FieldOfView: 60

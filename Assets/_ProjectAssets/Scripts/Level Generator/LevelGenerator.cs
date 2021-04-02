@@ -7,6 +7,7 @@ namespace Game.Levels
 	public class LevelGenerator : MonoBehaviour
 	{
 		[SerializeField] private float distance;
+		[SerializeField] private Transform confiner;
 		[SerializeField] private List<GameObject> levelPieces = new List<GameObject>();
 
 		public void Generate(Vector3 pos)
@@ -14,6 +15,7 @@ namespace Game.Levels
 			GameObject levelP = levelPieces[Random.Range(0, levelPieces.Count)];
 			Vector3 position = pos + (Vector3.up * distance);
 			Instantiate(levelP, position, Quaternion.identity);
+			confiner.position = position;
 		}
 
 		private void OnDrawGizmos()
