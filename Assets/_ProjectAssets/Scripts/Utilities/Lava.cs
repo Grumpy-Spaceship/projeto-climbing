@@ -29,10 +29,7 @@ namespace Game.Movement
 		protected override void MoveIfCanTranslateAnd(bool correctTypeOfUpdate)
 		{
 			if (Time.timeScale != 0 && correctTypeOfUpdate && canMove)
-			{
-				Debug.Log("Speed: " + speed * GetDistance() * Time.unscaledDeltaTime, this);
 				transform.Translate(speed * GetDistance() * Time.unscaledDeltaTime * GetDir(), movementBasedOn);
-			}
 		}
 
 		private float GetDistance() => (_player.transform.position.y - _t.position.y) * velocityDecreaser;
