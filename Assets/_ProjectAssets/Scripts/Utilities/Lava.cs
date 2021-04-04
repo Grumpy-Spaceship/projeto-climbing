@@ -29,10 +29,11 @@ namespace Game.Movement
 		{
 			if (Time.timeScale != 0 && correctTypeOfUpdate && canMove)
 			{
+				Debug.Log("Speed: " + speed * GetDistance() * Time.unscaledDeltaTime, this);
 				transform.Translate(speed * GetDistance() * Time.unscaledDeltaTime * GetDir(), movementBasedOn);
 			}
 		}
 
-		private float GetDistance() => Vector3.Distance(_player.transform.position, _t.position)*0.5f;
+		private float GetDistance() => (_player.transform.position.y - _t.position.y) * 0.5f;
 	}
 }
