@@ -36,9 +36,9 @@ namespace Game.Movement
 
 		protected virtual void Awake() => RandomizeDir();
 
-		protected void Update() => MoveIfCanTranslateAnd(updateType == UpdateType.Update);
-		protected void FixedUpdate() => MoveIfCanTranslateAnd(updateType == UpdateType.FixedUpdate);
-		protected void LateUpdate() => MoveIfCanTranslateAnd(updateType == UpdateType.LateUpdate);
+		protected virtual void Update() => MoveIfCanTranslateAnd(updateType == UpdateType.Update);
+		protected virtual void FixedUpdate() => MoveIfCanTranslateAnd(updateType == UpdateType.FixedUpdate);
+		protected virtual void LateUpdate() => MoveIfCanTranslateAnd(updateType == UpdateType.LateUpdate);
 
 		protected virtual void MoveIfCanTranslateAnd(bool correctTypeOfUpdate)
 		{

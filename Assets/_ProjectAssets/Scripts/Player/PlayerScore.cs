@@ -24,7 +24,7 @@ namespace Game.Score
 		[ShowNonSerializedField] private int maxYPlayer = 0;
 
 		public string ScoreText => "Score: " + (score*multiplier);
-		public int Score => score;
+		public static int Score => instance.score;
 		public int MaxPlayerY => maxYPlayer;
 
 		public static void AddScore(int amnt = 1) => SetScore(instance.score+amnt);
