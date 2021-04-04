@@ -205,7 +205,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6559651336053048858}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.7500002, y: -5, z: 0}
+  m_LocalPosition: {x: -3.0000002, y: -5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8177629320933975494}
@@ -256,7 +256,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 6.9999995, y: 1}
+  m_Size: {x: 6, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -280,13 +280,13 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1, y: 1}
-    newSize: {x: 6.9999995, y: 1}
+    newSize: {x: 6, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 2
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 7, y: 1}
+  m_Size: {x: 6, y: 1}
   m_EdgeRadius: 0
 --- !u!1 &8177629319461858147
 GameObject:
@@ -1661,13 +1661,13 @@ CompositeCollider2D:
         Y: 170000000
   - m_Collider: {fileID: 5227754670981459688}
     m_ColliderPaths:
-    - - X: -2500295
+    - - X: -295
         Y: -55000000
-      - X: -2500295
+      - X: -295
         Y: -45000000
-      - X: -72500000
+      - X: -60000000
         Y: -45000293
-      - X: -72499707
+      - X: -59999707
         Y: -55000000
   - m_Collider: {fileID: 8641065326900651927}
     m_ColliderPaths:
@@ -1743,10 +1743,10 @@ CompositeCollider2D:
       - {x: 4.999942, y: -2}
       - {x: -1, y: -2.0000587}
       - {x: -0.9999414, y: -3}
-    - - {x: -0.2500588, y: -5.5}
-      - {x: -0.2500588, y: -4.5}
-      - {x: -7.25, y: -4.5000587}
-      - {x: -7.249942, y: -5.5}
+    - - {x: -0.0000588, y: -5.5}
+      - {x: -0.0000588, y: -4.5}
+      - {x: -6, y: -4.5000587}
+      - {x: -5.999942, y: -5.5}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
 --- !u!1 &8177629321293931643

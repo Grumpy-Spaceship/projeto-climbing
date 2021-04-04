@@ -478,6 +478,7 @@ MonoBehaviour:
   canMove: 0
   updateRandomDir: 0
   timeToChangeDir: 2
+  velocityDecreaser: 0.2
 --- !u!50 &368321177
 Rigidbody2D:
   serializedVersion: 4
@@ -3670,7 +3671,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!156049354 &1340334524
 Grid:
   m_ObjectHideFlags: 0

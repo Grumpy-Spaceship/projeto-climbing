@@ -7,6 +7,7 @@ namespace Game.Movement
 {
 	public class Lava : TranslateWithVector
 	{
+		[Range(0,1), SerializeField] private float velocityDecreaser = 0.5f;
 		private Transform _t;
 		private PlayerScript _player;
 
@@ -34,6 +35,6 @@ namespace Game.Movement
 			}
 		}
 
-		private float GetDistance() => (_player.transform.position.y - _t.position.y) * 0.5f;
+		private float GetDistance() => (_player.transform.position.y - _t.position.y) * velocityDecreaser;
 	}
 }
