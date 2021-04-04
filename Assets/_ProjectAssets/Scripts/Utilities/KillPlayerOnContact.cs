@@ -48,6 +48,8 @@ namespace Game.Player
 
 		#endregion
 
+		[SerializeField] private GameObject ui = null;
+
 		public void OnTriggerEnter2D(Collider2D other)
 		{
 			Process(other);
@@ -66,7 +68,8 @@ namespace Game.Player
 			if (other.TryGetComponent<PlayerScript>(out var p))
 			{
 				Destroy(p.gameObject);
-				FindObjectOfType<SceneTransitions>()?.ReloadScene(1.5f);
+				ui.SetActive(true);
+				Time.timeScale = 0;
 			}
 		}
 	}

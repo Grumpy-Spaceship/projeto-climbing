@@ -1,8 +1,8 @@
 ﻿// Maded by Pedro M Marangon
 using Cinemachine;
 using DG.Tweening;
+using Game.Health;
 using NaughtyAttributes;
-using System.Configuration;
 using UnityEngine;
 
 namespace Game.Player
@@ -135,7 +135,7 @@ namespace Game.Player
 
 			foreach (var col in cols)
 			{
-				if (col.TryGetComponent<BreakableTile>(out var tile))
+				if (col.TryGetComponent<IDamageable>(out var tile))
 					tile.Damage();
 			}
 

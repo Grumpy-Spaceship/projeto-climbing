@@ -25,7 +25,7 @@ MonoBehaviour:
   moveSpeed: 400
   breakableTileMask:
     serializedVersion: 2
-    m_Bits: 65
+    m_Bits: 321
   punchRadiusDetection: 0.62
   punchGraphicShowTime: 0.1
   punchInAirStop: 0.25
