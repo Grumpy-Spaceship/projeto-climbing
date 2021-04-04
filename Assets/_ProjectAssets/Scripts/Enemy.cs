@@ -1,5 +1,6 @@
 // Maded by Pedro M Marangon
 using Game.Health;
+using Game.Player;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -28,6 +29,8 @@ namespace Game.Enemies
 			_rb = GetComponent<Rigidbody2D>();
 			baseScale = transform.localScale;
 			health = maxHealth;
+			Debug.Log("whf[", this);
+			GetComponentInChildren<KillPlayerOnContact>().FindUI();
 		}
 		private void FixedUpdate()
 		{

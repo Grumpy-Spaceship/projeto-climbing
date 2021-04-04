@@ -1,6 +1,7 @@
 //Maded by Pedro M Marangon
 using NaughtyAttributes;
 using UnityEngine;
+using System;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -48,7 +49,8 @@ namespace Game.Player
 
 		#endregion
 
-		[SerializeField] private GameObject ui = null;
+		[SerializeField] private CanvasGroup ui = null;
+		[Tag,SerializeField] private string hudName = "YouDiedHUD";
 
 		public void OnTriggerEnter2D(Collider2D other)
 		{
@@ -68,9 +70,16 @@ namespace Game.Player
 			if (other.TryGetComponent<PlayerScript>(out var p))
 			{
 				Destroy(p.gameObject);
-				ui.SetActive(true);
+				ui.alpha = 1;
 				Time.timeScale = 0;
 			}
 		}
+
+		public void FindUI()
+		{
+			Debug.Log("wiuofgu3w89rft ", this);
+			ui = GameObject.Find(hudName).GetComponent<CanvasGroup>();
+		}
+
 	}
 }
