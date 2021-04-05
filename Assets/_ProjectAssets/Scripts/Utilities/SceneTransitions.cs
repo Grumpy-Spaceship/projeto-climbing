@@ -26,5 +26,14 @@ namespace Game.Player
 			SceneManager.LoadScene(scene);
 		}
 
+		public void QuitGame()
+		{
+			Application.Quit();
+#if UNITY_EDITOR
+			UnityEditor.EditorApplication.isPlaying = false;
+#endif
+		}
+
+
 	}
 }
