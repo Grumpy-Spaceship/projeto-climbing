@@ -10,7 +10,9 @@ namespace UnityEditor
 		{
 			gameObject.AddComponent<CapsuleCollider2D>().isTrigger = true;
 			if (!GetComponent<Rigidbody2D>()) gameObject.AddComponent<Rigidbody2D>();
+#if UNITY_EDITOR
 			EditorApplication.delayCall += () => DestroyImmediate(this);
+#endif
 		}
 	}
 
