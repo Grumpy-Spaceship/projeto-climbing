@@ -71,15 +71,11 @@ namespace Game.Player
 			{
 				Destroy(p.gameObject);
 				ui.alpha = 1;
+				ui.interactable = true;
 				Time.timeScale = 0;
 			}
 		}
 
-		public void FindUI()
-		{
-			Debug.Log("wiuofgu3w89rft ", this);
-			ui = GameObject.Find(hudName).GetComponent<CanvasGroup>();
-		}
-
+		public void FindUI() => ui = GameObject.Find(hudName).GetComponent<CanvasGroup>();
 	}
 }
