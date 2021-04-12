@@ -15,7 +15,6 @@ namespace Game.Player
 		[SerializeField] private bool showDebugGizmos = false;
 		private float _moveInput;
 		private bool _canMove;
-		private bool facingRight = true;
 
 		private Rigidbody2D _rb;
 
