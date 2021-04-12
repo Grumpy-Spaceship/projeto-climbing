@@ -1,6 +1,5 @@
 // Maded by Pedro M Marangon
 using Game.Score;
-using NaughtyAttributes;
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
