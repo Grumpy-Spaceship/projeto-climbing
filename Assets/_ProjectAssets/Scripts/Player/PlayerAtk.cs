@@ -4,6 +4,7 @@ using DG.Tweening;
 using Game.Health;
 using NaughtyAttributes;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Game.Player
 {
@@ -12,13 +13,13 @@ namespace Game.Player
 	{
 		[SerializeField] private PlayerSettings settings = null;
 		[Required, SerializeField] private PlayerScript player;
-		[SerializeField] private Transform punchPos = null;
+		[SerializeField] private Transform punchPos = null, punchRotator = null;
 		[Required, SerializeField] private CinemachineVirtualCamera cmCam;
-		private bool isPunching = false, canPunch = true;
-		private bool isUpwards = false;
-		private bool isDownwards = false;
 		private Rigidbody2D _rb;
 		private CinemachineFramingTransposer transposer;
+		private bool isPunching = false, canPunch = true;
+		private bool isUpwards = false;
+		private Vector2 aimDir;
 		private float _grScale;
 
 		private void Awake()
@@ -34,12 +35,6 @@ namespace Game.Player
 			float value = isUpwards ? settings.UpScreenY : settings.NormalScreenY;
 			DOVirtual.Float(transposer.m_ScreenY, value, settings.CamSmoothness, (float v) => transposer.m_ScreenY = v);
 		}
-		public void OnDownwards()
-		{
-			isDownwards = !isDownwards;
-			float value = isDownwards ? settings.DownScreenY : settings.NormalScreenY;
-			DOVirtual.Float(transposer.m_ScreenY, value, settings.CamSmoothness, (float v) => transposer.m_ScreenY = v);
-		}
 
 		public void OnPunch()
 		{
@@ -48,13 +43,20 @@ namespace Game.Player
 			punchPos.localPosition = settings.PunchNormalPos;
 			ProcessPunch();
 		}
-		public void OnPunchUp()
+
+		public void OnAimPunch(InputValue v)
+		{
+			//TODO: Get value
+			aimDir = v.Get<Vector2>();
+		}
+
+	/*	public void OnPunchUp()
 		{
 			if (!canPunch) return;
 
 			punchPos.localPosition = settings.PunchUpPos;
 			ProcessPunch();
-		}
+		}*/
 		private void ProcessPunch()
 		{
 			if (!settings.Jump.IsGrounded && !isPunching) AirPunch();
@@ -141,7 +143,27 @@ namespace Game.Player
 
 		}
 
-
+		private void Update()
+		{
+			if (GetComponent<PlayerInput>().currentControlScheme.Equals("Gamepad"))
+			{
+				Debug.Log("GAMEPAD", this);
+				if(aimDir.x != 0 && aimDir.y != 0)
+				{
+					float angle = Mathf.Atan2(aimDir.y, aimDir.x) * Mathf.Rad2Deg;
+					punchRotator.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+				}
+			}
+			else
+			{
+				//SEMI-OK
+				Debug.Log("KEYBOARD", this);
+				Vector3 pos = Camera.main.ScreenToWorldPoint(aimDir);
+				Vector3 dir = pos-transform.position;
+				float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+				punchRotator.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+			}
+		}
 		private void FixedUpdate()
 		{
 			if (settings.Jump.IsGrounded) _rb.gravityScale = _grScale;

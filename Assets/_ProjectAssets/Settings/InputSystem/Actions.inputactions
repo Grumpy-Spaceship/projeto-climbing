@@ -54,12 +54,12 @@
                     "interactions": "Press(behavior=2)"
                 },
                 {
-                    "name": "Downwards",
-                    "type": "Button",
-                    "id": "da11608a-fe91-45d8-a6a6-611609528dcb",
-                    "expectedControlType": "Button",
+                    "name": "AimPunch",
+                    "type": "PassThrough",
+                    "id": "5fd95b80-70e2-4de7-bb41-48720a2a0d47",
+                    "expectedControlType": "Vector2",
                     "processors": "",
-                    "interactions": "Press(behavior=2)"
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -274,39 +274,6 @@
                 },
                 {
                     "name": "",
-                    "id": "13fbbcee-e50d-471f-bd94-87c9176b7c5f",
-                    "path": "<Gamepad>/dpad/down",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Downwards",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "61546323-5938-4c8b-9f04-db05b52c0dfb",
-                    "path": "<Keyboard>/s",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Downwards",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "d47e5a4c-f134-4c3d-93ad-df658b5886d2",
-                    "path": "<Keyboard>/downArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Downwards",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "572b7fb5-ad51-42f4-9d22-dedee2dd52e6",
                     "path": "<Keyboard>/x",
                     "interactions": "",
@@ -335,6 +302,28 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "PunchUp",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "610feb12-369a-4214-8f30-489bd9c77629",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "AimPunch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b57a30c6-3293-47dd-be06-d25a6921082f",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "AimPunch",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
