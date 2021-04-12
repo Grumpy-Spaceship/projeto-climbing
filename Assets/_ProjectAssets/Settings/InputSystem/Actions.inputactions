@@ -38,14 +38,6 @@
                     "interactions": "Press"
                 },
                 {
-                    "name": "PunchUp",
-                    "type": "Button",
-                    "id": "3e660b6e-d115-4092-a237-fd01f9d23618",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "Press"
-                },
-                {
                     "name": "Upwards",
                     "type": "Button",
                     "id": "9b62d9b0-5dd6-4a48-9ded-3e145b248b83",
@@ -209,18 +201,7 @@
                 {
                     "name": "",
                     "id": "d254d633-548e-4f70-9bf4-269378abd9be",
-                    "path": "<Keyboard>/z",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Punch",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "0169c735-967a-48dc-8dd2-af0c9d822706",
-                    "path": "<Keyboard>/ctrl",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
@@ -269,39 +250,6 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "Upwards",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "572b7fb5-ad51-42f4-9d22-dedee2dd52e6",
-                    "path": "<Keyboard>/x",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "PunchUp",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "93ccb4f9-a4de-41b6-a028-c693c188e7aa",
-                    "path": "<Keyboard>/rightShift",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "PunchUp",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "3fc2269f-1820-4a38-b0c5-c4ebf0ff1f05",
-                    "path": "<Gamepad>/buttonNorth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "PunchUp",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

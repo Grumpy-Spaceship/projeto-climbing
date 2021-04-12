@@ -305,6 +305,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &91397826 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1502925175225325837, guid: c4b6d9b2fceb0be4a94dcb263a0e1c0c, type: 3}
+  m_PrefabInstance: {fileID: 1502925174804995192}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &137359491
 GameObject:
   m_ObjectHideFlags: 0
@@ -1494,7 +1499,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: AllIn1SpriteShader/AllIn1SpriteShader
   m_Shader: {fileID: 4800000, guid: a36b7719ff0465b42ab1407d67672c5f, type: 3}
-  m_ShaderKeywords: ATLAS_ON ETC1_EXTERNAL_ALPHA GLOW_ON WAVEUV_ON
+  m_ShaderKeywords: ATLAS_ON ETC1_EXTERNAL_ALPHA GLOW_ON GRADIENT2COL_ON WAVEUV_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -1529,7 +1534,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _GlowTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 677cca399782dea41aedc1d292ecb67d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
@@ -1598,7 +1603,7 @@ Material:
     - _GhostTransparency: 0
     - _GlitchAmount: 3
     - _GlitchSize: 1
-    - _Glow: 61
+    - _Glow: 6
     - _GlowTexUsed: 0
     - _GradBlend: 1
     - _GradBoostX: 1.2
@@ -1683,11 +1688,11 @@ Material:
     - _TwistUvPosX: 0.5
     - _TwistUvPosY: 0.5
     - _TwistUvRadius: 0.75
-    - _WaveAmount: 7
-    - _WaveSpeed: 10
-    - _WaveStrength: 7.5
+    - _WaveAmount: 25
+    - _WaveSpeed: 4
+    - _WaveStrength: 25
     - _WaveX: 0
-    - _WaveY: 0.5
+    - _WaveY: 1
     - _ZTestMode: 4
     - _ZWrite: 0
     - _ZoomUvAmount: 0.5
@@ -1704,10 +1709,10 @@ Material:
     - _ColorSwapGreen: {r: 1, g: 1, b: 1, a: 1}
     - _ColorSwapRed: {r: 1, g: 1, b: 1, a: 1}
     - _FadeBurnColor: {r: 1, g: 1, b: 0, a: 1}
-    - _GlowColor: {r: 0.7735849, g: 0.44642872, b: 0.14231044, a: 1}
-    - _GradBotLeftCol: {r: 0, g: 0, b: 1, a: 1}
+    - _GlowColor: {r: 1, g: 0, b: 0, a: 1}
+    - _GradBotLeftCol: {r: 1, g: 0.83206886, b: 0.0141509175, a: 1}
     - _GradBotRightCol: {r: 0, g: 0, b: 1, a: 1}
-    - _GradTopLeftCol: {r: 1, g: 0, b: 0, a: 1}
+    - _GradTopLeftCol: {r: 0.6792453, g: 0.041651852, b: 0.041651852, a: 1}
     - _GradTopRightCol: {r: 1, g: 0, b: 0, a: 1}
     - _GreyscaleTintColor: {r: 1, g: 1, b: 1, a: 1}
     - _HitEffectColor: {r: 1, g: 1, b: 1, a: 1}
@@ -2087,8 +2092,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1332538166}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0.32500002, z: 0}
+  m_LocalScale: {x: 0.123609394, y: 0.5322581, z: 1}
   m_Children: []
   m_Father: {fileID: 368321175}
   m_RootOrder: 0
@@ -2130,14 +2135,14 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -642105003
-  m_SortingLayer: 1
-  m_SortingOrder: 9
-  m_Sprite: {fileID: -5177388603050735206, guid: cc35afd292fc349128b36a291fb3a165, type: 3}
-  m_Color: {r: 1, g: 0.3338987, b: 0, a: 1}
+  m_SortingLayerID: 1483170175
+  m_SortingLayer: 2
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 26554d8a89d427a43949f42699d34661, type: 3}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 1
+  m_DrawMode: 0
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
@@ -2489,7 +2494,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1601097912}
-  m_LocalRotation: {x: -0.027998278, y: 0.000000017168416, z: 4.808746e-10, w: 0.999608}
+  m_LocalRotation: {x: -0.027998278, y: -0.000000017168416, z: -4.808746e-10, w: 0.999608}
   m_LocalPosition: {x: 0, y: -6.485, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2800,6 +2805,10 @@ PrefabInstance:
       propertyPath: cmCam
       value: 
       objectReference: {fileID: 2095275265}
+    - target: {fileID: 1502925173940081903, guid: c4b6d9b2fceb0be4a94dcb263a0e1c0c, type: 3}
+      propertyPath: objToScale
+      value: 
+      objectReference: {fileID: 91397826}
     - target: {fileID: 2735659633818315066, guid: c4b6d9b2fceb0be4a94dcb263a0e1c0c, type: 3}
       propertyPath: cmCam
       value: 

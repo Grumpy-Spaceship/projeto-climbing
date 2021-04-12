@@ -9,11 +9,13 @@ namespace Game.Player
 
 	public class PlayerScript : MonoBehaviour
 	{
-		[SerializeField] private Transform feetPos = null;		
+		[SerializeField] private Transform feetPos = null;
+		[SerializeField] private Transform objToScale = null;
 		[SerializeField] private PlayerSettings settings = null;
 		[SerializeField] private bool showDebugGizmos = false;
 		private float _moveInput;
 		private bool _canMove;
+		private bool facingRight = true;
 
 		private Rigidbody2D _rb;
 
@@ -24,7 +26,7 @@ namespace Game.Player
 		//Define if is in idle (i.e. not moving)
 		private bool IsIdle => Mathf.Abs(_moveInput) <= 0;
 		//Says what direction the player is facing (1 = Right, -1 = Left)
-		public float FacingDirection => transform.localScale.x;
+		public float FacingDirection => objToScale.localScale.x;
 		
 		public void EnableInput()
 		{
@@ -43,6 +45,12 @@ namespace Game.Player
 
 		public void StopYMovement() => _rb.velocity = new Vector2(_rb.velocity.x, 0);
 
+		public void Flip()
+		{
+			//Set correct direction
+			objToScale.localScale = new Vector3(Swap(), objToScale.localScale.y, 1);
+		}
+
 		private void FixSpiderManSyndrome()
 		{
 			//If it has a Physics Material 2D, then return (don't need to add one)
@@ -54,12 +62,7 @@ namespace Game.Player
 			//Applied it to rigidbody
 			_rb.sharedMaterial = playerMat;
 		}
-		private float Swap()
-		{
-			if (_moveInput > 0) return 1;
-			else if (_moveInput < 0) return -1;
-			else return transform.localScale.x;
-		}
+		private float Swap() => -FacingDirection;
 		private void UpdateAnimations()
 		{
 			
@@ -90,11 +93,10 @@ namespace Game.Player
 		{
 			Time.timeScale = 1;
 			_rb = GetComponent<Rigidbody2D>();
+			objToScale = objToScale ? objToScale : transform;
 
 			settings.Jump?.SetupJumps();
-
 			FixSpiderManSyndrome();
-
 			EnableInput();
 
 		}
@@ -114,9 +116,6 @@ namespace Game.Player
 			if (Time.timeScale == 0) return;
 			//Move the player
 			_rb.velocity = new Vector2(_moveInput * settings.MoveSpeed * Time.deltaTime, _rb.velocity.y);
-
-			//Set correct direction
-			transform.localScale = new Vector3(Swap(), transform.localScale.y, 1);
 
 			settings.Jump?.JumpLogic(ref _rb, feetPos);
 

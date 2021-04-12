@@ -17,6 +17,7 @@ namespace Game.Player
 		[Required, SerializeField] private CinemachineVirtualCamera cmCam;
 		private Rigidbody2D _rb;
 		private CinemachineFramingTransposer transposer;
+		private PlayerInput _pInput;
 		private bool isPunching = false, canPunch = true;
 		private bool isUpwards = false;
 		private Vector2 aimDir;
@@ -27,6 +28,7 @@ namespace Game.Player
 			_rb = GetComponent<Rigidbody2D>();
 			_grScale = _rb.gravityScale;
 			transposer = cmCam.GetCinemachineComponent<CinemachineFramingTransposer>();
+			_pInput = GetComponent<PlayerInput>();
 		}
 
 		public void OnUpwards()
@@ -35,7 +37,6 @@ namespace Game.Player
 			float value = isUpwards ? settings.UpScreenY : settings.NormalScreenY;
 			DOVirtual.Float(transposer.m_ScreenY, value, settings.CamSmoothness, (float v) => transposer.m_ScreenY = v);
 		}
-
 		public void OnPunch()
 		{
 			if (!canPunch) return;
@@ -43,26 +44,17 @@ namespace Game.Player
 			punchPos.localPosition = settings.PunchNormalPos;
 			ProcessPunch();
 		}
-
 		public void OnAimPunch(InputValue v)
 		{
 			//TODO: Get value
 			aimDir = v.Get<Vector2>();
 		}
 
-	/*	public void OnPunchUp()
-		{
-			if (!canPunch) return;
-
-			punchPos.localPosition = settings.PunchUpPos;
-			ProcessPunch();
-		}*/
 		private void ProcessPunch()
 		{
 			if (!settings.Jump.IsGrounded && !isPunching) AirPunch();
 			else GroundPunch();
 		}
-
 		private void GroundPunch()
 		{
 			Sequence s = DOTween.Sequence();
@@ -82,7 +74,6 @@ namespace Game.Player
 			s.AppendInterval(settings.PunchCooldown);
 			s.AppendCallback(() => canPunch = true);
 		}
-
 		private void AirPunch()
 		{
 			var vel = _rb.velocity;
@@ -116,7 +107,6 @@ namespace Game.Player
 			s.AppendInterval(settings.PunchCooldown);
 			s.AppendCallback(() => canPunch = true);
 		}
-
 		public void Punch()
 		{
 			if (!punchPos || !settings) return;
@@ -131,7 +121,7 @@ namespace Game.Player
 
 				Collider2D[] colliderBehind = Physics2D.OverlapBoxAll(pos, Vector2.up + (Vector2.right*.5f), 0);
 
-				if(colliderBehind.Length <= 0)
+				if(colliderBehind.Length <= 0 && punchPos.position.y < transform.position.y + (settings.PunchRadiusDetection))
 					transform.DOMoveX((transform.position.x) - player.FacingDirection * settings.KnockbackForce, settings.KnockbackDur);
 			}
 
@@ -145,25 +135,33 @@ namespace Game.Player
 
 		private void Update()
 		{
-			if (GetComponent<PlayerInput>().currentControlScheme.Equals("Gamepad"))
+			float angle = Quaternion.Angle(Quaternion.Euler(new Vector3(0, 0, 0)), punchRotator.rotation);
+
+			if (_pInput.currentControlScheme.Equals("Gamepad"))
 			{
-				Debug.Log("GAMEPAD", this);
-				if(aimDir.x != 0 && aimDir.y != 0)
-				{
-					float angle = Mathf.Atan2(aimDir.y, aimDir.x) * Mathf.Rad2Deg;
-					punchRotator.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-				}
+				//TODO: Do Gamepad Rotation (R-Stick)
+				//if(Mathf.Abs(aimDir.x) > 0.1 || Mathf.Abs(aimDir.y) > 0.1) angle = SetAngle(aimDir.normalized);
 			}
 			else
 			{
-				//SEMI-OK
-				Debug.Log("KEYBOARD", this);
 				Vector3 pos = Camera.main.ScreenToWorldPoint(aimDir);
-				Vector3 dir = pos-transform.position;
-				float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-				punchRotator.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+				Vector3 dir = pos - transform.position;
+				angle = SetAngle(dir.normalized);
 			}
+			punchRotator.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 		}
+
+		private float SetAngle(Vector3 dir)
+		{
+			float v = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+
+			bool facingLeftAndAimingRight = dir.x < 0 && player.FacingDirection > 0;
+			bool facingRightAndAimingLeft = dir.x > 0 && player.FacingDirection < 0;
+			if(facingLeftAndAimingRight || facingRightAndAimingLeft) player?.Flip();
+			
+			return v;
+		}
+
 		private void FixedUpdate()
 		{
 			if (settings.Jump.IsGrounded) _rb.gravityScale = _grScale;
