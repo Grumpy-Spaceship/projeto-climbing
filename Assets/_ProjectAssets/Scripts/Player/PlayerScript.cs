@@ -91,29 +91,7 @@ namespace Game.Player
 			
 		}
 
-		private void Move()
-		{
-			//Move the player
-			//_rb.velocity = new Vector2(_moveInput * settings.MoveSpeed * Time.deltaTime, _rb.velocity.y);
-			
-
-
-			float moveVelocity = _rb.velocity.x;
-			moveVelocity += _moveInput;
-
-			if (IsIdle)
-				moveVelocity *= Mathf.Pow(1f - settings.StopDamping, Time.deltaTime * settings.MoveSpeed);
-			else if (Mathf.Sign(_moveInput) != Mathf.Sign(moveVelocity))
-				moveVelocity *= Mathf.Pow(1f - settings.TurnDamping, Time.deltaTime * settings.MoveSpeed);
-			else
-				moveVelocity *= Mathf.Pow(1f - settings.BasicDamping, Time.deltaTime * settings.MoveSpeed);
-
-			_rb.velocity = new Vector2(moveVelocity, _rb.velocity.y);
-
-			//Debug.Log("xVelocity: " + _rb.velocity.x, this);
-
-
-		}
+		private void Move() => _rb.velocity = new Vector2(_moveInput * settings.MoveSpeed * Time.deltaTime, _rb.velocity.y);
 
 
 		private void Awake()
