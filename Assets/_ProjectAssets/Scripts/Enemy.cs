@@ -31,9 +31,10 @@ namespace Game.Enemies
 		}
 		private void FixedUpdate()
 		{
-			_rb.velocity = new Vector2(moveSpeed * facingDir, 0);
+			_rb.velocity = new Vector2(moveSpeed * facingDir, _rb.velocity.y);
 
-			if ((IsHittingWall() || !IsNearEdge()))
+			Debug.Log(_rb.velocity.y < 0,this);
+			if (_rb.velocity.y>=0 && (IsHittingWall() || !IsNearEdge()))
 			{
 				ChangeDirection();
 			}
@@ -48,7 +49,6 @@ namespace Game.Enemies
 
 			transform.localScale = scale;
 			facingDir = scale.x;
-			Debug.Log(_rb.velocity.y >= 0,this);
 		}
 		private bool IsHittingWall()
 		{

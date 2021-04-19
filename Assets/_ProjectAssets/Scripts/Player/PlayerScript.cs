@@ -12,7 +12,7 @@ namespace Game.Player
 		[SerializeField] private Transform feetPos = null;
 		[SerializeField] private Transform objToScale = null;
 		[SerializeField] private PlayerSettings settings = null;
-		[SerializeField] private bool showDebugGizmos = false;
+		[SerializeField] private bool showDebugGizmos = false, useScore = true;
 		private float _moveInput;
 		private bool _canMove;
 
@@ -124,7 +124,7 @@ namespace Game.Player
 
 
 
-			if (transform.position.y >= PlayerScore.instance.MaxPlayerY)
+			if (useScore && transform.position.y >= PlayerScore.instance.MaxPlayerY)
 			{
 				int val = Mathf.Abs(Mathf.RoundToInt(transform.position.y) - PlayerScore.instance.MaxPlayerY);
 				PlayerScore.SetMaxPlayerY(transform.position.y);
