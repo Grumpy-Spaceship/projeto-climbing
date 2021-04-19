@@ -124,12 +124,12 @@ namespace Game.Player
 
 
 
-		/*	if (transform.position.y >= PlayerScore.instance.MaxPlayerY)
+			if (transform.position.y >= PlayerScore.instance.MaxPlayerY)
 			{
 				int val = Mathf.Abs(Mathf.RoundToInt(transform.position.y) - PlayerScore.instance.MaxPlayerY);
 				PlayerScore.SetMaxPlayerY(transform.position.y);
 				PlayerScore.AddScore(val);
-			}*/
+			}
 		}
 		private void OnDrawGizmos()
 		{

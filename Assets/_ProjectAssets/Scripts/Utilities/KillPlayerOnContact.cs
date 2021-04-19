@@ -70,12 +70,15 @@ namespace Game.Player
 			if (other.TryGetComponent<PlayerScript>(out var p))
 			{
 				Destroy(p.gameObject);
-				ui.alpha = 1;
-				ui.interactable = true;
+				if (ui)
+				{
+					ui.alpha = 1;
+					ui.interactable = true;
+				}
 				Time.timeScale = 0;
 			}
 		}
 
-		public void FindUI() => ui = GameObject.Find(hudName).GetComponent<CanvasGroup>();
+		public void FindUI() => ui = GameObject.Find(hudName)?.GetComponentInParent<CanvasGroup>();
 	}
 }

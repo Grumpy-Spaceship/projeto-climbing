@@ -25,7 +25,7 @@ namespace Game
 
 		public void Die()
 		{
-			PlayerScore.AddScore(scoreAmnt);
+			//PlayerScore.AddScore(scoreAmnt);
 			Destroy(gameObject);
 		}
 

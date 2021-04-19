@@ -19,9 +19,7 @@ namespace Game.Enemies
 		private int health = 0;
 
 		public int HP => health;
-
 		public int MaxHP => maxHealth;
-
 		public float HP_Percent => (float)HP/(float)MaxHP;
 
 		private void Awake()
@@ -35,7 +33,7 @@ namespace Game.Enemies
 		{
 			_rb.velocity = new Vector2(moveSpeed * facingDir, 0);
 
-			if (IsHittingWall() || !IsNearEdge())
+			if ((IsHittingWall() || !IsNearEdge()))
 			{
 				ChangeDirection();
 			}
@@ -50,6 +48,7 @@ namespace Game.Enemies
 
 			transform.localScale = scale;
 			facingDir = scale.x;
+			Debug.Log(_rb.velocity.y >= 0,this);
 		}
 		private bool IsHittingWall()
 		{
