@@ -11,9 +11,16 @@ namespace Game.Player
 		//[SerializeField] private AnimationHandler anim = null;
 		[Space(20), SerializeField] private float knockbackDur = .2f;
 		[SerializeField] private float knockForce = 3f;
-		[Space,SerializeField] private float moveSpeed = 200;
-		[SerializeField] private LayerMask breakableTileMask =  1 << 1;
+
+		[Header("Movement Configurations")]
+		[SerializeField] private float moveSpeed = 200;
+		[SerializeField] private float horizontalAcceleration = 1;
+		[Range(0, 1), SerializeField] private float horizontalDampingBasic = 0.5f;
+		[Range(0, 1), SerializeField] private float horizontalDampingWhenStopping = 0.5f;
+		[Range(0, 1), SerializeField] private float horizontalDampingWhenTurning = 0.5f;
+
 		[Header("Punch Configurations")]
+		[SerializeField] private LayerMask breakableTileMask =  1 << 1;
 		[SerializeField] private float punchRadiusDetection = 0.5f;
 		[SerializeField] private float punchGraphicShowTime = 0.1f;
 		[SerializeField] private float punchInAirStop = .2f, punchCooldown = 1f;
@@ -25,7 +32,12 @@ namespace Game.Player
 		[Range(0.3f,0.8f), SerializeField] private float normalScreenY = 0.5f;
 
 		public PlayerJumpSystem Jump => jump;
+
 		public float MoveSpeed => moveSpeed;
+		public float H_Acceleration => horizontalAcceleration;
+		public float BasicDamping => horizontalDampingBasic;
+		public float StopDamping => horizontalDampingWhenStopping;
+		public float TurnDamping => horizontalDampingWhenTurning;
 
 		public float UpScreenY => upScreenY;
 		public float DownScreenY => downScreenY;

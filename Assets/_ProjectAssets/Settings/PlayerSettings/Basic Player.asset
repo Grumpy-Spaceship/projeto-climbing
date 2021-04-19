@@ -22,7 +22,11 @@ MonoBehaviour:
     totalJumps: 1
   knockbackDur: 0.2
   knockForce: 0.5
-  moveSpeed: 400
+  moveSpeed: 5
+  horizontalAcceleration: 1
+  horizontalDampingBasic: 0
+  horizontalDampingWhenStopping: 1
+  horizontalDampingWhenTurning: 0
   breakableTileMask:
     serializedVersion: 2
     m_Bits: 321

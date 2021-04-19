@@ -40,7 +40,10 @@ namespace Game.Player
 		}
 		public void OnJump() => settings.Jump?.JumpPress();
 		public void OnJumpRelease() => settings.Jump?.JumpRelease();
-		public void OnMove(InputValue value) => _moveInput = _canMove ? value.Get<float>() : 0f;
+		public void OnMove(InputValue value)
+		{
+			_moveInput = _canMove ? value.Get<float>() : 0f;
+		}
 
 		public void StopYMovement() => _rb.velocity = new Vector2(_rb.velocity.x, 0);
 
@@ -88,6 +91,31 @@ namespace Game.Player
 			
 		}
 
+		private void Move()
+		{
+			//Move the player
+			//_rb.velocity = new Vector2(_moveInput * settings.MoveSpeed * Time.deltaTime, _rb.velocity.y);
+			
+
+
+			float moveVelocity = _rb.velocity.x;
+			moveVelocity += _moveInput;
+
+			if (IsIdle)
+				moveVelocity *= Mathf.Pow(1f - settings.StopDamping, Time.deltaTime * settings.MoveSpeed);
+			else if (Mathf.Sign(_moveInput) != Mathf.Sign(moveVelocity))
+				moveVelocity *= Mathf.Pow(1f - settings.TurnDamping, Time.deltaTime * settings.MoveSpeed);
+			else
+				moveVelocity *= Mathf.Pow(1f - settings.BasicDamping, Time.deltaTime * settings.MoveSpeed);
+
+			_rb.velocity = new Vector2(moveVelocity, _rb.velocity.y);
+
+			//Debug.Log("xVelocity: " + _rb.velocity.x, this);
+
+
+		}
+
+
 		private void Awake()
 		{
 			Time.timeScale = 1;
@@ -113,19 +141,17 @@ namespace Game.Player
 
 			//Return if game is paused
 			if (Time.timeScale == 0) return;
-			//Move the player
-			_rb.velocity = new Vector2(_moveInput * settings.MoveSpeed * Time.deltaTime, _rb.velocity.y);
-
+			Move();
 			settings.Jump?.JumpLogic(ref _rb, feetPos);
 
 
 
-			if (transform.position.y >= PlayerScore.instance.MaxPlayerY)
+		/*	if (transform.position.y >= PlayerScore.instance.MaxPlayerY)
 			{
 				int val = Mathf.Abs(Mathf.RoundToInt(transform.position.y) - PlayerScore.instance.MaxPlayerY);
 				PlayerScore.SetMaxPlayerY(transform.position.y);
 				PlayerScore.AddScore(val);
-			}
+			}*/
 		}
 		private void OnDrawGizmos()
 		{
