@@ -33,7 +33,6 @@ namespace Game.Enemies
 		{
 			_rb.velocity = new Vector2(moveSpeed * facingDir, _rb.velocity.y);
 
-			Debug.Log(_rb.velocity.y < 0,this);
 			if (_rb.velocity.y>=0 && (IsHittingWall() || !IsNearEdge()))
 			{
 				ChangeDirection();
@@ -59,17 +58,19 @@ namespace Game.Enemies
 			targetPos.x += castDist;
 			Debug.DrawLine(groundCheckPos.position, targetPos);
 
-			return Physics2D.Linecast(groundCheckPos.position, targetPos, whatIsGround);
+			RaycastHit2D raycastHit2D = Physics2D.Linecast(groundCheckPos.position, targetPos, whatIsGround);
+			Debug.DrawLine(groundCheckPos.position, targetPos, raycastHit2D ? Color.red : Color.green);
+			return raycastHit2D;
 		}
 		private bool IsNearEdge()
 		{
-
 			float castDist = groundCheckDist;
 
 			Vector3 targetPos = groundCheckPos.position;
 			targetPos.y -= castDist;
-			Debug.DrawLine(groundCheckPos.position, targetPos);
-			return Physics2D.Linecast(groundCheckPos.position, targetPos, whatIsGround);
+			RaycastHit2D raycastHit2D = Physics2D.Linecast(groundCheckPos.position, targetPos, whatIsGround);
+			Debug.DrawLine(groundCheckPos.position, targetPos,raycastHit2D?Color.green:Color.red);
+			return raycastHit2D;
 		}
 
 		public void Damage(int amnt = 1) => SetHP(health - amnt);
@@ -81,9 +82,6 @@ namespace Game.Enemies
 			if (health <= 0) Die();
 		}
 
-		public void Die()
-		{
-			Destroy(gameObject);
-		}
+		public void Die() => Destroy(gameObject);
 	}
 }
