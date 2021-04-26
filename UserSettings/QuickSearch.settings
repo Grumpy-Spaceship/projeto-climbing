@@ -16,7 +16,7 @@ filters = {
 	settings = true
 }
 scopes = {
-	"last_search.AB59B443" = "physics material"
+	"last_search.AB59B443" = "2d update"
 }
 providers = {
 	asset = {
