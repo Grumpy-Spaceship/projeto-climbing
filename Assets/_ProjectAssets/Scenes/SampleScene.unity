@@ -692,7 +692,6 @@ Transform:
   m_LocalScale: {x: 29, y: 5, z: 1}
   m_Children:
   - {fileID: 1332538167}
-  - {fileID: 547636988}
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -776,7 +775,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33c4cc5b884606a4195fa415e180da6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ui: {fileID: 0}
+  ui: {fileID: 1216959656}
   hudName: YouDiedHUD
 --- !u!1 &519420028
 GameObject:
@@ -1036,12 +1035,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 547636987}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.610606, z: 0}
+  m_LocalScale: {x: 8.09, y: 1.8787878, z: 1}
   m_Children: []
-  m_Father: {fileID: 368321175}
-  m_RootOrder: 1
+  m_Father: {fileID: 1332538167}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &547636989
 MonoBehaviour:
@@ -2284,7 +2283,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.32500002, z: 0}
   m_LocalScale: {x: 0.123609394, y: 0.5322581, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 547636988}
   m_Father: {fileID: 368321175}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
