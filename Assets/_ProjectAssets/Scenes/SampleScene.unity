@@ -2257,6 +2257,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+    - target: {fileID: 7123100756898499269, guid: c5ce157780c38d7459c48bcc09251971, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7325649147704350815, guid: c5ce157780c38d7459c48bcc09251971, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -10752,18 +10756,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 186509822150210193, guid: c4b6d9b2fceb0be4a94dcb263a0e1c0c, type: 3}
-      propertyPath: m_FalloffIntensity
-      value: 0.507
-      objectReference: {fileID: 0}
-    - target: {fileID: 186509822150210193, guid: c4b6d9b2fceb0be4a94dcb263a0e1c0c, type: 3}
-      propertyPath: m_PointLightInnerRadius
-      value: 0.85
-      objectReference: {fileID: 0}
-    - target: {fileID: 186509822150210193, guid: c4b6d9b2fceb0be4a94dcb263a0e1c0c, type: 3}
-      propertyPath: m_PointLightOuterRadius
-      value: 1.15
-      objectReference: {fileID: 0}
     - target: {fileID: 1502925173940081899, guid: c4b6d9b2fceb0be4a94dcb263a0e1c0c, type: 3}
       propertyPath: m_Name
       value: Player

@@ -1,5 +1,149 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2044682341262624156
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4057761911012246605}
+  - component: {fileID: 1539607307083938402}
+  m_Layer: 0
+  m_Name: Point Light 2D_02
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4057761911012246605
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2044682341262624156}
+  m_LocalRotation: {x: -0, y: -0, z: -0.27657378, w: 0.9609927}
+  m_LocalPosition: {x: -7.44, y: 11.63, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8949728860214845551}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1539607307083938402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2044682341262624156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_LightType: 3
+  m_BlendStyleIndex: 0
+  m_FalloffIntensity: 0.5
+  m_Color: {r: 0.4470588, g: 0.45319146, b: 1, a: 1}
+  m_Intensity: 0.5
+  m_LightVolumeOpacity: 0
+  m_ApplyToSortingLayers: 000000005541bad9155f5db5699846c47f616758
+  m_LightCookieSprite: {fileID: 0}
+  m_UseNormalMap: 0
+  m_LightOrder: 0
+  m_AlphaBlendOnOverlap: 0
+  m_ShadowIntensity: 0
+  m_ShadowVolumeIntensity: 1
+  m_PointLightInnerAngle: 360
+  m_PointLightOuterAngle: 360
+  m_PointLightInnerRadius: 0
+  m_PointLightOuterRadius: 10.241028
+  m_PointLightDistance: 3
+  m_PointLightQuality: 1
+  m_ShapeLightParametricSides: 5
+  m_ShapeLightParametricAngleOffset: 0
+  m_ShapeLightParametricRadius: 1
+  m_ShapeLightFalloffSize: 0.5
+  m_ShapeLightFalloffOffset: {x: 0, y: 0}
+  m_ShapePath:
+  - {x: -0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: 0.5, z: 0}
+  - {x: -0.5, y: 0.5, z: 0}
+--- !u!1 &3663117658570743322
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6617889953510907220}
+  - component: {fileID: 243433696340125392}
+  m_Layer: 0
+  m_Name: Point Light 2D
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6617889953510907220
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3663117658570743322}
+  m_LocalRotation: {x: -0, y: -0, z: -0.27657378, w: 0.9609927}
+  m_LocalPosition: {x: -7.05, y: -4.26, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8949728860214845551}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &243433696340125392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3663117658570743322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_LightType: 3
+  m_BlendStyleIndex: 0
+  m_FalloffIntensity: 0.5
+  m_Color: {r: 1, g: 0.97697794, b: 0.44716978, a: 1}
+  m_Intensity: 0.5
+  m_LightVolumeOpacity: 0
+  m_ApplyToSortingLayers: 000000005541bad9155f5db5699846c47f616758
+  m_LightCookieSprite: {fileID: 0}
+  m_UseNormalMap: 0
+  m_LightOrder: 0
+  m_AlphaBlendOnOverlap: 0
+  m_ShadowIntensity: 0
+  m_ShadowVolumeIntensity: 1
+  m_PointLightInnerAngle: 360
+  m_PointLightOuterAngle: 360
+  m_PointLightInnerRadius: 0
+  m_PointLightOuterRadius: 10.241028
+  m_PointLightDistance: 3
+  m_PointLightQuality: 1
+  m_ShapeLightParametricSides: 5
+  m_ShapeLightParametricAngleOffset: 0
+  m_ShapeLightParametricRadius: 1
+  m_ShapeLightFalloffSize: 0.5
+  m_ShapeLightFalloffOffset: {x: 0, y: 0}
+  m_ShapePath:
+  - {x: -0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: 0.5, z: 0}
+  - {x: -0.5, y: 0.5, z: 0}
 --- !u!1 &3668080350270285775
 GameObject:
   m_ObjectHideFlags: 0
@@ -70,6 +214,112 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a68617f541e82804e9e2d0962339cd4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &4485620896366519900
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8949728860214845551}
+  m_Layer: 0
+  m_Name: Lights
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8949728860214845551
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4485620896366519900}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 6617889953510907220}
+  - {fileID: 8538373844476349948}
+  - {fileID: 4057761911012246605}
+  - {fileID: 8465416998617010511}
+  m_Father: {fileID: 8177629319635370467}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6106729503631232926
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8538373844476349948}
+  - component: {fileID: 6403744033439823231}
+  m_Layer: 0
+  m_Name: Point Light 2D_01
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8538373844476349948
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6106729503631232926}
+  m_LocalRotation: {x: -0, y: -0, z: -0.27657378, w: 0.9609927}
+  m_LocalPosition: {x: 7.43, y: 0.84, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8949728860214845551}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6403744033439823231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6106729503631232926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_LightType: 3
+  m_BlendStyleIndex: 0
+  m_FalloffIntensity: 0.5
+  m_Color: {r: 0.4470588, g: 0.45319146, b: 1, a: 1}
+  m_Intensity: 0.5
+  m_LightVolumeOpacity: 0
+  m_ApplyToSortingLayers: 000000005541bad9155f5db5699846c47f616758
+  m_LightCookieSprite: {fileID: 0}
+  m_UseNormalMap: 0
+  m_LightOrder: 0
+  m_AlphaBlendOnOverlap: 0
+  m_ShadowIntensity: 0
+  m_ShadowVolumeIntensity: 1
+  m_PointLightInnerAngle: 360
+  m_PointLightOuterAngle: 360
+  m_PointLightInnerRadius: 0
+  m_PointLightOuterRadius: 10.241028
+  m_PointLightDistance: 3
+  m_PointLightQuality: 1
+  m_ShapeLightParametricSides: 5
+  m_ShapeLightParametricAngleOffset: 0
+  m_ShapeLightParametricRadius: 1
+  m_ShapeLightFalloffSize: 0.5
+  m_ShapeLightFalloffOffset: {x: 0, y: 0}
+  m_ShapePath:
+  - {x: -0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: 0.5, z: 0}
+  - {x: -0.5, y: 0.5, z: 0}
 --- !u!1 &7452123397182164206
 GameObject:
   m_ObjectHideFlags: 0
@@ -103,6 +353,78 @@ Transform:
   m_Father: {fileID: 8177629319635370467}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8086807028528870083
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8465416998617010511}
+  - component: {fileID: 3955616904758320872}
+  m_Layer: 0
+  m_Name: Point Light 2D_03
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8465416998617010511
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8086807028528870083}
+  m_LocalRotation: {x: -0, y: -0, z: -0.27657378, w: 0.9609927}
+  m_LocalPosition: {x: 5.07, y: 12.27, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8949728860214845551}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3955616904758320872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8086807028528870083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_LightType: 3
+  m_BlendStyleIndex: 0
+  m_FalloffIntensity: 0.5
+  m_Color: {r: 1, g: 0.97697794, b: 0.44716978, a: 1}
+  m_Intensity: 0.5
+  m_LightVolumeOpacity: 0
+  m_ApplyToSortingLayers: 000000005541bad9155f5db5699846c47f616758
+  m_LightCookieSprite: {fileID: 0}
+  m_UseNormalMap: 0
+  m_LightOrder: 0
+  m_AlphaBlendOnOverlap: 0
+  m_ShadowIntensity: 0
+  m_ShadowVolumeIntensity: 1
+  m_PointLightInnerAngle: 360
+  m_PointLightOuterAngle: 360
+  m_PointLightInnerRadius: 0
+  m_PointLightOuterRadius: 10.241028
+  m_PointLightDistance: 3
+  m_PointLightQuality: 1
+  m_ShapeLightParametricSides: 5
+  m_ShapeLightParametricAngleOffset: 0
+  m_ShapeLightParametricRadius: 1
+  m_ShapeLightFalloffSize: 0.5
+  m_ShapeLightFalloffOffset: {x: 0, y: 0}
+  m_ShapePath:
+  - {x: -0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: 0.5, z: 0}
+  - {x: -0.5, y: 0.5, z: 0}
 --- !u!1 &8177629319635370466
 GameObject:
   m_ObjectHideFlags: 0
@@ -136,6 +458,7 @@ Transform:
   - {fileID: 8177629320729717983}
   - {fileID: 2038932831437686847}
   - {fileID: 6512773011686461577}
+  - {fileID: 8949728860214845551}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -439,6 +762,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8177629320729717983}
     m_Modifications:
+    - target: {fileID: -896049218562266102, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
+      propertyPath: m_InstanceId
+      value: -361306
+      objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037003, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_Name
       value: BreakableTile
@@ -567,6 +894,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8177629320933975494}
     m_Modifications:
+    - target: {fileID: 7785329506319547520, guid: e44c0072f340e3e48bc33f2a9db538ed, type: 3}
+      propertyPath: m_InstanceId
+      value: -361356
+      objectReference: {fileID: 0}
     - target: {fileID: 8008534343794175523, guid: e44c0072f340e3e48bc33f2a9db538ed, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -617,14 +948,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e44c0072f340e3e48bc33f2a9db538ed, type: 3}
---- !u!4 &8177629319461858148 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8008534343794175523, guid: e44c0072f340e3e48bc33f2a9db538ed, type: 3}
-  m_PrefabInstance: {fileID: 2186709859159360839}
-  m_PrefabAsset: {fileID: 0}
 --- !u!61 &8177629319461858149 stripped
 BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: 8008534343794175522, guid: e44c0072f340e3e48bc33f2a9db538ed, type: 3}
+  m_PrefabInstance: {fileID: 2186709859159360839}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8177629319461858148 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8008534343794175523, guid: e44c0072f340e3e48bc33f2a9db538ed, type: 3}
   m_PrefabInstance: {fileID: 2186709859159360839}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2720648915033045417
@@ -634,6 +965,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8177629320933975494}
     m_Modifications:
+    - target: {fileID: 7785329506319547520, guid: e44c0072f340e3e48bc33f2a9db538ed, type: 3}
+      propertyPath: m_InstanceId
+      value: -361362
+      objectReference: {fileID: 0}
     - target: {fileID: 8008534343794175521, guid: e44c0072f340e3e48bc33f2a9db538ed, type: 3}
       propertyPath: m_Size.x
       value: 4
@@ -713,6 +1048,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8177629320729717983}
     m_Modifications:
+    - target: {fileID: -896049218562266102, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
+      propertyPath: m_InstanceId
+      value: -361370
+      objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037003, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_Name
       value: BreakableTile_17
@@ -775,6 +1114,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8177629320933975494}
     m_Modifications:
+    - target: {fileID: 7785329506319547520, guid: e44c0072f340e3e48bc33f2a9db538ed, type: 3}
+      propertyPath: m_InstanceId
+      value: -361388
+      objectReference: {fileID: 0}
     - target: {fileID: 8008534343794175521, guid: e44c0072f340e3e48bc33f2a9db538ed, type: 3}
       propertyPath: m_Size.x
       value: 7
@@ -837,14 +1180,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e44c0072f340e3e48bc33f2a9db538ed, type: 3}
---- !u!4 &5181161927257392152 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8008534343794175523, guid: e44c0072f340e3e48bc33f2a9db538ed, type: 3}
-  m_PrefabInstance: {fileID: 2937236322779834939}
-  m_PrefabAsset: {fileID: 0}
 --- !u!61 &5181161927257392153 stripped
 BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: 8008534343794175522, guid: e44c0072f340e3e48bc33f2a9db538ed, type: 3}
+  m_PrefabInstance: {fileID: 2937236322779834939}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5181161927257392152 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8008534343794175523, guid: e44c0072f340e3e48bc33f2a9db538ed, type: 3}
   m_PrefabInstance: {fileID: 2937236322779834939}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3069489072758721575
@@ -916,6 +1259,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8177629320729717983}
     m_Modifications:
+    - target: {fileID: -896049218562266102, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
+      propertyPath: m_InstanceId
+      value: -361402
+      objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037003, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_Name
       value: BreakableTile_21
@@ -978,6 +1325,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8177629320933975494}
     m_Modifications:
+    - target: {fileID: 7785329506319547520, guid: e44c0072f340e3e48bc33f2a9db538ed, type: 3}
+      propertyPath: m_InstanceId
+      value: -361420
+      objectReference: {fileID: 0}
     - target: {fileID: 8008534343794175521, guid: e44c0072f340e3e48bc33f2a9db538ed, type: 3}
       propertyPath: m_Size.x
       value: 3
@@ -1040,14 +1391,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e44c0072f340e3e48bc33f2a9db538ed, type: 3}
---- !u!4 &6148906525049524372 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8008534343794175523, guid: e44c0072f340e3e48bc33f2a9db538ed, type: 3}
-  m_PrefabInstance: {fileID: 4211228945761615543}
-  m_PrefabAsset: {fileID: 0}
 --- !u!61 &6148906525049524373 stripped
 BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: 8008534343794175522, guid: e44c0072f340e3e48bc33f2a9db538ed, type: 3}
+  m_PrefabInstance: {fileID: 4211228945761615543}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6148906525049524372 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8008534343794175523, guid: e44c0072f340e3e48bc33f2a9db538ed, type: 3}
   m_PrefabInstance: {fileID: 4211228945761615543}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5191277963928623453
@@ -1057,6 +1408,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8177629320933975494}
     m_Modifications:
+    - target: {fileID: 7785329506319547520, guid: e44c0072f340e3e48bc33f2a9db538ed, type: 3}
+      propertyPath: m_InstanceId
+      value: -361426
+      objectReference: {fileID: 0}
     - target: {fileID: 8008534343794175521, guid: e44c0072f340e3e48bc33f2a9db538ed, type: 3}
       propertyPath: m_Size.x
       value: 4
@@ -1136,6 +1491,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8177629320729717983}
     m_Modifications:
+    - target: {fileID: -896049218562266102, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
+      propertyPath: m_InstanceId
+      value: -361434
+      objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037003, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_Name
       value: BreakableTile_14
@@ -1198,6 +1557,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8177629320933975494}
     m_Modifications:
+    - target: {fileID: 7785329506319547520, guid: e44c0072f340e3e48bc33f2a9db538ed, type: 3}
+      propertyPath: m_InstanceId
+      value: -361452
+      objectReference: {fileID: 0}
     - target: {fileID: 8008534343794175521, guid: e44c0072f340e3e48bc33f2a9db538ed, type: 3}
       propertyPath: m_Size.x
       value: 3
@@ -1277,6 +1640,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8177629320729717983}
     m_Modifications:
+    - target: {fileID: -896049218562266102, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
+      propertyPath: m_InstanceId
+      value: -361460
+      objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037003, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_Name
       value: BreakableTile_15
@@ -1339,6 +1706,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8177629320933975494}
     m_Modifications:
+    - target: {fileID: 7785329506319547520, guid: e44c0072f340e3e48bc33f2a9db538ed, type: 3}
+      propertyPath: m_InstanceId
+      value: -361478
+      objectReference: {fileID: 0}
     - target: {fileID: 8008534343794175521, guid: e44c0072f340e3e48bc33f2a9db538ed, type: 3}
       propertyPath: m_Size.x
       value: 6
@@ -1401,14 +1772,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e44c0072f340e3e48bc33f2a9db538ed, type: 3}
---- !u!4 &2431623884414455047 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8008534343794175523, guid: e44c0072f340e3e48bc33f2a9db538ed, type: 3}
-  m_PrefabInstance: {fileID: 5664079758430774052}
-  m_PrefabAsset: {fileID: 0}
 --- !u!61 &2431623884414455046 stripped
 BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: 8008534343794175522, guid: e44c0072f340e3e48bc33f2a9db538ed, type: 3}
+  m_PrefabInstance: {fileID: 5664079758430774052}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2431623884414455047 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8008534343794175523, guid: e44c0072f340e3e48bc33f2a9db538ed, type: 3}
   m_PrefabInstance: {fileID: 5664079758430774052}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6053911385437730191
@@ -1480,6 +1851,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8177629320729717983}
     m_Modifications:
+    - target: {fileID: -896049218562266102, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
+      propertyPath: m_InstanceId
+      value: -361518
+      objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037003, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_Name
       value: BreakableTile_16
@@ -1542,6 +1917,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8177629320933975494}
     m_Modifications:
+    - target: {fileID: 7785329506319547520, guid: e44c0072f340e3e48bc33f2a9db538ed, type: 3}
+      propertyPath: m_InstanceId
+      value: -361536
+      objectReference: {fileID: 0}
     - target: {fileID: 8008534343794175523, guid: e44c0072f340e3e48bc33f2a9db538ed, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -1592,14 +1971,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e44c0072f340e3e48bc33f2a9db538ed, type: 3}
---- !u!61 &3535886514897474604 stripped
-BoxCollider2D:
-  m_CorrespondingSourceObject: {fileID: 8008534343794175522, guid: e44c0072f340e3e48bc33f2a9db538ed, type: 3}
-  m_PrefabInstance: {fileID: 6788606345169926670}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3535886514897474605 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8008534343794175523, guid: e44c0072f340e3e48bc33f2a9db538ed, type: 3}
+  m_PrefabInstance: {fileID: 6788606345169926670}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &3535886514897474604 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 8008534343794175522, guid: e44c0072f340e3e48bc33f2a9db538ed, type: 3}
   m_PrefabInstance: {fileID: 6788606345169926670}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7268915438710787925
@@ -1609,6 +1988,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8177629320933975494}
     m_Modifications:
+    - target: {fileID: 7785329506319547520, guid: e44c0072f340e3e48bc33f2a9db538ed, type: 3}
+      propertyPath: m_InstanceId
+      value: -361542
+      objectReference: {fileID: 0}
     - target: {fileID: 8008534343794175521, guid: e44c0072f340e3e48bc33f2a9db538ed, type: 3}
       propertyPath: m_Size.x
       value: 6
@@ -1688,6 +2071,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8177629320933975494}
     m_Modifications:
+    - target: {fileID: 7785329506319547520, guid: e44c0072f340e3e48bc33f2a9db538ed, type: 3}
+      propertyPath: m_InstanceId
+      value: -361548
+      objectReference: {fileID: 0}
     - target: {fileID: 8008534343794175521, guid: e44c0072f340e3e48bc33f2a9db538ed, type: 3}
       propertyPath: m_Size.x
       value: 6
@@ -1750,14 +2137,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e44c0072f340e3e48bc33f2a9db538ed, type: 3}
---- !u!4 &211266921844025498 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8008534343794175523, guid: e44c0072f340e3e48bc33f2a9db538ed, type: 3}
-  m_PrefabInstance: {fileID: 7911300246768158393}
-  m_PrefabAsset: {fileID: 0}
 --- !u!61 &211266921844025499 stripped
 BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: 8008534343794175522, guid: e44c0072f340e3e48bc33f2a9db538ed, type: 3}
+  m_PrefabInstance: {fileID: 7911300246768158393}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &211266921844025498 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8008534343794175523, guid: e44c0072f340e3e48bc33f2a9db538ed, type: 3}
   m_PrefabInstance: {fileID: 7911300246768158393}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8079643329211478960
@@ -1829,6 +2216,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8177629320729717983}
     m_Modifications:
+    - target: {fileID: -896049218562266102, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
+      propertyPath: m_InstanceId
+      value: -361588
+      objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037003, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_Name
       value: BreakableTile_05
@@ -1891,6 +2282,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8177629320729717983}
     m_Modifications:
+    - target: {fileID: -896049218562266102, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
+      propertyPath: m_InstanceId
+      value: -361608
+      objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037003, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_Name
       value: BreakableTile_04
@@ -1953,6 +2348,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8177629320729717983}
     m_Modifications:
+    - target: {fileID: -896049218562266102, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
+      propertyPath: m_InstanceId
+      value: -361628
+      objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037003, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_Name
       value: BreakableTile_07
@@ -2015,6 +2414,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8177629320729717983}
     m_Modifications:
+    - target: {fileID: -896049218562266102, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
+      propertyPath: m_InstanceId
+      value: -361648
+      objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037003, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_Name
       value: BreakableTile_10
@@ -2077,6 +2480,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8177629320729717983}
     m_Modifications:
+    - target: {fileID: -896049218562266102, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
+      propertyPath: m_InstanceId
+      value: -361668
+      objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037003, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_Name
       value: BreakableTile_30
@@ -2143,6 +2550,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8177629320729717983}
     m_Modifications:
+    - target: {fileID: -896049218562266102, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
+      propertyPath: m_InstanceId
+      value: -361688
+      objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037003, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_Name
       value: BreakableTile_20
@@ -2205,6 +2616,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8177629320729717983}
     m_Modifications:
+    - target: {fileID: -896049218562266102, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
+      propertyPath: m_InstanceId
+      value: -361708
+      objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037003, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_Name
       value: BreakableTile_02
@@ -2267,6 +2682,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8177629320729717983}
     m_Modifications:
+    - target: {fileID: -896049218562266102, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
+      propertyPath: m_InstanceId
+      value: -361728
+      objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037003, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_Name
       value: BreakableTile_09
@@ -2329,6 +2748,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8177629320729717983}
     m_Modifications:
+    - target: {fileID: -896049218562266102, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
+      propertyPath: m_InstanceId
+      value: -361748
+      objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037003, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_Name
       value: BreakableTile_08
@@ -2391,6 +2814,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8177629320729717983}
     m_Modifications:
+    - target: {fileID: -896049218562266102, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
+      propertyPath: m_InstanceId
+      value: -361768
+      objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037003, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_Name
       value: BreakableTile_19
@@ -2453,6 +2880,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8177629320729717983}
     m_Modifications:
+    - target: {fileID: -896049218562266102, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
+      propertyPath: m_InstanceId
+      value: -361788
+      objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037003, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_Name
       value: BreakableTile_06
@@ -2515,6 +2946,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8177629320729717983}
     m_Modifications:
+    - target: {fileID: -896049218562266102, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
+      propertyPath: m_InstanceId
+      value: -361808
+      objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037003, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_Name
       value: BreakableTile_29
@@ -2581,6 +3016,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8177629320729717983}
     m_Modifications:
+    - target: {fileID: -896049218562266102, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
+      propertyPath: m_InstanceId
+      value: -361828
+      objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037003, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_Name
       value: BreakableTile_01
@@ -2647,6 +3086,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8177629320729717983}
     m_Modifications:
+    - target: {fileID: -896049218562266102, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
+      propertyPath: m_InstanceId
+      value: -361848
+      objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037003, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_Name
       value: BreakableTile_13
@@ -2713,6 +3156,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8177629320729717983}
     m_Modifications:
+    - target: {fileID: -896049218562266102, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
+      propertyPath: m_InstanceId
+      value: -361868
+      objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037003, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_Name
       value: BreakableTile_12
@@ -2779,6 +3226,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8177629320729717983}
     m_Modifications:
+    - target: {fileID: -896049218562266102, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
+      propertyPath: m_InstanceId
+      value: -361888
+      objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037003, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_Name
       value: BreakableTile_03
@@ -2875,6 +3326,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8177629320933975494}
     m_Modifications:
+    - target: {fileID: 7785329506319547520, guid: e44c0072f340e3e48bc33f2a9db538ed, type: 3}
+      propertyPath: m_InstanceId
+      value: -361912
+      objectReference: {fileID: 0}
     - target: {fileID: 8008534343794175521, guid: e44c0072f340e3e48bc33f2a9db538ed, type: 3}
       propertyPath: m_Size.x
       value: 5
@@ -2954,6 +3409,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8177629320729717983}
     m_Modifications:
+    - target: {fileID: -896049218562266102, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
+      propertyPath: m_InstanceId
+      value: -361920
+      objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037003, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_Name
       value: BreakableTile_18
