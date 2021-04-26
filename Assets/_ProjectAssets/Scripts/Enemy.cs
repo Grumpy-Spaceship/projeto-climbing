@@ -33,7 +33,6 @@ namespace Game.Enemies
 		{
 			_rb.velocity = new Vector2(moveSpeed * facingDir, _rb.velocity.y);
 
-			Debug.Log(_rb.velocity.y < 0,this);
 			if (_rb.velocity.y>=0 && (IsHittingWall() || !IsNearEdge()))
 			{
 				ChangeDirection();
