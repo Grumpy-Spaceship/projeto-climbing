@@ -70,7 +70,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a68617f541e82804e9e2d0962339cd4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obj: {fileID: 8177629319635370466}
 --- !u!1 &5823289402211710496
 GameObject:
   m_ObjectHideFlags: 0
@@ -1270,11 +1269,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6621912708920178569, guid: 3d2bf21bf09046e4db68fcf1c7bafdc4, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 1.097168
+      value: 1.0972154
       objectReference: {fileID: 0}
     - target: {fileID: 6621912708920178569, guid: 3d2bf21bf09046e4db68fcf1c7bafdc4, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 1.097168
+      value: 1.0966797
       objectReference: {fileID: 0}
     - target: {fileID: 6621912708920178570, guid: 3d2bf21bf09046e4db68fcf1c7bafdc4, type: 3}
       propertyPath: m_RootOrder
