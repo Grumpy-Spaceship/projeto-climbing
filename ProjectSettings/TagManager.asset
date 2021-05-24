@@ -54,6 +54,3 @@ TagManager:
   - name: Lava
     uniqueID: 1483170175
     locked: 0
-  - name: ParallaxWall
-    uniqueID: 1447670033
-    locked: 0
