@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - YouDiedHUD
+  - Destroy Level Piece
   layers:
   - Default
   - TransparentFX
@@ -16,8 +17,8 @@ TagManager:
   - LevelGenerator
   - Enemy
   - Wall
-  - 
-  - 
+  - Lava
+  - Level Destroyer
   - 
   - 
   - 
