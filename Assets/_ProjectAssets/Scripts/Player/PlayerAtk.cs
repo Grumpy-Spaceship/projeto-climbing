@@ -15,7 +15,6 @@ namespace Game.Player
 		[Required, SerializeField] private PlayerScript player;
 		[SerializeField] private Transform punchPos = null, punchRotator = null;
 		[Required, SerializeField] private CinemachineVirtualCamera cmCam;
-		[SerializeField] private CinemachineImpulseSource impulseSource;
 		private Rigidbody2D _rb;
 		private CinemachineFramingTransposer transposer;
 		private PlayerInput _pInput;
@@ -124,10 +123,13 @@ namespace Game.Player
 
 				if(colliderBehind.Length <= 0 && punchPos.position.y < transform.position.y + (settings.PunchRadiusDetection))
 					transform.DOMoveX((transform.position.x) - player.FacingDirection * settings.KnockbackForce, settings.KnockbackDur);
+<<<<<<< HEAD
 
 
 				//impulseSource.GenerateImpulse();
 
+=======
+>>>>>>> parent of 897d1b8 (Animations, Screen Shake, New Sprite)
 			}
 
 			foreach (var col in cols)

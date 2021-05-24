@@ -67,6 +67,7 @@ namespace Game.Player
 		private float Swap() => -FacingDirection;
 		private void UpdateAnimations()
 		{
+<<<<<<< HEAD
 			////if there's no AnimationHandler or is playing a non-looping animation (like an attack), do nothing
 			//if (!anim || anim.IsPlayingNonLoopingAnimation) return;
 
@@ -88,6 +89,30 @@ namespace Game.Player
 			//	if (!IsIdle) anim.PlayAnimation("Walk", true);
 			//}
 
+=======
+			
+		//	//if there's no AnimationHandler or is playing a non-looping animation (like an attack), do nothing
+		//	if (!anim || anim.IsPlayingNonLoopingAnimation) return;
+
+		//	//JUMP/FALLING ANIMATION
+		//	if (jump.IsJumping || _rb.velocity.y < 0)
+		//	{
+		//		string jumpAnim;
+		//		if (_rb.velocity.y > 0) jumpAnim = "Jumping";
+		//		else jumpAnim = "Falling";
+
+		//		anim.PlayAnimation(jumpAnim, true);
+		//	}
+		//	//IDLE
+		//	else if (IsIdle) anim.PlayAnimation("Idle", true);
+		//	//EVERYTHING ELSE
+		//	else
+		//	{
+		//		//Walk
+		//		if (!IsIdle) anim.PlayAnimation("Walk", true);
+		//	}
+			
+>>>>>>> parent of 897d1b8 (Animations, Screen Shake, New Sprite)
 		}
 
 		private void Move() => _rb.velocity = new Vector2(_moveInput * settings.MoveSpeed * Time.deltaTime, _rb.velocity.y);
