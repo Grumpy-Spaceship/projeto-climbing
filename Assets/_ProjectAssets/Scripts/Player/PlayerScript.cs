@@ -12,7 +12,6 @@ namespace Game.Player
 		[SerializeField] private Transform feetPos = null;
 		[SerializeField] private Transform objToScale = null;
 		[SerializeField] private PlayerSettings settings = null;
-		[SerializeField] private AnimationHandler anim = null;
 		[SerializeField] private bool showDebugGizmos = false, useScore = true;
 		private float _moveInput;
 		private bool _canMove;
@@ -68,48 +67,27 @@ namespace Game.Player
 		private float Swap() => -FacingDirection;
 		private void UpdateAnimations()
 		{
+			////if there's no AnimationHandler or is playing a non-looping animation (like an attack), do nothing
+			//if (!anim || anim.IsPlayingNonLoopingAnimation) return;
 
-			//if there's no AnimationHandler or is playing a non-looping animation (like an attack), do nothing
-			if (!anim || anim.IsPlayingNonLoopingAnimation) return;
+			////JUMP/FALLING ANIMATION
+			//if (jump.IsJumping || _rb.velocity.y < 0)
+			//{
+			//	string jumpAnim;
+			//	if (_rb.velocity.y > 0) jumpAnim = "Jumping";
+			//	else jumpAnim = "Falling";
 
-			Debug.Log("settings.Jump.IsJumping: " + settings.Jump.IsJumping, this);
+			//	anim.PlayAnimation(jumpAnim, true);
+			//}
+			////IDLE
+			//else if (IsIdle) anim.PlayAnimation("Idle", true);
+			////EVERYTHING ELSE
+			//else
+			//{
+			//	//Walk
+			//	if (!IsIdle) anim.PlayAnimation("Walk", true);
+			//}
 
-			//JUMP/FALLING ANIMATION
-			if (settings.Jump.IsJumping || _rb.velocity.y < 0)
-			{
-				string jumpAnim = "Jump";
-
-				anim.PlayAnimation(jumpAnim, true);
-			}
-			//IDLE
-			else if (IsIdle) anim.PlayAnimation("Idle", true);
-			//EVERYTHING ELSE
-			else
-			{
-				//Walk
-				if (!IsIdle)
-				{
-					bool runningTwrdsMouse = PlayerIsRunningTowardsMouse();
-					string run = runningTwrdsMouse ? "Run Forward" : "Run Backward";
-					anim.PlayAnimation(run, true);
-				}
-			}
-
-		}
-
-		private bool PlayerIsRunningTowardsMouse()
-		{
-
-			bool scaleEquals1 = objToScale.localScale.x == 1;
-			bool goingToRight = _moveInput > 0;
-
-			bool scaleEqualsMinus1 = objToScale.localScale.x == -1;
-			bool goingToLeft = _moveInput < 0;
-
-
-			bool result = (scaleEquals1 && goingToRight) || (scaleEqualsMinus1 && goingToLeft);
-
-			return result;
 		}
 
 		private void Move() => _rb.velocity = new Vector2(_moveInput * settings.MoveSpeed * Time.deltaTime, _rb.velocity.y);

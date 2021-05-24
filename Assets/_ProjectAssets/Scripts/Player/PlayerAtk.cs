@@ -126,7 +126,7 @@ namespace Game.Player
 					transform.DOMoveX((transform.position.x) - player.FacingDirection * settings.KnockbackForce, settings.KnockbackDur);
 
 
-				impulseSource.GenerateImpulse();
+				//impulseSource.GenerateImpulse();
 
 			}
 
@@ -138,9 +138,11 @@ namespace Game.Player
 
 		}
 
+
+		float angle;
 		private void Update()
 		{
-			float angle = Quaternion.Angle(Quaternion.Euler(new Vector3(0, 0, 0)), punchRotator.rotation);
+			//float angle = Quaternion.Angle(Quaternion.Euler(new Vector3(0, 0, 0)), punchRotator.rotation);
 
 			if (_pInput.currentControlScheme.Equals("Gamepad"))
 			{
@@ -151,18 +153,23 @@ namespace Game.Player
 			{
 				Vector3 pos = Camera.main.ScreenToWorldPoint(aimDir);
 				Vector3 dir = pos - transform.position;
+				Debug.Log($"dir.normalized: {dir.normalized} - Magnitude: {dir.normalized.magnitude}", this);
 				angle = SetAngle(dir.normalized);
 			}
 			punchRotator.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 		}
 
-		private float SetAngle(Vector3 dir)
+		private float SetAngle(Vector3 vector3)
 		{
-			float v = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+			float v = Mathf.Atan2(vector3.y, vector3.x) * Mathf.Rad2Deg;
 
-			bool facingLeftAndAimingRight = dir.x < 0 && player.FacingDirection > 0;
-			bool facingRightAndAimingLeft = dir.x > 0 && player.FacingDirection < 0;
+			Debug.Log("v: " + v, this);
+
+			#region Flip the player if aiming behind
+			bool facingLeftAndAimingRight = vector3.x < 0 && player.FacingDirection > 0;
+			bool facingRightAndAimingLeft = vector3.x > 0 && player.FacingDirection < 0;
 			if(facingLeftAndAimingRight || facingRightAndAimingLeft) player?.Flip();
+			#endregion
 			
 			return v;
 		}

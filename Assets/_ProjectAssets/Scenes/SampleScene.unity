@@ -1727,8 +1727,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.00000035762787, y: 0.7099998, z: -10}
+  m_LocalRotation: {x: 0.21486177, y: 0.000000052864625, z: -0.000000011630216, w: 0.9766445}
+  m_LocalPosition: {x: -0.0000012402935, y: 4.7037425, z: -8.153377}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 992697457}
@@ -4206,8 +4206,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2095275263}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.00000035762787, y: 0.7099998, z: -10}
+  m_LocalRotation: {x: 0.21486177, y: 0.000000052864625, z: -0.000000011630216, w: 0.9766445}
+  m_LocalPosition: {x: -0.0000012402935, y: 4.7037425, z: -8.153377}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 557536193}
@@ -4273,7 +4273,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2095275263}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 00b2d199b96b516448144ab30fb26aed, type: 3}
   m_Name: 
@@ -4360,6 +4360,14 @@ PrefabInstance:
       propertyPath: cmCam
       value: 
       objectReference: {fileID: 2095275265}
+    - target: {fileID: 1502925173940081903, guid: c4b6d9b2fceb0be4a94dcb263a0e1c0c, type: 3}
+      propertyPath: useScore
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1502925173940081903, guid: c4b6d9b2fceb0be4a94dcb263a0e1c0c, type: 3}
+      propertyPath: showDebugGizmos
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2735659633818315066, guid: c4b6d9b2fceb0be4a94dcb263a0e1c0c, type: 3}
       propertyPath: cmCam
       value: 
@@ -4368,5 +4376,9 @@ PrefabInstance:
       propertyPath: impulseSource
       value: 
       objectReference: {fileID: 1756400787}
+    - target: {fileID: 6858046714391026616, guid: c4b6d9b2fceb0be4a94dcb263a0e1c0c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4b6d9b2fceb0be4a94dcb263a0e1c0c, type: 3}
