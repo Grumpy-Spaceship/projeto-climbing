@@ -67,6 +67,10 @@ namespace Game.Player
 		private float Swap() => -FacingDirection;
 		private void UpdateAnimations()
 		{
+<<<<<<< HEAD
+=======
+			
+>>>>>>> parent of 897d1b8 (Animations, Screen Shake, New Sprite)
 		//	//if there's no AnimationHandler or is playing a non-looping animation (like an attack), do nothing
 		//	if (!anim || anim.IsPlayingNonLoopingAnimation) return;
 
