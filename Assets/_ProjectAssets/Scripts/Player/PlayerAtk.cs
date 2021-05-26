@@ -158,7 +158,7 @@ namespace Game.Player
 		{
 			float v = Mathf.Atan2(vector3.y, vector3.x) * Mathf.Rad2Deg;
 
-			//Debug.Log("v: " + v, this);
+			Debug.Log("v: " + v, this);
 
 			#region Flip the player if aiming behind
 			bool facingLeftAndAimingRight = vector3.x < 0 && player.FacingDirection > 0;
