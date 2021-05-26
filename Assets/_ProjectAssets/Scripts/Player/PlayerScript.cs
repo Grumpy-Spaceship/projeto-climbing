@@ -67,6 +67,7 @@ namespace Game.Player
 		private float Swap() => -FacingDirection;
 		private void UpdateAnimations()
 		{
+			
 		//	//if there's no AnimationHandler or is playing a non-looping animation (like an attack), do nothing
 		//	if (!anim || anim.IsPlayingNonLoopingAnimation) return;
 
