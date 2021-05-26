@@ -140,6 +140,7 @@ MonoBehaviour:
   punchPos: {fileID: 4262145609057531353}
   punchRotator: {fileID: 543106390029660905}
   cmCam: {fileID: 0}
+  impulseSource: {fileID: 6360180593832673844}
 --- !u!114 &8075960494459991718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -258,8 +259,8 @@ MonoBehaviour:
   m_ImpulseDefinition:
     m_ImpulseChannel: 1
     m_RawSignal: {fileID: 11400000, guid: b241f91b9ccf8ff489abf204b30d3112, type: 2}
-    m_AmplitudeGain: 0.75
-    m_FrequencyGain: 1
+    m_AmplitudeGain: 0.2
+    m_FrequencyGain: 0.75
     m_RepeatMode: 0
     m_Randomize: 1
     m_TimeEnvelope:
