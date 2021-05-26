@@ -5,15 +5,24 @@ using UnityEngine;
 public class CreateLevelPiece : MonoBehaviour
 {
 
-    private LevelGenerator levelGenerator;
+	[SerializeField] private GameObject obj = null;
+	private LevelGenerator levelGenerator;
+	private bool destroyObject = false;
 
 	private void Awake() => levelGenerator = FindObjectOfType<LevelGenerator>();
 
 
 	private void OnTriggerEnter2D(Collider2D other)
 	{
-		levelGenerator?.Generate(transform.position);
-		Destroy(gameObject);
+		if (!destroyObject)
+		{
+			levelGenerator?.Generate(transform.position);
+			destroyObject = true;
+			return;
+		}
+
+		if (other.CompareTag("Destroy Level Piece"))
+			Destroy(obj);
 	}
 
 }
