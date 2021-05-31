@@ -307,7 +307,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 2
   groundCheckPos: {fileID: 8609444005239776388}
-  groundCheckDist: 0.25
+  groundCheckDist: 0.5
   moveSpeed: 5
   whatIsGround:
     serializedVersion: 2
