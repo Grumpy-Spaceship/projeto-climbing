@@ -39,7 +39,12 @@ namespace Game.Player
 			_canMove = false;
 			_moveInput = 0;
 		}
-		public void OnJump() => settings.Jump?.JumpPress();
+		public void OnJump()
+		{
+			settings.Jump?.JumpPress();
+			Instantiate(settings.Jump.Particles, feetPos.position, Quaternion.identity);
+		}
+
 		public void OnJumpRelease() => settings.Jump?.JumpRelease();
 		public void OnMove(InputValue value)
 		{
@@ -162,6 +167,7 @@ namespace Game.Player
 	{
 		
 		[SerializeField] private LayerMask whatIsGround = default;
+		[SerializeField] private GameObject particles = null;
 		[SerializeField] public float groundCheckRadius = .25f;
 		[SerializeField] public float jumpForce = 4;
 		[SerializeField] public float jumpTime = 0.35f;
@@ -177,6 +183,7 @@ namespace Game.Player
 		public LayerMask WhatIsGround => whatIsGround;
 		public bool IsJumping => _pressingJump;
 		public bool IsGrounded => _grounded;
+		public GameObject Particles => particles;
 
 		public void DisableJump() => CanJump = false;
 		public void EnableJump() => CanJump = true;
