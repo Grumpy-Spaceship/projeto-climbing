@@ -154,10 +154,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 6858046714391026616}
-  usePrefix: 0
-  useSufix: 0
   prefix: 
+  usePrefix: 0
   sufix: 
+  useSufix: 0
 --- !u!50 &1502925173940081902
 Rigidbody2D:
   serializedVersion: 4
