@@ -56,17 +56,6 @@
             ],
             "bindings": [
                 {
-                    "name": "",
-                    "id": "14021ca8-384a-48a2-ba82-64368c1d142f",
-                    "path": "<Gamepad>/dpad/x",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
                     "name": "AD",
                     "id": "2273df70-bb68-48c0-86f5-1875d9de7d88",
                     "path": "1DAxis",
@@ -156,17 +145,6 @@
                 },
                 {
                     "name": "",
-                    "id": "6b3ec828-4b47-4350-a3b9-39bf0b5e874c",
-                    "path": "<Gamepad>/buttonSouth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Jump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "d4eac30f-e1e2-4d6c-9d9b-29295152ed77",
                     "path": "<Keyboard>/upArrow",
                     "interactions": "",
@@ -189,45 +167,12 @@
                 },
                 {
                     "name": "",
-                    "id": "e42fb1c1-ee8a-4342-a85e-85af5563840e",
-                    "path": "<Gamepad>/buttonSouth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "JumpRelease",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "d254d633-548e-4f70-9bf4-269378abd9be",
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "Punch",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "97708a7d-3bd0-425d-937b-ca13d4f0c977",
-                    "path": "<Gamepad>/buttonWest",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Punch",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "de953fb1-8202-496d-814b-29a348b1ed6a",
-                    "path": "<Gamepad>/dpad/up",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Upwards",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -244,33 +189,11 @@
                 },
                 {
                     "name": "",
-                    "id": "2d653fff-0bc7-4886-9935-2c1d138d73d5",
-                    "path": "<Keyboard>/upArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Upwards",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "610feb12-369a-4214-8f30-489bd9c77629",
                     "path": "<Mouse>/position",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "AimPunch",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "b57a30c6-3293-47dd-be06-d25a6921082f",
-                    "path": "<Gamepad>/rightStick",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
                     "action": "AimPunch",
                     "isComposite": false,
                     "isPartOfComposite": false

@@ -222,6 +222,7 @@ namespace Game.Player
 		public void SetupJumps()
 		{
 			_extraJumps = totalJumps;
+			_pressingJump = false;
 		}
 		public void StopJumpOnCeiling()
 		{

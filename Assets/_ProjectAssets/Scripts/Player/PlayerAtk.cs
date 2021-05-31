@@ -141,28 +141,15 @@ namespace Game.Player
 		float angle;
 		private void Update()
 		{
-			//float angle = Quaternion.Angle(Quaternion.Euler(new Vector3(0, 0, 0)), punchRotator.rotation);
-
-			if (_pInput.currentControlScheme.Equals("Gamepad"))
-			{
-				//TODO: Do Gamepad Rotation (R-Stick)
-				//if(Mathf.Abs(aimDir.x) > 0.1 || Mathf.Abs(aimDir.y) > 0.1) angle = SetAngle(aimDir.normalized);
-			}
-			else
-			{
-				Vector3 pos = Camera.main.ScreenToWorldPoint(aimDir);
-				Vector3 dir = pos - transform.position;
-				Debug.Log($"dir.normalized: {dir.normalized} - Magnitude: {dir.normalized.magnitude}", this);
-				angle = SetAngle(dir.normalized);
-			}
+			Vector3 pos = Camera.main.ScreenToWorldPoint(aimDir);
+			Vector3 dir = pos - transform.position;
+			angle = SetAngle(dir.normalized);
 			punchRotator.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 		}
 
 		private float SetAngle(Vector3 vector3)
 		{
 			float v = Mathf.Atan2(vector3.y, vector3.x) * Mathf.Rad2Deg;
-
-			Debug.Log("v: " + v, this);
 
 			#region Flip the player if aiming behind
 			bool facingLeftAndAimingRight = vector3.x < 0 && player.FacingDirection > 0;
