@@ -1,5 +1,5 @@
 // Maded by Pedro M Marangon
-using NaughtyAttributes;
+using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
 
@@ -19,9 +19,9 @@ namespace Game.Score
 		#endregion
 
 		[SerializeField] private int multiplier = 1;
-		[ShowNonSerializedField] private int score = 0;
-		[SerializeField] private TMP_Text updatedScoreCounter = null;
-		[ShowNonSerializedField] private int maxYPlayer = 0;
+		[SceneObjectsOnly, SerializeField] private TMP_Text updatedScoreCounter = null;
+		[ReadOnly, SerializeField] private int score = 0;
+		[ReadOnly, SerializeField] private int maxYPlayer = 0;
 
 		public string ScoreText => "Score: " + (score*multiplier);
 		public static int Score => instance.score;

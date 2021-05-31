@@ -1,5 +1,5 @@
 ﻿//Maded by Pedro M Marangon
-using NaughtyAttributes;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Game.Movement
@@ -11,13 +11,13 @@ namespace Game.Movement
 		public bool IsCustomDir() => direction == Vector2Dir.Custom;
 		public bool IsRandomDir() => direction == Vector2Dir.Random;
 
+		[EnumToggleButtons, SerializeField] protected UpdateType updateType = UpdateType.Update;
+		[EnumPaging, SerializeField] protected Vector2Dir direction = Vector2Dir.Up;
+		[ShowIf("@direction == Vector2Dir.Custom"), SerializeField] protected Vector2 vectorDir = Vector2.zero;
+		[ShowIf("@direction == Vector2Dir.Random"), ReadOnly, SerializeField] protected Vector2 randomDir = Vector2.zero;
+		[EnumToggleButtons, SerializeField] protected Space movementBasedOn = Space.Self;
 		public float speed;
-		[SerializeField] protected UpdateType updateType = UpdateType.Update;
-		[SerializeField] protected Vector2Dir direction = Vector2Dir.Up;
-		[ShowIf("IsCustomDir"), SerializeField] protected Vector2 vectorDir = Vector2.zero;
-		[ShowIf("IsRandomDir"), ShowNonSerializedField] protected Vector2 randomDir = Vector2.zero;
-		[SerializeField] protected Space movementBasedOn = Space.Self;
-		public bool canMove;
+		[HorizontalGroup("Booleans")] public bool canMove;
 
 		protected Vector2 GetDir()
 		{

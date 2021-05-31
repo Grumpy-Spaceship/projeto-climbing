@@ -1,5 +1,6 @@
 // Maded by Pedro M Marangon
 using Game.Score;
+using Sirenix.OdinInspector;
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -9,11 +10,11 @@ namespace Game.Player
 
 	public class PlayerScript : MonoBehaviour
 	{
-		[SerializeField] private Transform feetPos = null;
-		[SerializeField] private Transform objToScale = null;
-		[SerializeField] private PlayerSettings settings = null;
-		[SerializeField] private AnimationHandler anim = null;
-		[SerializeField] private bool showDebugGizmos = false, useScore = true;
+		[TabGroup("References"), ChildGameObjectsOnly, SerializeField] private Transform feetPos = null;
+		[TabGroup("References"), ChildGameObjectsOnly, SerializeField] private Transform objToScale = null;
+		[TabGroup("Settings"), HideLabel, SerializeField] private PlayerSettings settings = null;
+		[TabGroup("Settings"), HideLabel, SerializeField] private AnimationHandler anim = null;
+		[TabGroup("Options"), SerializeField] private bool showDebugGizmos = false, useScore = true;
 		private float _moveInput;
 		private bool _canMove;
 

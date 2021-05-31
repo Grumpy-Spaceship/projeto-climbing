@@ -5,7 +5,7 @@ using UnityEngine;
 public class CreateLevelPiece : MonoBehaviour
 {
 
-	[SerializeField] private GameObject obj = null;
+	[SerializeField] private GameObject levelPieceToDestroy = null;
 	private LevelGenerator levelGenerator;
 	private bool destroyObject = false;
 
@@ -22,7 +22,7 @@ public class CreateLevelPiece : MonoBehaviour
 		}
 
 		if (other.CompareTag("Destroy Level Piece"))
-			Destroy(obj);
+			Destroy(levelPieceToDestroy);
 	}
 
 }

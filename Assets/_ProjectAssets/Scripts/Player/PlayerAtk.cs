@@ -2,7 +2,7 @@
 using Cinemachine;
 using DG.Tweening;
 using Game.Health;
-using NaughtyAttributes;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,11 +11,11 @@ namespace Game.Player
 	[RequireComponent(typeof(PlayerScript))]
 	public class PlayerAtk : MonoBehaviour
 	{
-		[SerializeField] private PlayerSettings settings = null;
-		[Required, SerializeField] private PlayerScript player;
-		[SerializeField] private Transform punchPos = null, punchRotator = null;
-		[Required, SerializeField] private CinemachineVirtualCamera cmCam;
-		[SerializeField] private CinemachineImpulseSource impulseSource = null;
+		[BoxGroup("Player"), SerializeField] private PlayerSettings settings = null;
+		[ChildGameObjectsOnly, BoxGroup("Player"), Required, SerializeField] private PlayerScript player;
+		[ChildGameObjectsOnly, FoldoutGroup("Punch transforms"), SerializeField] private Transform punchPos = null, punchRotator = null;
+		[SceneObjectsOnly, FoldoutGroup("External Components"), Required, SerializeField] private CinemachineVirtualCamera cmCam;
+		[ChildGameObjectsOnly, FoldoutGroup("External Components"), SerializeField] private CinemachineImpulseSource impulseSource = null;
 		private Rigidbody2D _rb;
 		private CinemachineFramingTransposer transposer;
 		private PlayerInput _pInput;

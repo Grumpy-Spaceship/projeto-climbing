@@ -1,5 +1,5 @@
 ﻿// Maded by Pedro M Marangon
-using NaughtyAttributes;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Game
@@ -9,10 +9,10 @@ namespace Game
 	{
 
 		[Required, SerializeField] private Animator animator = null;
-		[SerializeField] private bool usePrefix = false;
-		[SerializeField] private bool useSufix = false;
-		[ShowIf("usePrefix"), SerializeField] private string prefix = "";
-		[ShowIf("useSufix"), SerializeField] private string sufix = "";
+		[HorizontalGroup("Prefix"), EnableIf("usePrefix"), SerializeField] private string prefix = "";
+		[HideLabel, HorizontalGroup("Prefix"), SerializeField] private bool usePrefix = false;
+		[HorizontalGroup("Sufix"), EnableIf("useSufix"), SerializeField] private string sufix = "";
+		[HideLabel, HorizontalGroup("Sufix"), SerializeField] private bool useSufix = false;
 
 
 		public bool IsPlayingNonLoopingAnimation { get; private set; }

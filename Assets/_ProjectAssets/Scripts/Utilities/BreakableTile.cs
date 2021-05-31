@@ -1,7 +1,7 @@
 // Maded by Pedro M Marangon
 using Game.Health;
 using Game.Score;
-using NaughtyAttributes;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Game
@@ -10,10 +10,11 @@ namespace Game
 	public class BreakableTile : MonoBehaviour, IDamageable
 	{
 
-		[MinValue(1),MaxValue(10),SerializeField] private int maxHP;
+
+		[FoldoutGroup("Health"), Min(0), MaxValue(10), SerializeField] private int maxHP;
+		[FoldoutGroup("Health"), ProgressBar(0, "maxHP", r: 1, g: .2f, b: .3f), HideLabel, ReadOnly, SerializeField] private int hp;
 		[MinValue(0), SerializeField] private int scoreAmnt = 1;
-		[SerializeField] private SpriteRenderer breakRend;
-		private int hp;
+		[ChildGameObjectsOnly, SerializeField] private SpriteRenderer breakRend;
 
 		public int HP => hp;
 		public int MaxHP => throw new System.NotImplementedException();

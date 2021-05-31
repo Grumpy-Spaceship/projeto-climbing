@@ -8,7 +8,7 @@ namespace Game.Player
 	{
 
 		[SerializeField] private PlayerScript playerControls = null;
-		[SerializeField] private PlayerAtk playerCombat = null;
+		//[SerializeField] private PlayerAtk playerCombat = null;
 		[SerializeField] private AnimationHandler animationHandler = null;
 		//	[SerializeField] private PlayerHealth playerHealth = null;
 

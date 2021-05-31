@@ -1,4 +1,5 @@
 // Maded by Pedro M Marangon
+using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,7 +8,8 @@ namespace Game.Levels
 	public class LevelGenerator : MonoBehaviour
 	{
 		[SerializeField] private float distance;
-		[SerializeField] private Transform confiner;
+		[SceneObjectsOnly, SerializeField] private Transform confiner;
+		[AssetList(AutoPopulate = true, Path = "/_ProjectAssets/Prefabs/LevelPieces/RandomlySelected")]
 		[SerializeField] private List<GameObject> levelPieces = new List<GameObject>();
 
 		public void Generate(Vector3 pos)

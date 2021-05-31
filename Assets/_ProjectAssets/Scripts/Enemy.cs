@@ -1,22 +1,22 @@
 // Maded by Pedro M Marangon
 using Game.Health;
 using Game.Player;
+using Sirenix.OdinInspector;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 namespace Game.Enemies
 {
 	public class Enemy : MonoBehaviour, IDamageable
 	{
-		[SerializeField] private int maxHealth = 2;
-		[SerializeField] private Transform groundCheckPos;
-		[SerializeField] private float groundCheckDist = 0.5f;
+		[TabGroup("Health"), SerializeField] private int maxHealth = 2;
+		[TabGroup("Health"), ProgressBar(0,"maxHealth",r: 1, g: .2f, b: .3f), HideLabel, ReadOnly, SerializeField]private int health = 0;
+		[TabGroup("Ground Check"), ChildGameObjectsOnly, SerializeField] private Transform groundCheckPos;
+		[TabGroup("Ground Check"), SerializeField] private float groundCheckDist = 0.5f;
+		[TabGroup("Ground Check"), SerializeField] private LayerMask whatIsGround = default;
 		[SerializeField] private float moveSpeed = 5;
-		[SerializeField] private LayerMask whatIsGround = default;
 		private Rigidbody2D _rb;
 		private Vector3 baseScale;
 		private float facingDir = 1;
-		private int health = 0;
 
 		public int HP => health;
 		public int MaxHP => maxHealth;

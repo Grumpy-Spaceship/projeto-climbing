@@ -1,5 +1,5 @@
 ﻿//Maded by Pedro M Marangon
-using NaughtyAttributes;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Game.Movement
@@ -7,8 +7,8 @@ namespace Game.Movement
 	public class TranslateWithVector : VectorMovement
 	{
 		
-		[ShowIf("IsRandomDir"), SerializeField] private bool updateRandomDir = false;
-		[ShowIf(EConditionOperator.And, "IsRandomDir", "updateRandomDir"),Range(0.1f,5f), SerializeField] private float timeToChangeDir = 2f;
+		[HorizontalGroup("Booleans"), ShowIf("@direction == Vector2Dir.Random"), SerializeField] private bool updateRandomDir = false;
+		[ShowIf("@direction == Vector2Dir.Random && updateRandomDir"),Range(0.1f,5f), SerializeField] private float timeToChangeDir = 2f;
 
 		protected override void Awake()
 		{
