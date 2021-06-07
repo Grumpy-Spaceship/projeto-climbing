@@ -305,7 +305,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0941e73a94b9e4b49858444bcdcf1a85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 5
+  maxHealth: 3
   health: 0
   groundCheckPos: {fileID: 8609444005239776388}
   groundCheckDist: 0.5

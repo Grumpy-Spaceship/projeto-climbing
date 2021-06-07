@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bf4e6f523164c8443880084f06c7210e, type: 3}
-  m_Name: Basic Player
+  m_Name: PerinChanges
   m_EditorClassIdentifier: 
-  moveSpeed: 400
+  moveSpeed: 350
   jump:
     whatIsGround:
       serializedVersion: 2
@@ -29,8 +29,8 @@ MonoBehaviour:
     m_Bits: 321
   punchRadiusDetection: 0.62
   punchGraphicShowTime: 0.1
-  slowGravity: 0.25
-  punchInAirStop: 0.25
+  slowGravity: 0.05
+  punchInAirStop: 0.5
   punchCooldown: 0
   upPos: {x: 0, y: 1.5}
   normalPos: {x: 1, y: 0}

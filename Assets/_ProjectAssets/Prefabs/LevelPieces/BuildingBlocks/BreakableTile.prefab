@@ -210,7 +210,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 382e3287dcd0b91429969466fee083fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 4
+  maxHP: 2
+  hp: 0
   scoreAmnt: 1
   breakRend: {fileID: 3348508911501631532}
 --- !u!61 &8291420431210037002
