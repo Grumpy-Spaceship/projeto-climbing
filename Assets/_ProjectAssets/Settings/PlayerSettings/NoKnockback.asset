@@ -12,23 +12,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf4e6f523164c8443880084f06c7210e, type: 3}
   m_Name: NoKnockback
   m_EditorClassIdentifier: 
+  moveSpeed: 400
   jump:
     whatIsGround:
       serializedVersion: 2
       m_Bits: 65
     particles: {fileID: 6927198434680678185, guid: aaab04446aa76d24b8ff6695364037dd, type: 3}
+    particles_Breakable: {fileID: 2297747462911108201, guid: 6354167bbeb46a64396a425b62c3b96c, type: 3}
     groundCheckRadius: 0.33
     jumpForce: 20
     jumpTime: 0.25
     totalJumps: 1
   knockbackDur: 0
   knockForce: 0
-  moveSpeed: 400
   breakableTileMask:
     serializedVersion: 2
     m_Bits: 321
   punchRadiusDetection: 0.62
   punchGraphicShowTime: 0.1
+  slowGravity: 0.25
   punchInAirStop: 0.25
   punchCooldown: 0
   upPos: {x: 0, y: 1.5}

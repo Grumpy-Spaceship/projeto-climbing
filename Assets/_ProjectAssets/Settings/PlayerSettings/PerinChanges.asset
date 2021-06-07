@@ -18,6 +18,7 @@ MonoBehaviour:
       serializedVersion: 2
       m_Bits: 65
     particles: {fileID: 6927198434680678185, guid: aaab04446aa76d24b8ff6695364037dd, type: 3}
+    particles_Breakable: {fileID: 2297747462911108201, guid: 6354167bbeb46a64396a425b62c3b96c, type: 3}
     groundCheckRadius: 0.33
     jumpForce: 20
     jumpTime: 0.25

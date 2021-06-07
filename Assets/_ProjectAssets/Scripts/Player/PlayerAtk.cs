@@ -77,6 +77,7 @@ namespace Game.Player
 		}
 		private void AirPunch()
 		{
+			Debug.Log("Aa", this);
 			var vel = _rb.velocity;
 			Sequence s = DOTween.Sequence();
 			//Configuracoes iniciais
@@ -116,9 +117,9 @@ namespace Game.Player
 
 			if (cols.Length > 0)
 			{
-				CapsuleCollider2D caps = GetComponent<CapsuleCollider2D>();
+				CircleCollider2D caps = GetComponent<CircleCollider2D>();
 				Vector2 pos = transform.position;
-				pos.x -= player.FacingDirection * caps.size.x;
+				pos.x -= player.FacingDirection * caps.radius;
 
 				Collider2D[] colliderBehind = Physics2D.OverlapBoxAll(pos, Vector2.up + (Vector2.right*.5f), 0);
 

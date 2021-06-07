@@ -43,7 +43,9 @@ namespace Game.Player
 		}
 		public void OnJump()
 		{
-			if(settings.Jump.IsGrounded) Instantiate(settings.Jump.Particles, feetPos.position, Quaternion.identity);
+			if(settings.Jump.IsGrounded)
+				Instantiate(settings.Jump.GetParticles(feetPos), feetPos.position, Quaternion.identity);
+			
 			settings.Jump?.JumpPress();
 		}
 
@@ -180,6 +182,7 @@ namespace Game.Player
 		
 		[SerializeField] private LayerMask whatIsGround = default;
 		[SerializeField] private GameObject particles = null;
+		[SerializeField] private GameObject particles_Breakable = null;
 		[SerializeField] public float groundCheckRadius = .25f;
 		[SerializeField] public float jumpForce = 4;
 		[SerializeField] public float jumpTime = 0.35f;
@@ -195,9 +198,16 @@ namespace Game.Player
 		public LayerMask WhatIsGround => whatIsGround;
 		public bool IsJumping => _pressingJump;
 		public bool IsGrounded => _grounded;
-		public GameObject Particles => particles;
-
 		public void DisableJump() => CanJump = false;
+
+		public GameObject GetParticles(Transform feetPos)
+		{
+			Collider2D hit = Physics2D.OverlapCircle(feetPos.position, groundCheckRadius, whatIsGround);
+
+			if (hit.TryGetComponent<BreakableTile>(out var _)) return particles_Breakable;
+			else return particles;
+		}
+
 		public void EnableJump() => CanJump = true;
 		public void JumpLogic(ref Rigidbody2D rb, Transform feetPos)
 		{
