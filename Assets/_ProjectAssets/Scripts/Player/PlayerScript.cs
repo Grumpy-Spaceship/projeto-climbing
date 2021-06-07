@@ -1,5 +1,6 @@
 // Maded by Pedro M Marangon
 using Game.Score;
+using PedroUtilities;
 using Sirenix.OdinInspector;
 using System;
 using UnityEngine;
@@ -43,7 +44,7 @@ namespace Game.Player
 		public void OnJump()
 		{
 			settings.Jump?.JumpPress();
-			Instantiate(settings.Jump.Particles, feetPos.position, Quaternion.identity);
+			if(!settings.Jump.IsJumping) Instantiate(settings.Jump.Particles, feetPos.position, Quaternion.identity);
 		}
 
 		public void OnJumpRelease() => settings.Jump?.JumpRelease();
@@ -79,7 +80,7 @@ namespace Game.Player
 			if (!anim || anim.IsPlayingNonLoopingAnimation) return;
 
 			//JUMP/FALLING ANIMATION
-			if (settings.Jump.IsJumping || _rb.velocity.y < 0)
+			if (settings.Jump.IsJumping || _rb.velocity.y < -0.05f)
 			{
 				anim.PlayAnimation("Jump", true);
 			}
@@ -159,6 +160,16 @@ namespace Game.Player
 			if (!showDebugGizmos) return;
 
 			settings.Jump?.DrawGizmos(feetPos);
+		}
+		private void OnCollisionEnter2D(Collision2D other)
+		{
+			if (other.gameObject.IsInsideLayerMask(settings.Jump.WhatIsGround) &&
+				other.transform.position.y < feetPos.position.y)
+			{
+				StopYMovement();
+				OnJumpRelease();
+				anim.PlayAnimation("Idle", true);
+			}
 		}
 	}
 

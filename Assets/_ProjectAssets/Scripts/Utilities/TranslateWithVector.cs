@@ -7,8 +7,8 @@ namespace Game.Movement
 	public class TranslateWithVector : VectorMovement
 	{
 		
-		[HorizontalGroup("Booleans"), ShowIf("@direction == Vector2Dir.Random"), SerializeField] private bool updateRandomDir = false;
-		[ShowIf("@direction == Vector2Dir.Random && updateRandomDir"),Range(0.1f,5f), SerializeField] private float timeToChangeDir = 2f;
+		[TabGroup("Movement"), ShowIf("@direction == Vector2Dir.Random"), SerializeField] private bool updateRandomDir = false;
+		[TabGroup("Movement"), ShowIf("@direction == Vector2Dir.Random && updateRandomDir"),Range(0.1f,5f), SerializeField] private float timeToChangeDir = 2f;
 
 		protected override void Awake()
 		{

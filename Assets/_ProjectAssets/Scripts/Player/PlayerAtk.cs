@@ -85,7 +85,7 @@ namespace Game.Player
 				isPunching = true;
 				canPunch = false;
 				settings.Jump.DisableJump();
-				_rb.gravityScale = 0.25f;
+				_rb.gravityScale = settings.SlowGravity;
 				_rb.velocity = Vector2.zero;
 			});
 			//FALCON PUNCH
@@ -105,7 +105,7 @@ namespace Game.Player
 				settings.Jump.EnableJump();
 			});
 			//Cooldown
-			s.AppendInterval(settings.PunchCooldown);
+			//s.AppendInterval(settings.PunchCooldown);
 			s.AppendCallback(() => canPunch = true);
 		}
 		public void Punch()

@@ -14,6 +14,7 @@ namespace Game.Player
 		[TabGroup("New Group","Punch"), SerializeField] private LayerMask breakableTileMask =  1 << 1;
 		[TabGroup("New Group","Punch"), SerializeField] private float punchRadiusDetection = 0.5f;
 		[TabGroup("New Group","Punch"), SerializeField] private float punchGraphicShowTime = 0.1f;
+		[TabGroup("New Group","Punch"), SerializeField] private float slowGravity = 0.25f;
 		[TabGroup("New Group","Punch"), SerializeField] private float punchInAirStop = .2f, punchCooldown = 1f;
 		[TabGroup("New Group","Punch"), SerializeField] private Vector2 upPos = default, normalPos = default;
 		[TabGroup("New Group", "Cinemachine"), Range(0,1), SerializeField] private float upScreenY = 0.5f;
@@ -33,9 +34,10 @@ namespace Game.Player
 		public float StopTimeWhenPunchingAir => punchInAirStop;
 		public float PunchCooldown => punchCooldown;
 		public float PunchGFXShowTime => punchGraphicShowTime;
+		public float PunchRadiusDetection => punchRadiusDetection;
+		public float SlowGravity => slowGravity;
 		public Vector2 PunchUpPos => upPos;
 		public Vector2 PunchNormalPos => normalPos;
-		public float PunchRadiusDetection => punchRadiusDetection;
 		public LayerMask BreakableTileMask => breakableTileMask;
 
 		public float KnockbackDur => knockbackDur;

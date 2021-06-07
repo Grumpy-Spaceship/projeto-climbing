@@ -1,13 +1,15 @@
 ﻿//Maded by Pedro M Marangon
 using Game.Player;
 using Game.Score;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Game.Movement
 {
 	public class Lava : TranslateWithVector
 	{
-		[Range(0,1), SerializeField] private float velocityDecreaser = 0.5f;
+		[TabGroup("Lava"), Range(0,1), SerializeField] private float velocityDecreaser = 0.5f;
+		[TabGroup("Lava"), SerializeField] private int minimumScoreToRise = 50;
 		private Transform _t;
 		private PlayerScript _player;
 
@@ -23,7 +25,7 @@ namespace Game.Movement
 		{
 			base.Update();
 
-			canMove = PlayerScore.Score > 0;
+			canMove = PlayerScore.Score > minimumScoreToRise;
 		}
 
 		protected override void MoveIfCanTranslateAnd(bool correctTypeOfUpdate)

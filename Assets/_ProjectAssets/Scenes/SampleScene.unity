@@ -450,7 +450,7 @@ GameObject:
   - component: {fileID: 151273058}
   - component: {fileID: 151273060}
   - component: {fileID: 151273059}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BaseGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -851,6 +851,7 @@ MonoBehaviour:
   updateRandomDir: 0
   timeToChangeDir: 2
   velocityDecreaser: 0.6
+  minimumScoreToRise: 5
 --- !u!50 &368321177
 Rigidbody2D:
   serializedVersion: 4
@@ -1074,7 +1075,7 @@ GameObject:
   m_Component:
   - component: {fileID: 519485030}
   - component: {fileID: 519485031}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BaseGround_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2883,7 +2884,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1449968737}
   - component: {fileID: 1449968738}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BaseGround_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3030,7 +3031,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distance: 20
   confiner: {fileID: 1496464706}
-  levelPieces: []
+  levelPieces:
+  - {fileID: 8177629319635370466, guid: df329465d91157f489f974ed97a31474, type: 3}
+  - {fileID: 8177629319635370466, guid: f09a4596c2368aa41b4dd4b3e9f5c103, type: 3}
 --- !u!1 &1484419780
 GameObject:
   m_ObjectHideFlags: 0
@@ -3333,7 +3336,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1793723470}
   - component: {fileID: 1793723471}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BaseGround_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}

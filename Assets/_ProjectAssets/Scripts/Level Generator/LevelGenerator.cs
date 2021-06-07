@@ -9,12 +9,11 @@ namespace Game.Levels
 	{
 		[SerializeField] private float distance;
 		[SceneObjectsOnly, SerializeField] private Transform confiner;
-		[AssetList(AutoPopulate = true, Path = "/_ProjectAssets/Prefabs/LevelPieces/RandomlySelected")]
 		[SerializeField] private List<GameObject> levelPieces = new List<GameObject>();
 
 		public void Generate(Vector3 pos)
 		{
-			GameObject levelP = levelPieces[Random.Range(0, levelPieces.Count)];
+			GameObject levelP = levelPieces[Random.Range(0, levelPieces.Count-1)];
 			Vector3 position = pos + (Vector3.up * distance);
 			Instantiate(levelP, position, Quaternion.identity);
 			confiner.position = position;

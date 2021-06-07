@@ -11,13 +11,13 @@ namespace Game.Movement
 		public bool IsCustomDir() => direction == Vector2Dir.Custom;
 		public bool IsRandomDir() => direction == Vector2Dir.Random;
 
-		[EnumToggleButtons, SerializeField] protected UpdateType updateType = UpdateType.Update;
-		[EnumPaging, SerializeField] protected Vector2Dir direction = Vector2Dir.Up;
-		[ShowIf("@direction == Vector2Dir.Custom"), SerializeField] protected Vector2 vectorDir = Vector2.zero;
-		[ShowIf("@direction == Vector2Dir.Random"), ReadOnly, SerializeField] protected Vector2 randomDir = Vector2.zero;
-		[EnumToggleButtons, SerializeField] protected Space movementBasedOn = Space.Self;
-		public float speed;
-		[HorizontalGroup("Booleans")] public bool canMove;
+		[TabGroup("Movement"), EnumToggleButtons, SerializeField] protected UpdateType updateType = UpdateType.Update;
+		[TabGroup("Movement"), EnumPaging, SerializeField] protected Vector2Dir direction = Vector2Dir.Up;
+		[TabGroup("Movement"), ShowIf("@direction == Vector2Dir.Custom"), SerializeField] protected Vector2 vectorDir = Vector2.zero;
+		[TabGroup("Movement"), ShowIf("@direction == Vector2Dir.Random"), ReadOnly, SerializeField] protected Vector2 randomDir = Vector2.zero;
+		[TabGroup("Movement"), EnumToggleButtons, SerializeField] protected Space movementBasedOn = Space.Self;
+		[TabGroup("Movement")] public float speed;
+		[TabGroup("Movement")] public bool canMove;
 
 		protected Vector2 GetDir()
 		{
