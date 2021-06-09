@@ -1,4 +1,5 @@
 // Maded by Pedro M Marangon
+using DG.Tweening;
 using Game.Score;
 using PedroUtilities;
 using Sirenix.OdinInspector;
@@ -67,8 +68,18 @@ namespace Game.Player
 		{
 			//Set correct direction
 			objToScale.localScale = new Vector3(Swap(), objToScale.localScale.y, 1);
-			if (FacingDirection == 1) arm.localPosition = punchRPos.localPosition;
-			else arm.localPosition = punchLPos.localPosition;
+			if (FacingDirection == 1)
+			{
+				arm.localPosition = punchRPos.localPosition;
+				arm.GetChild(0).localScale = Vector3.one * 1.15f;
+				arm.GetChild(0).DOLocalRotate(Vector3.forward * -11.75f, 0);
+			}
+			else
+			{
+				arm.localPosition = punchLPos.localPosition;
+				arm.GetChild(0).localScale = new Vector3(1.15f, -1.15f, 1.15f);
+				arm.GetChild(0).DOLocalRotate(Vector3.forward * 11.75f, 0);
+			}
 		}
 
 		private void FixSpiderManSyndrome()
