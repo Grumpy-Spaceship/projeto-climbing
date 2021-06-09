@@ -13,6 +13,9 @@ namespace Game.Player
 	{
 		[TabGroup("References"), ChildGameObjectsOnly, SerializeField] private Transform feetPos = null;
 		[TabGroup("References"), ChildGameObjectsOnly, SerializeField] private Transform objToScale = null;
+		[TabGroup("References"), ChildGameObjectsOnly, SerializeField] private Transform punchLPos = null;
+		[TabGroup("References"), ChildGameObjectsOnly, SerializeField] private Transform punchRPos = null;
+		[TabGroup("References"), ChildGameObjectsOnly, SerializeField] private Transform arm = null;
 		[TabGroup("Settings"), HideLabel, SerializeField] private PlayerSettings settings = null;
 		[TabGroup("Settings"), HideLabel, SerializeField] private AnimationHandler anim = null;
 		[TabGroup("Options"), SerializeField] private bool showDebugGizmos = false, useScore = true;
@@ -61,6 +64,8 @@ namespace Game.Player
 		{
 			//Set correct direction
 			objToScale.localScale = new Vector3(Swap(), objToScale.localScale.y, 1);
+			if (FacingDirection == 1) arm.localPosition = punchRPos.localPosition;
+			else arm.localPosition = punchLPos.localPosition;
 		}
 
 		private void FixSpiderManSyndrome()
