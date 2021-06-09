@@ -46,9 +46,12 @@ namespace Game.Player
 		}
 		public void OnJump()
 		{
-			if(settings.Jump.IsGrounded)
-				Instantiate(settings.Jump.GetParticles(feetPos), feetPos.position, Quaternion.identity);
-			
+			if (settings.Jump.IsGrounded)
+			{
+				GameObject particles = settings.Jump.GetParticles(feetPos);
+				if(particles) Instantiate(particles, feetPos.position, Quaternion.identity);
+			}
+
 			settings.Jump?.JumpPress();
 		}
 

@@ -42,7 +42,7 @@ namespace Game.Player
 		{
 			if (!canPunch) return;
 
-			punchPos.localPosition = settings.PunchNormalPos;
+			//punchPos.localPosition = settings.PunchNormalPos;
 			ProcessPunch();
 		}
 		public void OnAimPunch(InputValue v)
