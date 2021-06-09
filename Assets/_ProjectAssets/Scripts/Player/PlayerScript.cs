@@ -209,6 +209,9 @@ namespace Game.Player
 		{
 			Collider2D hit = Physics2D.OverlapCircle(feetPos.position, groundCheckRadius, whatIsGround);
 
+
+			if (!hit) return null;
+
 			if (hit.TryGetComponent<BreakableTile>(out var _)) return particles_Breakable;
 			else return particles;
 		}

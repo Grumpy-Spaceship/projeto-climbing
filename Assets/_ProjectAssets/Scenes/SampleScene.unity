@@ -2290,8 +2290,8 @@ GameObject:
   - component: {fileID: 1216959655}
   - component: {fileID: 1216959656}
   m_Layer: 5
-  m_Name: GameOverScreen
-  m_TagString: Untagged
+  m_Name: YouDiedHUD
+  m_TagString: YouDiedHUD
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3496,5 +3496,9 @@ PrefabInstance:
       propertyPath: cmCam
       value: 
       objectReference: {fileID: 2095275265}
+    - target: {fileID: 2922575711550037410, guid: c4b6d9b2fceb0be4a94dcb263a0e1c0c, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4b6d9b2fceb0be4a94dcb263a0e1c0c, type: 3}

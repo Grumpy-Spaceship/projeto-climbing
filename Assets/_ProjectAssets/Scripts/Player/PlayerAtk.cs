@@ -77,7 +77,6 @@ namespace Game.Player
 		}
 		private void AirPunch()
 		{
-			Debug.Log("Aa", this);
 			var vel = _rb.velocity;
 			Sequence s = DOTween.Sequence();
 			//Configuracoes iniciais
