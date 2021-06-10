@@ -52,6 +52,14 @@
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Selfie",
+                    "type": "Button",
+                    "id": "1ee23dbb-5671-474e-9b17-e7cfeba471d9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -217,6 +225,28 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "JumpRelease",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5b5a544b-a2b2-4d93-b344-913113795125",
+                    "path": "<Keyboard>/rightShift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Selfie",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "50e7225c-7158-4cef-aa24-61d18831dc9a",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Selfie",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -520,17 +550,6 @@
                 {
                     "devicePath": "<Mouse>",
                     "isOptional": true,
-                    "isOR": false
-                }
-            ]
-        },
-        {
-            "name": "Gamepad",
-            "bindingGroup": "Gamepad",
-            "devices": [
-                {
-                    "devicePath": "<Gamepad>",
-                    "isOptional": false,
                     "isOR": false
                 }
             ]

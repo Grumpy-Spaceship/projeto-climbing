@@ -22,6 +22,7 @@ namespace Game.Player
 		[TabGroup("Options"), SerializeField] private bool showDebugGizmos = false, useScore = true;
 		private float _moveInput;
 		private bool _canMove;
+		private bool _canSelfie;
 
 		private Rigidbody2D _rb;
 
@@ -54,6 +55,17 @@ namespace Game.Player
 			}
 
 			settings.Jump?.JumpPress();
+		}
+
+
+		public void CanSelfie(bool can) => _canSelfie = can;
+		public void OnSelfie()
+		{
+			if (!_canSelfie) return;
+
+			//SELFIE
+			Debug.Log("Click, SNAP!!!", this);
+
 		}
 
 		public void OnJumpRelease() => settings.Jump?.JumpRelease();
@@ -137,7 +149,6 @@ namespace Game.Player
 		}
 
 		private void Move() => _rb.velocity = new Vector2(_moveInput * settings.MoveSpeed * Time.deltaTime, _rb.velocity.y);
-
 
 		private void Awake()
 		{
