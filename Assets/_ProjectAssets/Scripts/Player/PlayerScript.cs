@@ -65,7 +65,7 @@ namespace Game.Player
 
 			//SELFIE
 			Debug.Log("Click, SNAP!!!", this);
-
+			SelfieManager.instance.TakeSelfie();
 		}
 
 		public void OnJumpRelease() => settings.Jump?.JumpRelease();

@@ -2,6 +2,7 @@ using PedroUtilities;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 namespace Game
@@ -24,19 +25,26 @@ namespace Game
 		[SerializeField] private SpriteRenderer bgRend;
 		[SerializeField] private List<Sprite> bgSprites;
 		[SerializeField] private Image img;
+		[SerializeField] private CanvasGroup canvasGroup;
 		private bool takeSelfie;
 		private Sprite resultSprite;
 
 		public void TakeSelfie()
 		{
+			Debug.Log("aa", this);
 			cam.targetTexture = RenderTexture.GetTemporary(Screen.width, Screen.height, 16);
 			takeSelfie = true;
 		}
+
+		void OnEnable() => RenderPipelineManager.endCameraRendering += RenderPipelineManager_endCameraRendering;
+		void OnDisable() => RenderPipelineManager.endCameraRendering -= RenderPipelineManager_endCameraRendering;
+		private void RenderPipelineManager_endCameraRendering(ScriptableRenderContext context, Camera camera) => OnPostRender();
 
 		private void OnPostRender()
 		{
 			if (takeSelfie)
 			{
+				Debug.Log("bb", this);
 				takeSelfie = false;
 
 				bgRend.sprite = GetRandom.ElementInList(bgSprites);
@@ -47,6 +55,9 @@ namespace Game
 
 				img.sprite = resultSprite;
 				img.color = Color.white;
+				canvasGroup.alpha = 1;
+				Time.timeScale = 0;
+				Debug.Log("cc", this);
 			}
 		}
 
