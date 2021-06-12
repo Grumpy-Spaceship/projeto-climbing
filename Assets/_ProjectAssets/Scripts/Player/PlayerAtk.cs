@@ -13,6 +13,7 @@ namespace Game.Player
 	{
 		[BoxGroup("Player"), SerializeField] private PlayerSettings settings = null;
 		[ChildGameObjectsOnly, BoxGroup("Player"), Required, SerializeField] private PlayerScript player;
+		[ChildGameObjectsOnly, BoxGroup("Player"), Required, SerializeField] private PlayerSFX sfx;
 		[ChildGameObjectsOnly, FoldoutGroup("Punch transforms"), SerializeField] private Transform punchPos = null, punchRotator = null;
 		[SceneObjectsOnly, FoldoutGroup("External Components"), Required, SerializeField] private CinemachineVirtualCamera cmCam;
 		[ChildGameObjectsOnly, FoldoutGroup("External Components"), SerializeField] private CinemachineImpulseSource impulseSource = null;
@@ -116,6 +117,7 @@ namespace Game.Player
 
 			if (cols.Length > 0)
 			{
+				sfx.PlayBreak();
 				CircleCollider2D caps = GetComponent<CircleCollider2D>();
 				Vector2 pos = transform.position;
 				pos.x -= player.FacingDirection * caps.radius;

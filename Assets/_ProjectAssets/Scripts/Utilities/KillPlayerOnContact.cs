@@ -69,7 +69,7 @@ namespace Game.Player
 		{
 			if (other.TryGetComponent<PlayerScript>(out var p))
 			{
-				Destroy(p.gameObject);
+				p.Kill();
 				if (ui)
 				{
 					ui.alpha = 1;

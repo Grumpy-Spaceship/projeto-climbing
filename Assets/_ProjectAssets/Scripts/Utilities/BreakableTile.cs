@@ -1,6 +1,7 @@
 // Maded by Pedro M Marangon
 using Game.Health;
 using Game.Score;
+using Game.Sounds;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -15,6 +16,7 @@ namespace Game
 		[FoldoutGroup("Health"), ProgressBar(0, "maxHP", r: 1, g: .2f, b: .3f), HideLabel, ReadOnly, SerializeField] private int hp;
 		[MinValue(0), SerializeField] private int scoreAmnt = 1;
 		[ChildGameObjectsOnly, SerializeField] private SpriteRenderer breakRend;
+		[SerializeField] private SFX destroy;
 
 		public int HP => hp;
 		public int MaxHP => throw new System.NotImplementedException();
@@ -27,6 +29,15 @@ namespace Game
 		public void Die()
 		{
 			PlayerScore.AddScore(scoreAmnt);
+
+			AudioSource s = destroy.Source;
+			if (s)
+			{
+				s.transform.parent = null;
+				Destroy(s, 1.5f);
+			}
+			destroy?.PlaySFX();
+
 			Destroy(gameObject);
 		}
 

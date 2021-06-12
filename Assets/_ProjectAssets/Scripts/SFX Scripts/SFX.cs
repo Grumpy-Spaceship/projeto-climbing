@@ -50,6 +50,16 @@ namespace Game.Sounds
 		[SerializeField]
 		private AudioSource audioSource;
 
+
+		public AudioSource Source
+		{
+			get
+			{
+				if (useDefault || audioSource == null) return null;
+				else return audioSource;
+			}
+		}
+
 		private void SFXChange()
 		{
 			//keep the label up to date

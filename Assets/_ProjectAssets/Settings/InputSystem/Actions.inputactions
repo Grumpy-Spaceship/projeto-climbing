@@ -535,6 +535,33 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "AfterSelfie",
+            "id": "356928f0-a15b-491a-b1fe-947e27f77a6d",
+            "actions": [
+                {
+                    "name": "AnyKey",
+                    "type": "Button",
+                    "id": "1e21ed90-c2f1-49d3-85c9-dc6b4016f4d9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "842cb167-3e28-45eb-89ec-4516178432fd",
+                    "path": "<Keyboard>/anyKey",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AnyKey",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

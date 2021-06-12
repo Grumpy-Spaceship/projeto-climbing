@@ -1,14 +1,17 @@
+// Maded by Pedro M Marangon
+using DG.Tweening;
+using Game.Score;
+using Game.Sounds;
 using PedroUtilities;
-using System.Collections;
+using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering;
-using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
-namespace Game
+namespace Game.Selfie
 {
-    public class SelfieManager : MonoBehaviour
-    {
+	public class SelfieManager : MonoBehaviour
+	{
 
 		#region Singleton Setup
 		public static SelfieManager instance;
@@ -21,61 +24,75 @@ namespace Game
 		}
 		#endregion
 
-		[SerializeField] private Camera cam;
-		[SerializeField] private SpriteRenderer bgRend;
-		[SerializeField] private List<Sprite> bgSprites;
-		[SerializeField] private Image img;
-		[SerializeField] private CanvasGroup canvasGroup;
-		private bool takeSelfie;
-		private Sprite resultSprite;
+		[TabGroup("Background"), SerializeField] private SpriteRenderer bgRend;
+		[TabGroup("Background"), SerializeField] private List<Sprite> bgSprites;
+		[TabGroup("UI"), SerializeField] private CanvasGroup flash;
+		[TabGroup("UI"), SerializeField] private GameObject selfieUI;
+		[TabGroup("UI"), SerializeField] private CanvasGroup text;
+		[SerializeField] private PlayerInput player;
+		[TabGroup("Sound"), HideLabel, SerializeField] private SFX camSFX;
+		[SerializeField] private int score;
+		private SelfiePlace _place;
 
-		public void TakeSelfie()
+		public void TakeSelfie(SelfiePlace place)
 		{
-			Debug.Log("aa", this);
-			cam.targetTexture = RenderTexture.GetTemporary(Screen.width, Screen.height, 16);
-			takeSelfie = true;
-		}
+			_place = place;
 
-		void OnEnable() => RenderPipelineManager.endCameraRendering += RenderPipelineManager_endCameraRendering;
-		void OnDisable() => RenderPipelineManager.endCameraRendering -= RenderPipelineManager_endCameraRendering;
-		private void RenderPipelineManager_endCameraRendering(ScriptableRenderContext context, Camera camera) => OnPostRender();
+			bgRend.sprite = GetRandom.ElementInList(bgSprites);
 
-		private void OnPostRender()
-		{
-			if (takeSelfie)
+			Sequence s = DOTween.Sequence();
+
+			s.SetUpdate(true);
+			s.AppendCallback(() =>
 			{
-				Debug.Log("bb", this);
-				takeSelfie = false;
-
-				bgRend.sprite = GetRandom.ElementInList(bgSprites);
-
-				Texture2D rendResult = GetRect(out Rect rect);
-
-				resultSprite = Sprite.Create(rendResult, rect, Vector3.one * 0.5f);
-
-				img.sprite = resultSprite;
-				img.color = Color.white;
-				canvasGroup.alpha = 1;
 				Time.timeScale = 0;
-				Debug.Log("cc", this);
-			}
+				player.enabled = false;
+				camSFX.PlaySFX();
+				PlayerScore.AddScore(score);
+			});
+			s.Append(flash.DOFade(1, 0.1f));
+			s.Append(text.DOFade(0, 0f));
+			s.AppendCallback(() => selfieUI.Activate());
+			s.Append(flash.DOFade(0, 0.1f));
+			s.AppendInterval(1.5f);
+			s.Append(text.DOFade(1, 1f));
+			s.AppendCallback(() =>
+			{
+				player.enabled = true;
+				player.SwitchCurrentActionMap("AfterSelfie");
+			});
 		}
 
-		private Texture2D GetRect(out Rect rect)
+		public void ExitSelfie()
 		{
-			RenderTexture renderTexture = cam.targetTexture;
+			Sequence s = DOTween.Sequence();
 
-			var rendResult = new Texture2D(renderTexture.width, renderTexture.height, TextureFormat.ARGB32, false);
-			rect = new Rect(0, 0, renderTexture.width, renderTexture.height);
-			rendResult.ReadPixels(rect, 0, 0);
+			s.SetUpdate(true);
 
-			return rendResult;
+			s.Append(text.DOFade(0, 0.1f));
+			if (_place) s.AppendCallback(() => Destroy(_place.gameObject));
+			s.AppendCallback(() => selfieUI.Deactivate());
+			s.AppendInterval(.1f);
+			s.AppendCallback(() =>
+			{
+				Time.timeScale = 1;
+				player.SwitchCurrentActionMap("Default");
+			});
 		}
 
 		private void Awake()
 		{
 			InitSingleton();
+
+			InitialSetup();
+
 		}
 
+		private void InitialSetup()
+		{
+			flash.alpha = text.alpha = 0;
+			selfieUI.Deactivate();
+			Time.timeScale = 1;
+		}
 	}
 }

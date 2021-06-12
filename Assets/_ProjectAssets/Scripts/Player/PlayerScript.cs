@@ -1,6 +1,7 @@
 // Maded by Pedro M Marangon
 using DG.Tweening;
 using Game.Score;
+using Game.Selfie;
 using PedroUtilities;
 using Sirenix.OdinInspector;
 using System;
@@ -19,11 +20,12 @@ namespace Game.Player
 		[TabGroup("References"), ChildGameObjectsOnly, SerializeField] private Transform arm = null;
 		[TabGroup("Settings"), HideLabel, SerializeField] private PlayerSettings settings = null;
 		[TabGroup("Settings"), HideLabel, SerializeField] private AnimationHandler anim = null;
+		[TabGroup("Settings"), HideLabel, SerializeField] private PlayerSFX sfx = null;
 		[TabGroup("Options"), SerializeField] private bool showDebugGizmos = false, useScore = true;
 		private float _moveInput;
 		private bool _canMove;
 		private bool _canSelfie;
-
+		private SelfiePlace _place;
 		private Rigidbody2D _rb;
 
 		//Freeze the rotation on Z axis and the X axis position (idle, specially on slope)
@@ -57,16 +59,27 @@ namespace Game.Player
 			settings.Jump?.JumpPress();
 		}
 
+		public void Kill()
+		{
+			sfx?.PlayDeath();
+			Destroy(gameObject);
+		}
 
-		public void CanSelfie(bool can) => _canSelfie = can;
+
+		public void CanSelfie(bool can, SelfiePlace place)
+		{
+			_canSelfie = can;
+			_place = place;
+		}
+
 		public void OnSelfie()
 		{
 			if (!_canSelfie) return;
 
-			//SELFIE
-			Debug.Log("Click, SNAP!!!", this);
-			SelfieManager.instance.TakeSelfie();
+			SelfieManager.instance.TakeSelfie(_place);
 		}
+
+		public void OnAnyKey() => SelfieManager.instance.ExitSelfie();
 
 		public void OnJumpRelease() => settings.Jump?.JumpRelease();
 		public void OnMove(InputValue value)

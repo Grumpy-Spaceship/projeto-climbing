@@ -5,7 +5,7 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
 
-namespace Game
+namespace Game.Selfie
 {
     public class SelfiePlace : MonoBehaviour
 	{
@@ -18,7 +18,7 @@ namespace Game
 		{
 			if (other.TryGetComponent<PlayerScript>(out var player))
 			{
-				player.CanSelfie(true);
+				player.CanSelfie(true, this);
 				//light.pointLightInnerRadius
 				DOVirtual.Float(0, intensity, duration, UpdateLightRadius);
 			}
@@ -30,7 +30,7 @@ namespace Game
 		{
 			if (other.TryGetComponent<PlayerScript>(out var player))
 			{
-				player.CanSelfie(false);
+				player.CanSelfie(false, null);
 				DOVirtual.Float(intensity, 0, duration, UpdateLightRadius);
 			}
 		}

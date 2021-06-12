@@ -42,7 +42,9 @@ namespace Game.Sounds
 
 			if(!audioSource.isPlaying || !waitForFinish)
 			{
-				audioSource.clip = sfx.GetClip();
+				var clip = sfx.GetClip();
+
+				audioSource.clip = clip;
 				audioSource.volume = sfx.volume + Random.Range(-sfx.volumeVariation, sfx.volumeVariation);
 				audioSource.pitch = sfx.pitch + Random.Range(-sfx.pitchVariation, sfx.pitchVariation);
 				audioSource.Play();

@@ -22,8 +22,11 @@ namespace Game.Sounds
 
         public AudioClip GetClip()
 		{
-            if (useListOfClips) return clip;
-            else return GetRandom.ElementInList(clips);
+            AudioClip cl;
+            if (!useListOfClips) cl = clip;
+            else cl =  GetRandom.ElementInList(clips);
+
+			return cl;
 		}
 
     }
