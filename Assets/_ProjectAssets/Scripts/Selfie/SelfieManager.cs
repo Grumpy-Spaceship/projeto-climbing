@@ -70,12 +70,13 @@ namespace Game.Selfie
 			s.SetUpdate(true);
 
 			s.Append(text.DOFade(0, 0.1f));
-			if (_place) s.AppendCallback(() => Destroy(_place.gameObject));
+			if (_place && _place.DestroyOnExit) s.AppendCallback(() => Destroy(_place.gameObject));
 			s.AppendCallback(() => selfieUI.Deactivate());
 			s.AppendInterval(.1f);
 			s.AppendCallback(() =>
 			{
 				Time.timeScale = 1;
+				player.enabled = true;
 				player.SwitchCurrentActionMap("Default");
 			});
 		}
