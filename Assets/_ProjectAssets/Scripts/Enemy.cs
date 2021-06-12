@@ -33,7 +33,9 @@ namespace Game.Enemies
 		{
 			_rb.velocity = new Vector2(moveSpeed * facingDir, _rb.velocity.y);
 
-			if (_rb.velocity.y>=0 && (IsHittingWall() || !IsNearEdge()))
+			bool needToChange = (IsHittingWall() || !IsNearEdge());
+
+			if (_rb.velocity.y>=0 && needToChange)
 			{
 				ChangeDirection();
 			}
