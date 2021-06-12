@@ -52,6 +52,7 @@ namespace Game.Player
 		{
 			if (settings.Jump.IsGrounded)
 			{
+				sfx?.PlayJump();
 				GameObject particles = settings.Jump.GetParticles(feetPos);
 				if(particles) Instantiate(particles, feetPos.position, Quaternion.identity);
 			}
