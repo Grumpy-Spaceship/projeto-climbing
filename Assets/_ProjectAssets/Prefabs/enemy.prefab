@@ -351,7 +351,7 @@ GameObject:
   - component: {fileID: 8609444006207037445}
   - component: {fileID: 7530038026086782032}
   m_Layer: 8
-  m_Name: enemy
+  m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -388,16 +388,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 2
   health: 0
-  rends:
-  - {fileID: 2318407253376218828}
-  - {fileID: 420077865176968663}
-  - {fileID: 2130669544329228660}
-  anim: {fileID: 7530038026086782032}
+  deathParticles: {fileID: 6988246995618695620, guid: fd81e2aba00f00549a1b7b616192e8ee, type: 3}
   groundCheckPos: {fileID: 8609444005239776388}
   groundCheckDist: 0.5
   whatIsGround:
     serializedVersion: 2
     m_Bits: 577
+  anim: {fileID: 7530038026086782032}
   moveSpeed: 1
 --- !u!50 &8609444006207037441
 Rigidbody2D:
@@ -782,28 +779,13 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3721198500319149513, guid: 25cfc4422a3e8754bbdc28cd55ce1dae, type: 3}
   m_PrefabInstance: {fileID: 712255718644388018}
   m_PrefabAsset: {fileID: 0}
---- !u!212 &420077865176968663 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: -8343452282302841499, guid: 25cfc4422a3e8754bbdc28cd55ce1dae, type: 3}
-  m_PrefabInstance: {fileID: 712255718644388018}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &3212224267617357712 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -6523907993951346910, guid: 25cfc4422a3e8754bbdc28cd55ce1dae, type: 3}
   m_PrefabInstance: {fileID: 712255718644388018}
   m_PrefabAsset: {fileID: 0}
---- !u!212 &2318407253376218828 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 3012578092761196158, guid: 25cfc4422a3e8754bbdc28cd55ce1dae, type: 3}
-  m_PrefabInstance: {fileID: 712255718644388018}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &7380053161007213578 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8037034118055165112, guid: 25cfc4422a3e8754bbdc28cd55ce1dae, type: 3}
-  m_PrefabInstance: {fileID: 712255718644388018}
-  m_PrefabAsset: {fileID: 0}
---- !u!212 &2130669544329228660 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 1473759427096388038, guid: 25cfc4422a3e8754bbdc28cd55ce1dae, type: 3}
   m_PrefabInstance: {fileID: 712255718644388018}
   m_PrefabAsset: {fileID: 0}

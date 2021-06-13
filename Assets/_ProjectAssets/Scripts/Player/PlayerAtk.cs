@@ -14,31 +14,21 @@ namespace Game.Player
 		[BoxGroup("Player"), SerializeField] private PlayerSettings settings = null;
 		[ChildGameObjectsOnly, BoxGroup("Player"), Required, SerializeField] private PlayerScript player;
 		[ChildGameObjectsOnly, BoxGroup("Player"), Required, SerializeField] private PlayerSFX sfx;
+		[ChildGameObjectsOnly, BoxGroup("Player"), Required, SerializeField] private AnimationHandler handler;
 		[ChildGameObjectsOnly, FoldoutGroup("Punch transforms"), SerializeField] private Transform punchPos = null, punchRotator = null;
 		[SceneObjectsOnly, FoldoutGroup("External Components"), Required, SerializeField] private CinemachineVirtualCamera cmCam;
 		[ChildGameObjectsOnly, FoldoutGroup("External Components"), SerializeField] private CinemachineImpulseSource impulseSource = null;
-		private Rigidbody2D _rb;
-		private CinemachineFramingTransposer transposer;
-		private PlayerInput _pInput;
+		private Rigidbody2D rb;
 		private bool isPunching = false, canPunch = true;
-		private bool isUpwards = false;
-		private Vector2 aimDir;
-		private float _grScale;
+		private Vector2 aimDir, vel;
+		private float grScale, angle;
 
 		private void Awake()
 		{
-			_rb = GetComponent<Rigidbody2D>();
-			_grScale = _rb.gravityScale;
-			transposer = cmCam.GetCinemachineComponent<CinemachineFramingTransposer>();
-			_pInput = GetComponent<PlayerInput>();
+			rb = GetComponent<Rigidbody2D>();
+			grScale = rb.gravityScale;
 		}
 
-		public void OnUpwards()
-		{
-			isUpwards = !isUpwards;
-			float value = isUpwards ? settings.UpScreenY : settings.NormalScreenY;
-			DOVirtual.Float(transposer.m_ScreenY, value, settings.CamSmoothness, (float v) => transposer.m_ScreenY = v);
-		}
 		public void OnPunch()
 		{
 			if (!canPunch) return;
@@ -52,65 +42,32 @@ namespace Game.Player
 			aimDir = v.Get<Vector2>();
 		}
 
-		private void ProcessPunch()
+		public void StartAirPunch()
 		{
-			if (!settings.Jump.IsGrounded && !isPunching) AirPunch();
-			else GroundPunch();
-		}
-		private void GroundPunch()
-		{
-			Sequence s = DOTween.Sequence();
-			s.AppendCallback(() =>
-			{
-				isPunching = true;
-				canPunch = false;
-				punchPos.GetChild(0).gameObject.SetActive(true);
-			});
-			s.AppendCallback(Punch);
-			s.AppendInterval(settings.PunchGFXShowTime);
-			s.AppendCallback(() =>
-			{
-				punchPos.GetChild(0).gameObject.SetActive(false);
-				isPunching = false;
-			});
-			s.AppendInterval(settings.PunchCooldown);
-			s.AppendCallback(() => canPunch = true);
-		}
-		private void AirPunch()
-		{
-			var vel = _rb.velocity;
+			vel = rb.velocity;
 			vel.y = 0;
-			Sequence s = DOTween.Sequence();
-			//Configuracoes iniciais
-			s.AppendCallback(() =>
-			{
-				isPunching = true;
-				canPunch = false;
-				settings.Jump.DisableJump();
-				_rb.gravityScale = settings.SlowGravity;
-				_rb.velocity = Vector2.zero;
-			});
-			//FALCON PUNCH
-			s.AppendCallback(() =>
-			{
-				punchPos.GetChild(0).gameObject.SetActive(true);
-				Punch();
-			});
-			s.AppendInterval(settings.PunchGFXShowTime);
-			s.AppendCallback(() => punchPos.GetChild(0).gameObject.SetActive(false));
-			s.AppendInterval(settings.StopTimeWhenPunchingAir);
-			s.AppendCallback(() =>
-			{
-				_rb.gravityScale = _grScale;
-				_rb.velocity = vel;
-				isPunching = false;
-				settings.Jump.EnableJump();
-				settings.Jump.JumpRelease();
-			});
-			//Cooldown
-			//s.AppendInterval(settings.PunchCooldown);
-			s.AppendCallback(() => canPunch = true);
+
+			isPunching = true;
+			canPunch = false;
+			settings.Jump.DisableJump();
+			rb.gravityScale = settings.SlowGravity;
+			rb.velocity = Vector2.zero;
 		}
+		public void FinishAirPunch()
+		{
+			rb.gravityScale = grScale;
+			rb.velocity = vel;
+			isPunching = false;
+			settings.Jump.EnableJump();
+			settings.Jump.JumpRelease();
+		}
+		public void StartGroundPunch()
+		{
+			isPunching = true;
+			canPunch = false;
+		}
+		public void FinishGroundPunch() => isPunching = false;
+		public void CanPunch() => canPunch = true;
 		public void Punch()
 		{
 			if (!punchPos || !settings) return;
@@ -141,8 +98,68 @@ namespace Game.Player
 
 		}
 
+		private void ProcessPunch()
+		{
+			if (!settings.Jump.IsGrounded && !isPunching) handler.PlayAnimation("atk-air", false);
+			else handler.PlayAnimation("atk", false); ;
+		}
 
-		float angle;
+		private void GroundPunch()
+		{
+			Sequence s = DOTween.Sequence();
+			s.AppendCallback(() =>
+			{
+				isPunching = true;
+				canPunch = false;
+				punchPos.GetChild(0).gameObject.SetActive(true);
+			});
+			s.AppendCallback(Punch);
+			s.AppendInterval(settings.PunchGFXShowTime);
+			s.AppendCallback(() =>
+			{
+				punchPos.GetChild(0).gameObject.SetActive(false);
+				isPunching = false;
+			});
+			s.AppendInterval(settings.PunchCooldown);
+			s.AppendCallback(() => canPunch = true);
+		}
+		private void AirPunch()
+		{
+			var vel = rb.velocity;
+			vel.y = 0;
+			Sequence s = DOTween.Sequence();
+			//Configuracoes iniciais
+			s.AppendCallback(() =>
+			{
+				isPunching = true;
+				canPunch = false;
+				settings.Jump.DisableJump();
+				rb.gravityScale = settings.SlowGravity;
+				rb.velocity = Vector2.zero;
+			});
+			//FALCON PUNCH
+			s.AppendCallback(() =>
+			{
+				punchPos.GetChild(0).gameObject.SetActive(true);
+				Punch();
+			});
+			s.AppendInterval(settings.PunchGFXShowTime);
+			s.AppendCallback(() => punchPos.GetChild(0).gameObject.SetActive(false));
+			s.AppendInterval(settings.StopTimeWhenPunchingAir);
+			s.AppendCallback(() =>
+			{
+				rb.gravityScale = grScale;
+				rb.velocity = vel;
+				isPunching = false;
+				settings.Jump.EnableJump();
+				settings.Jump.JumpRelease();
+			});
+			//Cooldown
+			//s.AppendInterval(settings.PunchCooldown);
+			s.AppendCallback(() => canPunch = true);
+		}
+
+
 		private void Update()
 		{
 			Vector3 pos = Camera.main.ScreenToWorldPoint(aimDir);
@@ -166,7 +183,7 @@ namespace Game.Player
 
 		private void FixedUpdate()
 		{
-			if (settings.Jump.IsGrounded) _rb.gravityScale = _grScale;
+			if (settings.Jump.IsGrounded) rb.gravityScale = grScale;
 		}
 		private void OnDrawGizmos()
 		{

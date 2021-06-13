@@ -7,27 +7,16 @@ namespace Game.Player
 	public class AnimationSignalsToPlayer : MonoBehaviour
 	{
 
-		[SerializeField] private PlayerScript playerControls = null;
-		//[SerializeField] private PlayerAtk playerCombat = null;
-		[SerializeField] private AnimationHandler animationHandler = null;
-		//	[SerializeField] private PlayerHealth playerHealth = null;
+		[SerializeField] private PlayerAtk atk;
 
 
-		public void PlayFS()
-		{
+		public void StartAirPunch() => atk.StartAirPunch();
+		public void FinishAirPunch() => atk.FinishAirPunch();
+		public void StartGroundPunch() => atk.StartGroundPunch();
+		public void FinishGroundPunch() => atk.FinishGroundPunch();
+		public void CanPunch() => atk.CanPunch();
+		public void Punch() => atk.Punch();
 
-		}
-
-		public void EnableInput()
-		{
-			playerControls?.EnableInput();
-			animationHandler?.PlayAnimation("Idle", true);
-		}
-
-		public void DisableInput()
-		{
-			playerControls.DisableInput();
-		}
 
 	}
 

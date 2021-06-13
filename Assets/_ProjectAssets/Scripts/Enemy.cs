@@ -12,10 +12,11 @@ namespace Game.Enemies
 	{
 		[TabGroup("Health"), SerializeField] private int maxHealth = 2;
 		[TabGroup("Health"), ProgressBar(0,"maxHealth",r: 1, g: .2f, b: .3f), HideLabel, ReadOnly, SerializeField]private int health = 0;
-		[SerializeField] private Animator anim;
+		[TabGroup("Health"), AssetsOnly, SerializeField] private GameObject deathParticles;
 		[TabGroup("Ground Check"), ChildGameObjectsOnly, SerializeField] private Transform groundCheckPos;
 		[TabGroup("Ground Check"), SerializeField] private float groundCheckDist = 0.5f;
 		[TabGroup("Ground Check"), SerializeField] private LayerMask whatIsGround = default;
+		[SerializeField] private Animator anim;
 		[SerializeField] private float moveSpeed = 5;
 		private Rigidbody2D _rb;
 		private Vector3 baseScale;
@@ -93,6 +94,10 @@ namespace Game.Enemies
 			if (health <= 0) Die();
 		}
 
-		public void Die() => Destroy(gameObject);
+		public void Die()
+		{
+			if(deathParticles) Instantiate(deathParticles, transform.position, Quaternion.identity);
+			Destroy(gameObject);
+		}
 	}
 }

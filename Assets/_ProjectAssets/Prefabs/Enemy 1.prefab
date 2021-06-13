@@ -388,12 +388,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 3
   health: 0
-  anim: {fileID: 7530038026086782032}
+  deathParticles: {fileID: 6988246995618695620, guid: da2c0f4c8c5bc4c4d809c556f0ffa888, type: 3}
   groundCheckPos: {fileID: 8609444005239776388}
   groundCheckDist: 0.1
   whatIsGround:
     serializedVersion: 2
     m_Bits: 577
+  anim: {fileID: 7530038026086782032}
   moveSpeed: 5
 --- !u!50 &8609444006207037441
 Rigidbody2D:

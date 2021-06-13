@@ -26,6 +26,8 @@ namespace Game.Selfie
 
 		[TabGroup("Background"), SerializeField] private SpriteRenderer bgRend;
 		[TabGroup("Background"), SerializeField] private List<Sprite> bgSprites;
+		[TabGroup("Poses"), SerializeField] private SpriteRenderer poseRend;
+		[TabGroup("Poses"), SerializeField] private List<Sprite> poseSprites;
 		[TabGroup("UI"), SerializeField] private CanvasGroup flash;
 		[TabGroup("UI"), SerializeField] private GameObject selfieUI;
 		[TabGroup("UI"), SerializeField] private CanvasGroup text;
@@ -43,6 +45,7 @@ namespace Game.Selfie
 			_place = place;
 
 			bgRend.sprite = GetRandom.ElementInList(bgSprites);
+			poseRend.sprite = GetRandom.ElementInList(poseSprites);
 
 			Sequence s = DOTween.Sequence();
 
