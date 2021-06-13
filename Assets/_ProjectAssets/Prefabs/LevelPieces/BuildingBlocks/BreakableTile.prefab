@@ -52,7 +52,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 1.01
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -340,8 +340,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 2
   hp: 0
-  scoreAmnt: 1
-  breakRend: {fileID: 3348508911501631532}
   destroy:
     sfxType: 1
     sfxToPlay: {fileID: 11400000, guid: 6c4bac09174eda443a740379ab02b209, type: 2}
@@ -351,6 +349,9 @@ MonoBehaviour:
     waitToPlay: 1
     useDefault: 0
     audioSource: {fileID: 1896878061662006993}
+  particles: {fileID: 6988246995618695620, guid: 5e1135d8f73f23c4596567d265afedbd, type: 3}
+  scoreAmnt: 1
+  breakRend: {fileID: 3348508911501631532}
 --- !u!61 &8291420431210037002
 BoxCollider2D:
   m_ObjectHideFlags: 0

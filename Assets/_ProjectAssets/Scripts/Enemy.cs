@@ -1,7 +1,9 @@
 // Maded by Pedro M Marangon
+using DG.Tweening;
 using Game.Health;
 using Game.Player;
 using Sirenix.OdinInspector;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Game.Enemies
@@ -10,6 +12,8 @@ namespace Game.Enemies
 	{
 		[TabGroup("Health"), SerializeField] private int maxHealth = 2;
 		[TabGroup("Health"), ProgressBar(0,"maxHealth",r: 1, g: .2f, b: .3f), HideLabel, ReadOnly, SerializeField]private int health = 0;
+		[TabGroup("Health"), SerializeField] private List<SpriteRenderer> rends;
+		[SerializeField] private Animator anim;
 		[TabGroup("Ground Check"), ChildGameObjectsOnly, SerializeField] private Transform groundCheckPos;
 		[TabGroup("Ground Check"), SerializeField] private float groundCheckDist = 0.5f;
 		[TabGroup("Ground Check"), SerializeField] private LayerMask whatIsGround = default;
@@ -75,7 +79,12 @@ namespace Game.Enemies
 			return raycastHit2D;
 		}
 
-		public void Damage(int amnt = 1) => SetHP(health - amnt);
+		public void Damage(int amnt = 1)
+		{
+			SetHP(health - amnt);
+			anim.Play("hit", 1);
+		}
+
 		public void Heal(int amnt = 1) => SetHP(health + amnt);
 
 		public void SetHP(int value)

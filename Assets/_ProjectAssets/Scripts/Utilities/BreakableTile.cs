@@ -14,9 +14,10 @@ namespace Game
 
 		[FoldoutGroup("Health"), Min(0), MaxValue(10), SerializeField] private int maxHP;
 		[FoldoutGroup("Health"), ProgressBar(0, "maxHP", r: 1, g: .2f, b: .3f), HideLabel, ReadOnly, SerializeField] private int hp;
+		[FoldoutGroup("Destruction"), SerializeField] private SFX destroy;
+		[FoldoutGroup("Destruction"), SerializeField] private GameObject particles;
 		[MinValue(0), SerializeField] private int scoreAmnt = 1;
 		[ChildGameObjectsOnly, SerializeField] private SpriteRenderer breakRend;
-		[SerializeField] private SFX destroy;
 
 		public int HP => hp;
 		public int MaxHP => throw new System.NotImplementedException();
@@ -37,6 +38,8 @@ namespace Game
 				Destroy(s, 1.5f);
 			}
 			destroy?.PlaySFX();
+
+			Instantiate(particles, transform.position, transform.rotation);
 
 			Destroy(gameObject);
 		}

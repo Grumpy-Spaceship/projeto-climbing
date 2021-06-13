@@ -79,6 +79,7 @@ namespace Game.Player
 		private void AirPunch()
 		{
 			var vel = _rb.velocity;
+			vel.y = 0;
 			Sequence s = DOTween.Sequence();
 			//Configuracoes iniciais
 			s.AppendCallback(() =>
@@ -104,6 +105,7 @@ namespace Game.Player
 				_rb.velocity = vel;
 				isPunching = false;
 				settings.Jump.EnableJump();
+				settings.Jump.JumpRelease();
 			});
 			//Cooldown
 			//s.AppendInterval(settings.PunchCooldown);
