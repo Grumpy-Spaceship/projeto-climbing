@@ -49,20 +49,15 @@ namespace Game.Player
 
 		#endregion
 
-		[SerializeField] private CanvasGroup ui = null;
+		[SerializeField] private GameObject ui = null;
 		[Tag,SerializeField] private string hudName = "YouDiedHUD";
 
-		public void OnTriggerEnter2D(Collider2D other)
-		{
-			Process(other);
-		}
+		public void OnTriggerEnter2D(Collider2D other) => Process(other);
 
 		private void Process(Collider2D other)
 		{
 			if (other.gameObject.CompareTag("Player"))
-			{
 				WhatToDo(other);
-			}
 		}
 
 		protected virtual void WhatToDo(Collider2D other)
@@ -70,15 +65,11 @@ namespace Game.Player
 			if (other.TryGetComponent<PlayerScript>(out var p))
 			{
 				p.Kill();
-				if (ui)
-				{
-					ui.alpha = 1;
-					ui.interactable = true;
-				}
+				if (ui) ui.transform.GetChild(0).gameObject.SetActive(true);
 				Time.timeScale = 0;
 			}
 		}
 
-		public void FindUI() => ui = GameObject.Find(hudName)?.GetComponentInParent<CanvasGroup>();
+		public void FindUI() => ui = GameObject.Find(hudName);
 	}
 }

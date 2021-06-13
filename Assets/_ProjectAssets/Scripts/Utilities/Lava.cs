@@ -1,7 +1,5 @@
 ﻿//Maded by Pedro M Marangon
 using Game.Player;
-using Game.Score;
-using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Game.Movement
@@ -16,6 +14,8 @@ namespace Game.Movement
 		{
 			_player = FindObjectOfType<PlayerScript>();
 			_t = transform;
+
+			GetComponent<KillPlayerOnContact>().FindUI();
 
 			base.Awake();
 		}

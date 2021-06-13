@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3635a70f97ed6c240803dce9969cd4a6, type: 3}
-  m_Name: Footsteps
+  m_Name: Click
   m_EditorClassIdentifier: 
-  useListOfClips: 1
-  clip: {fileID: 0}
+  useListOfClips: 0
+  clip: {fileID: 8300000, guid: ae4bf4f2eb39c5d4caed5b68bf97d242, type: 3}
   clips:
-  - {fileID: 8300000, guid: ab387de5b3acfcd4b8d42e581973044b, type: 3}
-  - {fileID: 8300000, guid: b7a4b4359ce12dd4cb546d54ef333f77, type: 3}
+  - {fileID: 8300000, guid: 4e508253714e6df44bce186fd797ea5c, type: 3}
+  - {fileID: 8300000, guid: 23445c5779f2de140af3e36932493b34, type: 3}
   volume: 1
-  volumeVariation: 0.2
+  volumeVariation: 0.05
   pitch: 1
   pitchVariation: 0.05

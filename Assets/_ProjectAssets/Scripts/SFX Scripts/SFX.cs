@@ -9,46 +9,27 @@ namespace Game.Sounds
 	public class SFX
 	{
 
-		[LabelText("SFX Type")]
-		[LabelWidth(100)]
-		[OnValueChanged("SFXChange")]
-		[InlineButton("PlaySFX")]
+		[LabelText("SFX Type"), LabelWidth(100)]
+		[OnValueChanged("SFXChange"), InlineButton("PlaySFX")]
 		public SFXManager.SFXType sfxType = SFXManager.SFXType.UI;
 		
-		[LabelText("$sfxLabel")]
-		[LabelWidth(100)]
-		[ValueDropdown("SFXType")]
-		[OnValueChanged("SFXChange")]
-		[InlineButton("SelectSFX")]
+		[LabelText("$sfxLabel"), LabelWidth(100), ValueDropdown("SFXType")]
+		[OnValueChanged("SFXChange"), InlineButton("SelectSFX")]
 		public SFXClip sfxToPlay;
 		private string sfxLabel = "SFX";
 
-		[SerializeField] private bool showSettings = false;
-
-		[SerializeField] private bool editSettings = false;
+		[SerializeField] private bool showSettings = false, editSettings = false;
 
 		[InlineEditor(InlineEditorObjectFieldModes.Hidden)]
-		[ShowIf("showSettings")]
-		[EnableIf("editSettings")]
-		[SerializeField]
-		private SFXClip _sfxBase;
+		[ShowIf("showSettings"), EnableIf("editSettings"), SerializeField] private SFXClip _sfxBase;
 		
 		[Title("Audio Source")]
-		[ShowIf("showSettings")]
-		[EnableIf("editSettings")]
-		[SerializeField]
-		private bool waitToPlay = true;
+		[ShowIf("showSettings"), EnableIf("editSettings"), SerializeField] private bool waitToPlay = true;
 
-		[ShowIf("showSettings")]
-		[EnableIf("editSettings")]
-		[SerializeField]
-		private bool useDefault = true;
+		[ShowIf("showSettings"), EnableIf("editSettings"), SerializeField] private bool useDefault = true;
 
 		[DisableIf("useDefault")]
-		[ShowIf("showSettings")]
-		[EnableIf("editSettings")]
-		[SerializeField]
-		private AudioSource audioSource;
+		[ShowIf("showSettings"), EnableIf("editSettings"), SerializeField] private AudioSource audioSource;
 
 
 		public AudioSource Source
