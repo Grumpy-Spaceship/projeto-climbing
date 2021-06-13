@@ -12,7 +12,6 @@ namespace Game.Enemies
 	{
 		[TabGroup("Health"), SerializeField] private int maxHealth = 2;
 		[TabGroup("Health"), ProgressBar(0,"maxHealth",r: 1, g: .2f, b: .3f), HideLabel, ReadOnly, SerializeField]private int health = 0;
-		[TabGroup("Health"), SerializeField] private List<SpriteRenderer> rends;
 		[SerializeField] private Animator anim;
 		[TabGroup("Ground Check"), ChildGameObjectsOnly, SerializeField] private Transform groundCheckPos;
 		[TabGroup("Ground Check"), SerializeField] private float groundCheckDist = 0.5f;

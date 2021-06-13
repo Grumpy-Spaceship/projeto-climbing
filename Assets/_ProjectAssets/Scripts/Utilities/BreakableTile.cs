@@ -35,7 +35,7 @@ namespace Game
 			if (s)
 			{
 				s.transform.parent = null;
-				Destroy(s, 1.5f);
+				Destroy(s.gameObject, 1.5f);
 			}
 			destroy?.PlaySFX();
 
