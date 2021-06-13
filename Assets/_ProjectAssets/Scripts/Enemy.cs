@@ -30,6 +30,7 @@ namespace Game.Enemies
 			_rb = GetComponent<Rigidbody2D>();
 			baseScale = transform.localScale;
 			health = maxHealth;
+			anim.speed = moveSpeed;
 			GetComponentInChildren<KillPlayerOnContact>().FindUI();
 		}
 		private void FixedUpdate()

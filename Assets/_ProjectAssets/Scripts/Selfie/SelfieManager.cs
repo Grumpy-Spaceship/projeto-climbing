@@ -31,6 +31,10 @@ namespace Game.Selfie
 		[TabGroup("UI"), SerializeField] private CanvasGroup text;
 		[SerializeField] private PlayerInput player;
 		[TabGroup("Sound"), HideLabel, SerializeField] private SFX camSFX;
+		[TabGroup("Animation times"), SerializeField] private float textFadeTime = 1f;
+		[TabGroup("Animation times"), SerializeField] private float flashTime = 0.1f;
+		[TabGroup("Animation times"), SerializeField] private float waitForEnableInput = .1f;
+		[TabGroup("Animation times"), SerializeField] private float waitForInput = 1.5f;
 		[SerializeField] private int score;
 		private SelfiePlace _place;
 
@@ -50,17 +54,17 @@ namespace Game.Selfie
 				camSFX.PlaySFX();
 				PlayerScore.AddScore(score);
 			});
-			s.Append(flash.DOFade(1, 0.1f));
+			s.Append(flash.DOFade(1, flashTime));
 			s.Append(text.DOFade(0, 0f));
 			s.AppendCallback(() => selfieUI.Activate());
 			s.Append(flash.DOFade(0, 0.1f));
-			s.AppendInterval(1.5f);
-			s.Append(text.DOFade(1, 1f));
+			s.AppendInterval(waitForInput);
 			s.AppendCallback(() =>
 			{
 				player.enabled = true;
 				player.SwitchCurrentActionMap("AfterSelfie");
 			});
+			s.Append(text.DOFade(1, textFadeTime));
 		}
 
 		public void ExitSelfie()
@@ -70,9 +74,9 @@ namespace Game.Selfie
 			s.SetUpdate(true);
 
 			s.Append(text.DOFade(0, 0.1f));
-			if (_place) s.AppendCallback(() => Destroy(_place.gameObject));
+			if (_place && _place.DestroyOnExit) s.AppendCallback(() => Destroy(_place.gameObject));
 			s.AppendCallback(() => selfieUI.Deactivate());
-			s.AppendInterval(.1f);
+			s.AppendInterval(waitForEnableInput);
 			s.AppendCallback(() =>
 			{
 				Time.timeScale = 1;
