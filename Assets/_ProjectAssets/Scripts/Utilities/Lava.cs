@@ -8,8 +8,7 @@ namespace Game.Movement
 {
 	public class Lava : TranslateWithVector
 	{
-		[TabGroup("Lava"), Range(0,1), SerializeField] private float velocityDecreaser = 0.5f;
-		[TabGroup("Lava"), SerializeField] private int minimumScoreToRise = 50;
+		[Range(0,1), SerializeField] private float velocityDecreaser = 0.5f;
 		private Transform _t;
 		private PlayerScript _player;
 
@@ -24,9 +23,9 @@ namespace Game.Movement
 		protected override void Update()
 		{
 			base.Update();
-
-			canMove = PlayerScore.Score > minimumScoreToRise;
 		}
+
+		public void StartRising() => canMove = true;
 
 		protected override void MoveIfCanTranslateAnd(bool correctTypeOfUpdate)
 		{

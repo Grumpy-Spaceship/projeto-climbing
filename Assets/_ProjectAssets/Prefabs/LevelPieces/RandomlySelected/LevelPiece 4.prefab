@@ -663,7 +663,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8008534343794175524, guid: e44c0072f340e3e48bc33f2a9db538ed, type: 3}
       propertyPath: m_Name
-      value: Platform_08
+      value: Platform
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e44c0072f340e3e48bc33f2a9db538ed, type: 3}
@@ -685,7 +685,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037003, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_Name
-      value: BreakableTile_30
+      value: BreakableTile
       objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037005, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_RootOrder
@@ -751,7 +751,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037003, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_Name
-      value: BreakableTile_23
+      value: BreakableTile
       objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037005, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_RootOrder
@@ -897,7 +897,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8609444006207037443, guid: aa8031b61916bf34e9c2a041f54a5e2f, type: 3}
       propertyPath: m_Name
-      value: koopa
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa8031b61916bf34e9c2a041f54a5e2f, type: 3}
@@ -919,7 +919,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037003, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_Name
-      value: BreakableTile_18
+      value: BreakableTile
       objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037005, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_RootOrder
@@ -1051,7 +1051,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037003, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_Name
-      value: BreakableTile_28
+      value: BreakableTile
       objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037005, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_RootOrder
@@ -1195,7 +1195,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037003, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_Name
-      value: BreakableTile_17
+      value: BreakableTile
       objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037005, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_RootOrder
@@ -1401,7 +1401,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037003, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_Name
-      value: BreakableTile_37
+      value: BreakableTile
       objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037005, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_RootOrder
@@ -1467,7 +1467,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037003, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_Name
-      value: BreakableTile_22
+      value: BreakableTile
       objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037005, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_RootOrder
@@ -1589,7 +1589,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8008534343794175524, guid: e44c0072f340e3e48bc33f2a9db538ed, type: 3}
       propertyPath: m_Name
-      value: Platform_04
+      value: Platform
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e44c0072f340e3e48bc33f2a9db538ed, type: 3}
@@ -1611,7 +1611,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037003, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_Name
-      value: BreakableTile_21
+      value: BreakableTile
       objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037005, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_RootOrder
@@ -1677,7 +1677,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037003, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_Name
-      value: BreakableTile_32
+      value: BreakableTile
       objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037005, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_RootOrder
@@ -1821,7 +1821,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037003, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_Name
-      value: BreakableTile_35
+      value: BreakableTile
       objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037005, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_RootOrder
@@ -1887,7 +1887,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037003, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_Name
-      value: BreakableTile_33
+      value: BreakableTile
       objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037005, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_RootOrder
@@ -2009,7 +2009,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8008534343794175524, guid: e44c0072f340e3e48bc33f2a9db538ed, type: 3}
       propertyPath: m_Name
-      value: Platform_02
+      value: Platform
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e44c0072f340e3e48bc33f2a9db538ed, type: 3}
@@ -2187,7 +2187,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037003, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_Name
-      value: BreakableTile_26
+      value: BreakableTile
       objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037005, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_RootOrder
@@ -2253,7 +2253,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037003, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_Name
-      value: BreakableTile_36
+      value: BreakableTile
       objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037005, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_RootOrder
@@ -2375,7 +2375,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8008534343794175524, guid: e44c0072f340e3e48bc33f2a9db538ed, type: 3}
       propertyPath: m_Name
-      value: Platform_03
+      value: Platform
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e44c0072f340e3e48bc33f2a9db538ed, type: 3}
@@ -2397,7 +2397,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037003, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_Name
-      value: BreakableTile_25
+      value: BreakableTile
       objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037005, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_RootOrder
@@ -2519,7 +2519,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8008534343794175524, guid: e44c0072f340e3e48bc33f2a9db538ed, type: 3}
       propertyPath: m_Name
-      value: Platform_06
+      value: Platform
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e44c0072f340e3e48bc33f2a9db538ed, type: 3}
@@ -2541,7 +2541,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037003, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_Name
-      value: BreakableTile_16
+      value: BreakableTile
       objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037005, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_RootOrder
@@ -2663,7 +2663,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8008534343794175524, guid: e44c0072f340e3e48bc33f2a9db538ed, type: 3}
       propertyPath: m_Name
-      value: Platform_01
+      value: Platform
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e44c0072f340e3e48bc33f2a9db538ed, type: 3}
@@ -2751,7 +2751,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037003, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_Name
-      value: BreakableTile_29
+      value: BreakableTile
       objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037005, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_RootOrder
@@ -2873,7 +2873,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8008534343794175524, guid: e44c0072f340e3e48bc33f2a9db538ed, type: 3}
       propertyPath: m_Name
-      value: Platform_05
+      value: Platform
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e44c0072f340e3e48bc33f2a9db538ed, type: 3}
@@ -2895,7 +2895,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037003, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_Name
-      value: BreakableTile_34
+      value: BreakableTile
       objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037005, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_RootOrder
@@ -3039,7 +3039,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037003, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_Name
-      value: BreakableTile_24
+      value: BreakableTile
       objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037005, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_RootOrder
@@ -3161,7 +3161,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8008534343794175524, guid: e44c0072f340e3e48bc33f2a9db538ed, type: 3}
       propertyPath: m_Name
-      value: Platform_07
+      value: Platform
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e44c0072f340e3e48bc33f2a9db538ed, type: 3}
@@ -3261,7 +3261,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037003, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_Name
-      value: BreakableTile_31
+      value: BreakableTile
       objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037005, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_RootOrder
@@ -3327,7 +3327,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037003, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_Name
-      value: BreakableTile_27
+      value: BreakableTile
       objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037005, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_RootOrder
@@ -3473,7 +3473,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8609444006207037443, guid: aa8031b61916bf34e9c2a041f54a5e2f, type: 3}
       propertyPath: m_Name
-      value: koopa_02
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa8031b61916bf34e9c2a041f54a5e2f, type: 3}
@@ -3495,7 +3495,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037003, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_Name
-      value: BreakableTile_07
+      value: BreakableTile
       objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037005, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_RootOrder
@@ -3561,7 +3561,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037003, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_Name
-      value: BreakableTile_20
+      value: BreakableTile
       objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037005, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_RootOrder
@@ -3627,7 +3627,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037003, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_Name
-      value: BreakableTile_02
+      value: BreakableTile
       objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037005, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_RootOrder
@@ -3693,7 +3693,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037003, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_Name
-      value: BreakableTile_09
+      value: BreakableTile
       objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037005, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_RootOrder
@@ -3759,7 +3759,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037003, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_Name
-      value: BreakableTile_08
+      value: BreakableTile
       objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037005, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_RootOrder
@@ -3825,7 +3825,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037003, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_Name
-      value: BreakableTile_19
+      value: BreakableTile
       objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037005, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_RootOrder
@@ -3891,7 +3891,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037003, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_Name
-      value: BreakableTile_06
+      value: BreakableTile
       objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037005, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_RootOrder
@@ -3957,7 +3957,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037003, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_Name
-      value: BreakableTile_01
+      value: BreakableTile
       objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037003, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_IsActive
@@ -4027,7 +4027,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037003, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_Name
-      value: BreakableTile_13
+      value: BreakableTile
       objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037003, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_IsActive
@@ -4097,7 +4097,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037003, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_Name
-      value: BreakableTile_12
+      value: BreakableTile
       objectReference: {fileID: 0}
     - target: {fileID: 8291420431210037003, guid: cb58722ba57ab7e4284eef69b3dfb5ba, type: 3}
       propertyPath: m_IsActive
