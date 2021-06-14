@@ -6,6 +6,7 @@ using PedroUtilities;
 using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.InputSystem;
 
 namespace Game.Selfie
@@ -33,6 +34,7 @@ namespace Game.Selfie
 		[TabGroup("UI"), SerializeField] private CanvasGroup text;
 		[SerializeField] private PlayerInput player;
 		[TabGroup("Sound"), HideLabel, SerializeField] private SFX camSFX;
+		[TabGroup("Sound"), SerializeField] private AudioMixerSnapshot normalMusic, lowpass;
 		[TabGroup("Animation times"), SerializeField] private float textFadeTime = 1f;
 		[TabGroup("Animation times"), SerializeField] private float flashTime = 0.1f;
 		[TabGroup("Animation times"), SerializeField] private float waitForEnableInput = .1f;
@@ -47,15 +49,18 @@ namespace Game.Selfie
 			bgRend.sprite = GetRandom.ElementInList(bgSprites);
 			poseRend.sprite = GetRandom.ElementInList(poseSprites);
 
+
 			Sequence s = DOTween.Sequence();
 
 			s.SetUpdate(true);
 			s.AppendCallback(() =>
 			{
 				Time.timeScale = 0;
+				player.GetComponent<Player.PlayerScript>().StopMovement();
 				player.enabled = false;
 				camSFX.PlaySFX();
 				PlayerScore.AddScore(score);
+				lowpass.TransitionTo(0.01f);
 			});
 			s.Append(flash.DOFade(1, flashTime));
 			s.Append(text.DOFade(0, 0f));
@@ -84,6 +89,7 @@ namespace Game.Selfie
 			{
 				Time.timeScale = 1;
 				player.SwitchCurrentActionMap("Default");
+				normalMusic.TransitionTo(0.01f);
 			});
 		}
 
@@ -98,6 +104,7 @@ namespace Game.Selfie
 		private void InitialSetup()
 		{
 			flash.alpha = text.alpha = 0;
+			normalMusic.TransitionTo(0.01f);
 			selfieUI.Deactivate();
 			Time.timeScale = 1;
 		}

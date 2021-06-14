@@ -10,7 +10,11 @@ namespace Game.Player
 	{
 		[Scene,ShowNonSerializedField] private string currentScene = "";
 
-		private void Awake() => currentScene = SceneManager.GetActiveScene().name;
+		private void Awake()
+		{
+			currentScene = SceneManager.GetActiveScene().name;
+			Time.timeScale = 1;
+		}
 
 		public void LoadScene(string scene) => SceneManager.LoadScene(scene);
 

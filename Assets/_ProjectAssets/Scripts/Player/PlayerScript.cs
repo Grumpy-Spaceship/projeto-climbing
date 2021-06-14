@@ -21,6 +21,7 @@ namespace Game.Player
 		[TabGroup("Settings"), HideLabel, SerializeField] private PlayerSettings settings = null;
 		[TabGroup("Settings"), HideLabel, SerializeField] private AnimationHandler anim = null;
 		[TabGroup("Settings"), HideLabel, SerializeField] private PlayerSFX sfx = null;
+		[TabGroup("Settings"), SceneObjectsOnly, SerializeField] private AudioSource source = null;
 		[TabGroup("Options"), SerializeField] private bool showDebugGizmos = false, useScore = true;
 		private float _moveInput;
 		private bool _canMove;
@@ -63,6 +64,7 @@ namespace Game.Player
 		public void Kill()
 		{
 			sfx?.PlayDeath();
+			source?.Stop();
 			Destroy(gameObject);
 		}
 
@@ -89,6 +91,11 @@ namespace Game.Player
 		}
 
 		public void StopYMovement() => _rb.velocity = new Vector2(_rb.velocity.x, 0);
+		public void StopMovement()
+		{
+			_rb.velocity = Vector2.zero;
+			_moveInput = 0;
+		}
 
 		public void Flip()
 		{
