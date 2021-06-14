@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf4e6f523164c8443880084f06c7210e, type: 3}
   m_Name: PerinChanges
   m_EditorClassIdentifier: 
-  moveSpeed: 350
+  moveSpeed: 300
   jump:
     whatIsGround:
       serializedVersion: 2
@@ -20,7 +20,7 @@ MonoBehaviour:
     particles: {fileID: 6927198434680678185, guid: aaab04446aa76d24b8ff6695364037dd, type: 3}
     particles_Breakable: {fileID: 2297747462911108201, guid: 6354167bbeb46a64396a425b62c3b96c, type: 3}
     groundCheckRadius: 0.33
-    jumpForce: 20
+    jumpForce: 25
     jumpTime: 0.25
     totalJumps: 1
   knockbackDur: 0.2

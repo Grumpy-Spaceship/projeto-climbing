@@ -22,6 +22,7 @@ namespace Game.Score
 		[SceneObjectsOnly, SerializeField] private TMP_Text updatedScoreCounter = null;
 		[ReadOnly, SerializeField] private int score = 0;
 		[ReadOnly, SerializeField] private int maxYPlayer = 0;
+		//[SerializeField] private Lava lava;
 
 		public string ScoreText => "Score: " + (score*multiplier);
 		public static int Score => instance.score;

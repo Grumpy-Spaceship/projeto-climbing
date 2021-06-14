@@ -18,9 +18,11 @@ namespace Game.Enemies
 		[TabGroup("Ground Check"), SerializeField] private LayerMask whatIsGround = default;
 		[SerializeField] private Animator anim;
 		[SerializeField] private float moveSpeed = 5;
+		[SerializeField] private float stopTime = 1;
 		private Rigidbody2D _rb;
 		private Vector3 baseScale;
 		private float facingDir = 1;
+		private float speed;
 
 		public int HP => health;
 		public int MaxHP => maxHealth;
@@ -31,16 +33,17 @@ namespace Game.Enemies
 			_rb = GetComponent<Rigidbody2D>();
 			baseScale = transform.localScale;
 			health = maxHealth;
-			anim.speed = moveSpeed;
+			speed = anim.speed = moveSpeed;
 			GetComponentInChildren<KillPlayerOnContact>().FindUI();
 		}
 		private void FixedUpdate()
 		{
-			_rb.velocity = new Vector2(moveSpeed * facingDir, _rb.velocity.y);
+			_rb.velocity = new Vector2(speed * facingDir, _rb.velocity.y);
 
-			bool needToChange = (IsHittingWall() || !IsNearEdge());
+			bool hitWall = IsHittingWall();
+			bool nearEdge = IsNearEdge();
 
-			if (_rb.velocity.y>=0 && needToChange)
+			if (_rb.velocity.y>=0 && (hitWall || !nearEdge))
 			{
 				ChangeDirection();
 			}
@@ -84,6 +87,15 @@ namespace Game.Enemies
 		{
 			SetHP(health - amnt);
 			anim.Play("hit", 1);
+			anim.Play("Stop", 0);
+			speed = 0;
+			Invoke(nameof(BackToMove), stopTime);
+
+		}
+		private void BackToMove()
+		{
+			speed = moveSpeed;
+			anim.Play("Walk", 0);
 		}
 
 		public void Heal(int amnt = 1) => SetHP(health + amnt);

@@ -386,7 +386,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0941e73a94b9e4b49858444bcdcf1a85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 3
+  maxHealth: 2
   health: 0
   deathParticles: {fileID: 6988246995618695620, guid: da2c0f4c8c5bc4c4d809c556f0ffa888, type: 3}
   groundCheckPos: {fileID: 8609444005239776388}

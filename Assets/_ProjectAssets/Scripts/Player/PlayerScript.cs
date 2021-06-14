@@ -68,7 +68,6 @@ namespace Game.Player
 			Destroy(gameObject);
 		}
 
-
 		public void CanSelfie(bool can, SelfiePlace place)
 		{
 			_canSelfie = can;
