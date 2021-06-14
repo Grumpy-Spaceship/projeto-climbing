@@ -88,6 +88,7 @@ namespace Game.Selfie
 			s.AppendCallback(() =>
 			{
 				Time.timeScale = 1;
+				if (!player.enabled) player.enabled = true;
 				player.SwitchCurrentActionMap("Default");
 				normalMusic.TransitionTo(0.01f);
 			});

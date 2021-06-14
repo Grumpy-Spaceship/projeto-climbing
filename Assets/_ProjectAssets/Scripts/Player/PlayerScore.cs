@@ -1,4 +1,5 @@
 // Maded by Pedro M Marangon
+using Game.Movement;
 using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
@@ -22,7 +23,9 @@ namespace Game.Score
 		[SceneObjectsOnly, SerializeField] private TMP_Text updatedScoreCounter = null;
 		[ReadOnly, SerializeField] private int score = 0;
 		[ReadOnly, SerializeField] private int maxYPlayer = 0;
-		//[SerializeField] private Lava lava;
+		[SerializeField] private Lava lava;
+		[SerializeField] private int scrToIncreaseLavaSpeed = 40;
+		[Range(1,2), SerializeField] private float lavaSpeedIncrease = 1.15f;
 
 		public string ScoreText => "Score: " + (score*multiplier);
 		public static int Score => instance.score;
@@ -33,6 +36,14 @@ namespace Game.Score
 		{
 			instance.score = value;
 			instance.UpdateText();
+
+
+			bool isDivisible = ((float)instance.score % (float)instance.scrToIncreaseLavaSpeed == 0);
+			if (instance.lava.canMove && isDivisible && instance.lava.speed < 0.5f)
+			{
+				instance.lava.speed = Mathf.Clamp(instance.lava.speed * instance.lavaSpeedIncrease, 0, 0.5f);
+			}
+
 		}
 
 		private void UpdateText() => updatedScoreCounter.text = ScoreText;
