@@ -43,6 +43,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: FlyingEnemy
+    uniqueID: 3375005877
+    locked: 0
   - name: BaseGround
     uniqueID: 3652862293
     locked: 0
