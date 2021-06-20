@@ -21,7 +21,8 @@ namespace Game.Player
 		[TabGroup("Settings"), HideLabel, SerializeField] private PlayerSettings settings = null;
 		[TabGroup("Settings"), HideLabel, SerializeField] private AnimationHandler anim = null;
 		[TabGroup("Settings"), HideLabel, SerializeField] private PlayerSFX sfx = null;
-		[TabGroup("Settings"), SceneObjectsOnly, SerializeField] private AudioSource source = null;
+		[TabGroup("Settings"), SceneObjectsOnly, SerializeField] private AudioSource musicSource = null;
+		[TabGroup("Settings"), SceneObjectsOnly, SerializeField] private AudioSource lavaSource = null;
 		[TabGroup("Options"), SerializeField] private bool showDebugGizmos = false, useScore = true;
 		private float _moveInput;
 		private bool _canMove;
@@ -64,7 +65,8 @@ namespace Game.Player
 		public void Kill()
 		{
 			sfx?.PlayDeath();
-			source?.Stop();
+			musicSource?.Stop();
+			lavaSource?.Stop();
 			Destroy(gameObject);
 		}
 
