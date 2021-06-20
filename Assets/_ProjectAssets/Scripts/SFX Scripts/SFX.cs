@@ -14,7 +14,11 @@ namespace Game.Sounds
 		public SFXManager.SFXType sfxType = SFXManager.SFXType.UI;
 		
 		[LabelText("$sfxLabel"), LabelWidth(100), ValueDropdown("SFXType")]
-		[OnValueChanged("SFXChange"), InlineButton("SelectSFX")]
+		[OnValueChanged("SFXChange")]
+#if UNITY_EDITOR
+		[InlineButton("SelectSFX")]
+#endif
+
 		public SFXClip sfxToPlay;
 		private string sfxLabel = "SFX";
 
@@ -50,10 +54,9 @@ namespace Game.Sounds
 			_sfxBase = sfxToPlay;
 		}
 
-		private void SelectSFX()
-		{
-			UnityEditor.Selection.activeObject = sfxToPlay;
-		}
+#if UNITY_EDITOR
+		private void SelectSFX() => UnityEditor.Selection.activeObject = sfxToPlay;
+#endif
 
 		//Get's a list of SFX from manager, used in the inspector
 		private List<SFXClip> SFXType()
