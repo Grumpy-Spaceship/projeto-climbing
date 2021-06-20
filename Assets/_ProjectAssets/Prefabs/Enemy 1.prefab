@@ -75,7 +75,7 @@ GameObject:
   - component: {fileID: 8718143190855299237}
   - component: {fileID: 6231553742628841440}
   - component: {fileID: 393432912672144707}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: AutoKill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125,7 +125,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.55
+  m_Radius: 0.45
 --- !u!114 &8817194084266211254
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -396,6 +396,7 @@ MonoBehaviour:
     m_Bits: 577
   anim: {fileID: 7530038026086782032}
   moveSpeed: 5
+  stopTime: 0.5
 --- !u!50 &8609444006207037441
 Rigidbody2D:
   serializedVersion: 4
