@@ -42,7 +42,7 @@ namespace Game.Movement
 
 		protected virtual void MoveIfCanTranslateAnd(bool correctTypeOfUpdate)
 		{
-			if (correctTypeOfUpdate && canMove)
+			if ( correctTypeOfUpdate && canMove)
 			{
 				Move();
 			}
